@@ -1,0 +1,41 @@
+<%= form_with(model: plan_de_scene_dessin) do |form| %>
+<table>
+<tr>
+  <% if plan_de_scene_dessin.errors.any? %>
+    <td style="color: red">
+      <h2><%= pluralize(plan_de_scene_dessin.errors.count, "error") %> prohibited this plan_de_scene_dessin from being saved:</h2>
+
+      <ul>
+        <% plan_de_scene_dessin.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </td>
+  <% end %>
+
+  <td style="display:none;">
+    <%= form.label :fiche_technique_id, style: "display: block" %>
+    <%= form.text_field :fiche_technique_id %>
+  </td>
+
+  <td>
+    <%= form.label :disposition, style: "display: block" %>
+    <%= form.select :disposition, ["left", "right", "center"] %>
+  </td>
+
+  <td>
+    <%= form.label :materiel_musicien, style: "display: block" %>
+    <%= form.text_field :materiel_musicien %>
+  </td>
+
+  <td>
+    <%= form.label :ordre, style: "display: block" %>
+    <%= form.text_field :ordre %>
+  </td>
+
+  <td>
+    <%= form.submit %>
+  </td>
+</tr>
+</table>
+<% end %>

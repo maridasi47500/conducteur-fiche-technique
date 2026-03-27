@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Plan de scene dessins</h1>
+
+<div id="plan_de_scene_dessins">
+  <% @plan_de_scene_dessins.each do |plan_de_scene_dessin| %>
+    <%= render plan_de_scene_dessin %>
+    <p>
+      <%= link_to "Show this plan de scene dessin", plan_de_scene_dessin %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New plan de scene dessin", new_plan_de_scene_dessin_path %>

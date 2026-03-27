@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @projet_artistique %>
+
+<div>
+  <%= link_to "Edit this projet artistique", edit_projet_artistique_path(@projet_artistique) %> |
+  <%= link_to "Back to projet artistiques", projet_artistiques_path %>
+
+  <%= button_to "Destroy this projet artistique", @projet_artistique, method: :delete %>
+</div>

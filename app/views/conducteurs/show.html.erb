@@ -1,0 +1,50 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @conducteur %>
+<table>
+<th class="conducteurlineheader" >
+
+  <td>
+    <strong>Duree:</strong>
+  </td>
+
+  <td>
+    <strong>Sequenceaction:</strong>
+  </td>
+
+  <td>
+    <strong>Interpretes:</strong>
+  </td>
+
+  <td>
+    <strong>Lumieres ambiante:</strong>
+  </td>
+
+  <td>
+    <strong>Lumieres effet:</strong>
+  </td>
+
+  <td>
+    <strong>Machine brouillard:</strong>
+  </td>
+
+  <td>
+    <strong>Videoprojection:</strong>
+  </td>
+
+  <td>
+    <strong>Notes technicien:</strong>
+  </td>
+
+</th>
+<%= render @conducteur.conducteurlines %>
+</table>
+<%= render "conducteurlines/form", conducteurline: @conducteurline %>
+
+
+<div>
+  <%= link_to "Edit this conducteur", edit_conducteur_path(@conducteur) %> |
+  <%= link_to "Back to conducteurs", conducteurs_path %>
+
+  <%= button_to "Destroy this conducteur", @conducteur, method: :delete %>
+</div>

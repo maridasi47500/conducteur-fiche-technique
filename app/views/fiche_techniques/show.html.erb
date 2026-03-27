@@ -1,0 +1,63 @@
+<p style="color: green"><%= notice %></p>
+
+<h2>informations générales </h2>
+<%= render @fiche_technique %>
+
+<h2>materiel nécessaire </h2>
+<table>
+<tr class="materielnecessaireheader" >
+
+  <th>
+    <strong>Materiel:</strong>
+  </td>
+
+  <td>
+    <strong>Quantite:</strong>
+  </td>
+
+  <td>
+    <strong>Precisions observations:</strong>
+  </td>
+
+</th>
+
+
+<%= render @fiche_technique.materiel_necessaires %>
+</table>
+
+<%= render "materiel_necessaires/form", materiel_necessaire: @materiel_necessaire %>
+
+<h2>plan de scene </h2>
+<p>
+dessinez ci dessous la disposition de votre scene : placement des musiciens des instruments , micros, praticables, convention : le public se trouve en bas du cadre
+
+</p>
+<section class="plandescene">
+<p class="fonddescenepublic">fond de scène</p>
+<%= render @fiche_technique.plan_de_scene_dessins.order(:ordre) %>
+<p class="fonddescenepublic">public</p>
+</section>
+
+
+<%= render "plan_de_scene_dessins/form", plan_de_scene_dessin: @plan_de_scene_dessin %>
+
+<h2>notes complementaires </h2>
+<%= form_with(model: @fiche_technique) do |form| %>
+
+  <div>
+    <%= form.label :notes_complementaires, style: "display: block" %>
+    <%= form.text_area :notes_complementaires %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to "Editer les informations generales de cette fiche technique", edit_fiche_technique_path(@fiche_technique) %> |
+  <%= link_to "Editer l'ordre du plan de scene de cette fiche technique", editplandescene_fiche_technique_path(@fiche_technique) %> |
+  <%= link_to "Back to fiche techniques", fiche_techniques_path %>
+
+  <%= button_to "Destroy this fiche technique", @fiche_technique, method: :delete %>
+</div>

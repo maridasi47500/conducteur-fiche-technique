@@ -1,0 +1,42 @@
+
+<%= form_with(model: materiel_necessaire) do |form| %>
+<table>
+<tr>
+  <% if materiel_necessaire.errors.any? %>
+    <td style="color: red">
+      <h2><%= pluralize(materiel_necessaire.errors.count, "error") %> prohibited this materiel_necessaire from being saved:</h2>
+
+      <ul>
+        <% materiel_necessaire.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </td>
+  <% end %>
+
+  <td style="display:none;">
+    <%= form.label :fiche_technique_id, style: "display: block" %>
+    <%= form.text_field :fiche_technique_id %>
+  </td>
+
+  <td>
+    <%= form.label :materiel_id, style: "display: block" %>
+    <%= form.select :materiel_id, Materiel.all.collect{|h|[h.name, h.id]} %>
+  </td>
+
+  <td>
+    <%= form.label :quantite, style: "display: block" %>
+    <%= form.text_field :quantite %>
+  </td>
+
+  <td>
+    <%= form.label :precisions_observations, style: "display: block" %>
+    <%= form.text_field :precisions_observations %>
+  </td>
+
+  <td>
+    <%= form.submit %>
+  </td>
+  </tr>
+  </table>
+<% end %>

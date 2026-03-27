@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fiche_technique_id: MyString
+  disposition: MyString
+  materiel_musicien: MyString
+  ordre: MyString
+
+two:
+  fiche_technique_id: MyString
+  disposition: MyString
+  materiel_musicien: MyString
+  ordre: MyString

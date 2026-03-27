@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Fiche techniques</h1>
+
+<div id="fiche_techniques">
+  <% @fiche_techniques.each do |fiche_technique| %>
+    <%= render fiche_technique %>
+    <p>
+      <%= link_to "Show this fiche technique", fiche_technique %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New fiche technique", new_fiche_technique_path %>

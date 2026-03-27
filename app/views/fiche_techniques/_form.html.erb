@@ -1,0 +1,42 @@
+<%= form_with(model: fiche_technique) do |form| %>
+  <% if fiche_technique.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(fiche_technique.errors.count, "error") %> prohibited this fiche_technique from being saved:</h2>
+
+      <ul>
+        <% fiche_technique.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name_event, style: "display: block" %>
+    <%= form.text_field :name_event %>
+  </div>
+
+  <div>
+    <%= form.label :eleve_responsable, style: "display: block" %>
+    <%= form.text_field :eleve_responsable %>
+  </div>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.text_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :professeur_referent, style: "display: block" %>
+    <%= form.text_field :professeur_referent %>
+  </div>
+
+  <div>
+    <%= form.label :notes_complementaires, style: "display: block" %>
+    <%= form.text_field :notes_complementaires %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

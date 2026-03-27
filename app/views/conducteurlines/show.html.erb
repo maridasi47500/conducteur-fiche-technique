@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @conducteurline %>
+
+<div>
+  <%= link_to "Edit this conducteurline", edit_conducteurline_path(@conducteurline) %> |
+  <%= link_to "Back to conducteurlines", conducteurlines_path %>
+
+  <%= button_to "Destroy this conducteurline", @conducteurline, method: :delete %>
+</div>

@@ -1,0 +1,2 @@
+class ProjetArtistique < ApplicationRecord
+end

@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  conducteur_id: MyString
+  duree: 2026-03-27 15:32:45
+  sequenceaction: MyString
+  interpretes: MyString
+  lumieres_ambiante: MyString
+  lumieres_effet: MyString
+  machine_brouillard: MyString
+  videoprojection: MyString
+  notes_technicien: MyString
+
+two:
+  conducteur_id: MyString
+  duree: 2026-03-27 15:32:45
+  sequenceaction: MyString
+  interpretes: MyString
+  lumieres_ambiante: MyString
+  lumieres_effet: MyString
+  machine_brouillard: MyString
+  videoprojection: MyString
+  notes_technicien: MyString

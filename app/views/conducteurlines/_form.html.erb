@@ -1,0 +1,68 @@
+
+<%= form_with(model: conducteurline) do |form| %>
+<table>
+<tr>
+  <% if conducteurline.errors.any? %>
+    <td style="color: red">
+      <h2><%= pluralize(conducteurline.errors.count, "error") %> prohibited this conducteurline from being saved:</h2>
+
+      <ul>
+        <% conducteurline.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </td>
+  <% end %>
+
+  <td style="display:none;">
+    <%= form.label :conducteur_id, style: "display: block" %>
+    <%= form.text_field :conducteur_id %>
+  </td>
+
+  <td>
+    <%= form.label :duree, style: "display: block" %>
+    <%= form.time_field :duree %>
+  </td>
+
+  <td>
+    <%= form.label :sequenceaction, style: "display: block" %>
+    <%= form.text_field :sequenceaction %>
+  </td>
+
+  <td>
+    <%= form.label :interpretes, style: "display: block" %>
+    <%= form.text_field :interpretes %>
+  </td>
+
+  <td>
+    <%= form.label :lumieres_ambiante, style: "display: block" %>
+    <%= form.text_field :lumieres_ambiante %>
+  </td>
+
+  <td>
+    <%= form.label :lumieres_effet, style: "display: block" %>
+    <%= form.text_field :lumieres_effet %>
+  </td>
+
+  <td>
+    <%= form.label :machine_brouillard, style: "display: block" %>
+    <%= form.text_field :machine_brouillard %>
+  </td>
+
+  <td>
+    <%= form.label :videoprojection, style: "display: block" %>
+    <%= form.text_field :videoprojection %>
+  </td>
+
+  <td>
+    <%= form.label :notes_technicien, style: "display: block" %>
+    <%= form.text_field :notes_technicien %>
+  </td>
+
+  <td>
+    <%= form.submit %>
+  </td>
+</tr>
+</table>
+<% end %>
+
