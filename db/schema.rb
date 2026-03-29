@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_03_29_165205) do
+ActiveRecord::Schema[7.1].define(version: 2026_03_29_201454) do
   create_table "conducteurlines", force: :cascade do |t|
     t.string "conducteur_id"
     t.time "duree"
@@ -56,6 +56,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_29_165205) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "on_stage"
+    t.integer "maximum"
   end
 
   create_table "plan_de_scene_dessins", force: :cascade do |t|
