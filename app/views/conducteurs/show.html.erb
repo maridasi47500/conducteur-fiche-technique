@@ -2,8 +2,11 @@
 
 <%= render @conducteur %>
 <table>
-<th class="conducteurlineheader" >
+<tr class="conducteurlineheader" >
 
+  <td>
+    <strong>numero:</strong>
+  </td>
   <td>
     <strong>Duree:</strong>
   </td>
@@ -16,6 +19,10 @@
     <strong>Interpretes:</strong>
   </td>
 
+  <td>
+    <strong>son Fichier / Source</strong>
+
+  </td>
   <td>
     <strong>Lumieres ambiante:</strong>
   </td>
@@ -36,13 +43,14 @@
     <strong>Notes technicien:</strong>
   </td>
 
-</th>
+</tr>
 <%= render @conducteur.conducteurlines %>
 </table>
 <%= render "conducteurlines/form", conducteurline: @conducteurline %>
 
 
 <div>
+  <%= link_to "Editer toutes les lignes du conducteur", editformlines_conducteur_path(@conducteur) %> |
   <%= link_to "Edit this conducteur", edit_conducteur_path(@conducteur) %> |
   <%= link_to "Back to conducteurs", conducteurs_path %>
 

@@ -21,7 +21,7 @@
   </td>
 
   <td>
-    <%= f.label :materiel_musicien, style: "display: block" %>
+    <%= f.label :materiel_musicien, "matériel / musicien", style: "display: block" %>
     <%= f.text_field :materiel_musicien %>
   </td>
 
@@ -29,6 +29,13 @@
     <%= f.label :ordre, style: "display: block" %>
     <%= f.text_field :ordre %>
   </td>
+  <td>
+    
+<%= f.check_box :_destroy %>
+    <%= f.label :_destroy, "supprimer ce materiel / musicien du plan de scene",  style: "display: block" %>
+  </td>
+
+
   </tr>
 
 <%end%>

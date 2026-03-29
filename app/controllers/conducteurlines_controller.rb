@@ -25,7 +25,7 @@ class ConducteurlinesController < ApplicationController
 
     respond_to do |format|
       if @conducteurline.save
-        format.html { redirect_to @conducteur, notice: "Conducteurline was successfully created." }
+        format.html { redirect_to @conducteurline.conducteur, notice: "Conducteurline was successfully created." }
         format.json { render :show, status: :created, location: @conducteurline }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class ConducteurlinesController < ApplicationController
   def update
     respond_to do |format|
       if @conducteurline.update(conducteurline_params)
-        format.html { redirect_to @conducteur, notice: "Conducteurline was successfully updated.", status: :see_other }
+        format.html { redirect_to @conducteurline.conducteur, notice: "Conducteurline was successfully updated.", status: :see_other }
         format.json { render :show, status: :ok, location: @conducteurline }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,6 +65,6 @@ class ConducteurlinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def conducteurline_params
-      params.require(:conducteurline).permit(:conducteur_id, :duree, :sequenceaction, :interpretes, :lumieres_ambiante, :lumieres_effet, :machine_brouillard, :videoprojection, :notes_technicien)
+      params.require(:conducteurline).permit(:conducteur_id, :duree, :sequenceaction, :interpretes, :lumieres_ambiante, :lumieres_effet, :machine_brouillard, :videoprojection, :notes_technicien, :son)
     end
 end

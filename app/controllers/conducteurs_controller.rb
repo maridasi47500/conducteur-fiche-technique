@@ -1,5 +1,5 @@
 class ConducteursController < ApplicationController
-  before_action :set_conducteur, only: %i[ show edit update destroy ]
+  before_action :set_conducteur, only: %i[ show edit update destroy editformlines]
 
   # GET /conducteurs or /conducteurs.json
   def index
@@ -18,6 +18,8 @@ class ConducteursController < ApplicationController
 
   # GET /conducteurs/1/edit
   def edit
+  end
+  def editformlines
   end
 
   # POST /conducteurs or /conducteurs.json
@@ -66,6 +68,6 @@ class ConducteursController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def conducteur_params
-      params.require(:conducteur).permit(:title, :username)
+      params.require(:conducteur).permit(:title, :username, :conducteurlines_attributes => {})
     end
 end

@@ -1,0 +1,78 @@
+<%= form_with(model: conducteur) do |form| %>
+  <% if conducteur.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(conducteur.errors.count, "error") %> prohibited this conducteur from being saved:</h2>
+
+      <ul>
+        <% conducteur.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+<%mycounter = 0%>
+<%=form.fields_for :conducteurlines do |f|%>
+<%mycounter += 1%>
+<tr>
+ <td>
+    <%= mycounter %>
+  </td>
+ <td>
+    <%= f.label :duree, style: "display: block" %>
+    <%= f.time_field :duree, value: f.object.maduree %>
+  </td>
+
+  <td>
+    <%= f.label :sequenceaction, style: "display: block" %>
+    <%= f.text_field :sequenceaction %>
+  </td>
+
+  <td>
+    <%= f.label :interpretes, style: "display: block" %>
+    <%= f.text_field :interpretes %>
+  </td>
+
+  <td>
+    <%= f.label :son, style: "display: block" %>
+    <%= f.text_field :son %>
+  </td>
+  <td>
+    <%= f.label :lumieres_ambiante, style: "display: block" %>
+    <%= f.text_field :lumieres_ambiante %>
+  </td>
+
+  <td>
+    <%= f.label :lumieres_effet, style: "display: block" %>
+    <%= f.text_field :lumieres_effet %>
+  </td>
+
+  <td>
+    <%= f.label :machine_brouillard, style: "display: block" %>
+    <%= f.text_field :machine_brouillard %>
+  </td>
+
+  <td>
+    <%= f.label :videoprojection, style: "display: block" %>
+    <%= f.text_field :videoprojection %>
+  </td>
+
+  <td>
+    <%= f.label :notes_technicien, style: "display: block" %>
+    <%= f.text_field :notes_technicien %>
+  </td>
+  <td>
+
+<%= f.check_box :_destroy %>
+    <%= f.label :_destroy, "supprimer cette ligne du conducteur",  style: "display: block" %>
+  </td>
+
+</tr>
+<%end%>
+</table>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

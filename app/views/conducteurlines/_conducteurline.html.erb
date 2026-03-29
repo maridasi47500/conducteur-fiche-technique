@@ -1,6 +1,10 @@
 <tr class="conducteurline" id="<%= dom_id conducteurline %>">
 
   <td>
+    <strong>numero:</strong>
+    <%= conducteurline_counter + 1 %>
+  </td>
+  <td>
     <strong>Duree:</strong>
     <%= conducteurline.duree.strftime("%H:%M") %>
   </td>
@@ -15,6 +19,10 @@
     <%= conducteurline.interpretes %>
   </td>
 
+  <td>
+    <strong>son Fichier / Source</strong>
+    <%= conducteurline.son %>
+  </td>
   <td>
     <strong>Lumieres ambiante:</strong>
     <%= conducteurline.lumieres_ambiante %>
