@@ -1,0 +1,3 @@
+@image{ta_partition-1}
+@image{ta_partition-2}
+@c eof
