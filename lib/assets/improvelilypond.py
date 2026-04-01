@@ -43,9 +43,11 @@ def parse_lilypond(file_path):
         notes_data.extend(parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit))
 
     # 5. Trouver les notes étrangères
-    foreign_notes = [n for n in notes_data if n['note'] not in notes_in_scale]
+    foreign_notes = [n for n in notes_data if (n['note'] not in notes_in_scale and n['note'] != "r")]
     print("\nNotes étrangères à la gamme naturelle :")
     for n in foreign_notes:
+        if n["note"] == "r":
+            continue
         print(f"Mesure {n['measure']}, temps {n['beat']:.2f}, note {n['note']} (voix {n['voice']})")
 
     return {
@@ -55,6 +57,33 @@ def parse_lilypond(file_path):
         'notes_data': notes_data,
     }
 
+def enharmonic(note):
+    enharmonic_equivalents = {
+        'c#': 'd♭',
+        'd#': 'e♭',
+        'f#': 'g♭',
+        'g#': 'a♭',
+        'a#': 'b♭',
+        'cs': 'des',
+        'ds': 'ees',
+        'fs': ' ges',
+        'gs': 'aes',
+        'as': 'b',
+        'bes': 'ais',
+        'bis': 'c',
+        'eis': 'f',
+        'cis': 'des',
+        'dis': 'ees',
+        'fis': 'ges',
+        'gis': 'aes',
+        'ais': 'bes'
+    }
+
+    note_lower = note.lower()
+    if note_lower in enharmonic_equivalents:
+        return enharmonic_equivalents[note_lower]
+    else:
+        return note  # Return original if no enharmonic equivalent found
 def get_notes_in_minor_scale(root, intervals):
     notes = ['c', 'cs', 'd', 'ds', 'e', 'f', 'fs', 'g', 'gs', 'a', 'as', 'b']
     root_idx = notes.index(root)
@@ -62,6 +91,10 @@ def get_notes_in_minor_scale(root, intervals):
     for interval in intervals:
         note_idx = (root_idx + interval) % 12
         scale.append(notes[note_idx].replace('s', 'is').replace('cs', 'cis'))
+        myenharmonic=enharmonic(notes[note_idx].replace('s', 'is').replace('cs', 'cis'))
+        if notes[note_idx].replace('s', 'is').replace('cs', 'cis') != myenharmonic:
+            scale.append(myenharmonic)
+      
     return scale
 
 def get_notes_in_major_scale(root, intervals):
@@ -71,6 +104,9 @@ def get_notes_in_major_scale(root, intervals):
     for interval in intervals:
         note_idx = (root_idx + interval) % 12
         scale.append(notes[note_idx].replace('s', 'is').replace('cs', 'cis'))
+        myenharmonic=enharmonic(notes[note_idx].replace('s', 'is').replace('cs', 'cis'))
+        if notes[note_idx].replace('s', 'is').replace('cs', 'cis') != myenharmonic:
+            scale.append(myenharmonic)
     return scale
 
 def parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit):
@@ -83,7 +119,8 @@ def parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit):
     #note_pattern = r'\s*(?!bar\b|fermata\b)([abcdefgr](?:is|es|))?\'*\,*(\d+[\.]?|([abcdefgr](?:is|es)).~.\d+|)\s*'
 
     #note_pattern = r'\s*(?!(?:fermata|bar)\b)([abcdefgr](?:is|es)?)?\'*\,*(\d+(?:\.|~)?|\d*)\s*'
-    note_pattern = r'\s*\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es|))?\'*\,*(\d+[\.]?|\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es)).~.\d+|)\s*'
+    #note_pattern = r'\s*\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es|))?\'*\,*(\d+[\.]?|\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es)).~.\d+|\<([abcdefgr](?:is|es)).([abcdefgr](?:is|es))\>\d+\.*|)\s*' #marche sans double corde
+    note_pattern = r'\s*\b(<\s*\b(?!(?:bar|fermata)\b)([abcdefg](?:is|es)?\,*\'*).([abcdefg](?:is|es)?\,*\'*)\s*>(\d+)?\.*|\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es)?|))\'*\,*(\d+[\.]?|\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es)\'*\,*?).~.\d+|)\s*' ##essaie de marcher dans la double corde dans lilypond
     notes = []
     measure = 1
     beat = 0
@@ -96,29 +133,46 @@ def parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit):
         othernote = match.group(2)
 
         if (othernote == "" or othernote == None) and (note == "" or note == None):
-            print("passe")
+            #print("passe")
             continue
         elif othernote != None and "~" in othernote:
             my_duration_str = match.group(1)
             second_duration_str=re.search("\d+", my_duration_str)
             duration = 1 / int(previous_duration)+ 1 / int(second_duration_str)
             note=re.search("([abcdefgr](?:is|es|)|)\'*\,*", my_duration_str)
-            print("option ~~j")
+            #print("option ~~j")
             is_dotted_str = match.group(2)
             is_dotted = match.group(2) is not None and "." in is_dotted_str
+            if is_dotted and is_dotted_str != "":
+                duration = float(duration) * 1.5
+            previous_duration= second_duration_str
+            previous_note= note
+        elif othernote != None and ">" in othernote and "<" in othernote:
+            print("par ici")
+            my_duration_str = match.group(2)
+            second_duration_str=re.search("\d+", my_duration_str)
+            if second_duration_str == None:
+                second_duration_str = previous_duration
+            duration = 1 / int(previous_duration)+ 1 / int(second_duration_str)
+            note=re.findall("([abcdefgr](?:is|es|)|)\'*\,*", my_duration_str).join(" ")
+            #print("option ~~j")
+            is_dotted_str = match.group(2)
+            is_dotted = match.group(2) is not None and "." in is_dotted_str
+            if is_dotted and is_dotted_str != "":
+                duration = float(duration) * 1.5
             previous_duration= second_duration_str
             previous_note= note
             
         else:
-            print(match.groups())
-            print(othernote)
+            #print(match.groups())
+            #print(othernote)
             if othernote != None and "~" in othernote:
                 othernote=""
                 note=previous_note
             my_duration_str = match.group(2)
             if my_duration_str != None:
                 duration_str=re.search("\d+", my_duration_str)
-            print(duration_str)
+            #print(duration_str)
             if duration_str != '' and duration_str != None:
                 duration_str=duration_str[0]
             if (duration_str == '' or duration_str == None) and previous_duration != '':
@@ -157,16 +211,15 @@ def parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit):
             measure += 1
             #beat -= beats_per_measure
             beat = duration
-        print({
-            'measure': measure,
-            'rythme': duration_str,
-            #'beat': round(beat, 2),
-            'beat': beat * beat_unit,
-            'note': note,
-            'duration': duration,
-            'voice': voice_name,
-        })
-
+        #print({
+        #    'measure': measure,
+        #    'rythme': duration_str,
+        #    #'beat': round(beat, 2),
+        #    'beat': beat * beat_unit,
+        #    'note': note,
+        #    'duration': duration,
+        #    'voice': voice_name,
+        #})
         notes.append({
             'rythme': duration_str,
             'measure': measure,
@@ -182,5 +235,6 @@ def parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit):
 # Exemple d'utilisation
 if __name__ == "__main__":
     result = parse_lilypond("ta_partition.ly")
+    print("DONNEES DE NOTES")
     for note in result['notes_data']:
         print(f"Mesure {note['measure']}, temps {note['beat']:.2f}, note {note['note']} (durée: {note['duration']} beat)")
