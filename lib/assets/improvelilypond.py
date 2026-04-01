@@ -32,13 +32,14 @@ def parse_lilypond(file_path):
     # 4. Extraire toutes les notes avec leur mesure, temps, durée et voix
     note_pattern = r'([a-g](is|es)?)(\d*)(\.?)'
     voice_pattern = r'(\w+) = \\relative\s*\{([^}]*)\}'
-    voice_pattern = r'voice(One|Two|Three|Four)\s*([^}]*)\}'
+    voice_pattern = r'part(I|II|III|IV).=.[^\s]*voice(One|Two|Three|Four)\s*([^}]*)\}'
+    voice_pattern = r'(part(?:I|II|III|IV))(?!(?:relative))(?:[(?!(?:\\))=a-z.\{\}^:\s]*)\\(voice(?:One|Two|Three|Four))\s*([^}]*)\}'
     voice_blocks = re.findall(voice_pattern, content, re.DOTALL)
     notes_data = []
 
     for block in voice_blocks:
-        voice_name = block[0]
-        notes_str = block[1]
+        voice_name = block[0]+" "+block[1]
+        notes_str = block[2]
         notes_data.extend(parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit))
 
     # 5. Trouver les notes étrangères
@@ -75,7 +76,14 @@ def get_notes_in_major_scale(root, intervals):
 def parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit):
     #note_pattern = r'([abcdefgr](is|es))?\'*(\d*)([\.~]?)(\~)?'
     #note_pattern = r'([abcdefgr](?:is|es)(?:\'*)(?:,*))?(\d+[\.~]?|~)?'
-    note_pattern = r'\s*([abcdefgr](?:is|es|))?\'*\,*(\d+[\.]?|([abcdefgr](?:is|es)).~.\d+|)\s*'
+    #note_pattern = r'\s*([abcdefgr](?:is|es|))?\'*\,*(\d+[\.]?|([abcdefgr](?:is|es)).~.\d+|)\s*'
+    #note_pattern = r'\s*(?!.*\b(bar|fermata)\b)([abcdefgr](?:is|es|))?\'*\,*(\d+[\.]?|([abcdefgr](?:is|es)).~.\d+|)\s*'
+    #note_pattern = r'\s*((?![a-z]*bar\b)(?![a-z]*fermata\b)([abcdefgr](?:is|es|))?\'*\,*(\d+[\.]?|([abcdefgr](?:is|es)).~.\d+|))\s*'
+    #note_pattern = r'\s*(?:(?!bar|fermata))([abcdefgr](?:is|es|))?\'*\,*(\d+[\.]?|([abcdefgr](?:is|es)).~.\d+|)\s*'
+    #note_pattern = r'\s*(?!bar\b|fermata\b)([abcdefgr](?:is|es|))?\'*\,*(\d+[\.]?|([abcdefgr](?:is|es)).~.\d+|)\s*'
+
+    #note_pattern = r'\s*(?!(?:fermata|bar)\b)([abcdefgr](?:is|es)?)?\'*\,*(\d+(?:\.|~)?|\d*)\s*'
+    note_pattern = r'\s*\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es|))?\'*\,*(\d+[\.]?|\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es)).~.\d+|)\s*'
     notes = []
     measure = 1
     beat = 0
@@ -91,7 +99,7 @@ def parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit):
             print("passe")
             continue
         elif othernote != None and "~" in othernote:
-            my_duration_str = match.group(2)
+            my_duration_str = match.group(1)
             second_duration_str=re.search("\d+", my_duration_str)
             duration = 1 / int(previous_duration)+ 1 / int(second_duration_str)
             note=re.search("([abcdefgr](?:is|es|)|)\'*\,*", my_duration_str)
@@ -132,8 +140,6 @@ def parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit):
                 #print("option4")
             if is_dotted and is_dotted_str != "":
                 duration = float(duration) * 1.5
-                #print(match.group(4))
-                #print("option5 is dotted")
             if note == None or note == '':
                 note=previous_note
             if duration_str == None or duration_str == '':
