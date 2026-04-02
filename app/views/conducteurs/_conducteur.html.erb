@@ -1,12 +1,13 @@
-<div id="<%= dom_id conducteur %>">
-  <p>
-    <strong>Title:</strong>
-    <%= conducteur.title %>
-  </p>
+<tr id="<%= dom_id conducteur %>">
+  <td>
+    <%= link_to conducteur.title, conducteur %>
+  </td>
 
-  <p>
-    <strong>Username:</strong>
-    <%= conducteur.username %>
-  </p>
+  <td>
+    by <%= conducteur.username %>
+  </td>
+  <td>
+    <%= I18n.l(conducteur.created_at.to_time, format: :veryshort)%>
+  </td>
 
-</div>
+</tr>

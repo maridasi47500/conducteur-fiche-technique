@@ -2,13 +2,21 @@
 
 <h1>Conducteurs</h1>
 
-<div id="conducteurs">
+<table id="conducteurs">
+<tr >
+  <td>
+    <strong>Title:</strong>
+  </td>
+
+  <td>
+    <strong>Username:</strong>
+  </td>
+
+</tr>
+
   <% @conducteurs.each do |conducteur| %>
     <%= render conducteur %>
-    <p>
-      <%= link_to "Show this conducteur", conducteur %>
-    </p>
   <% end %>
-</div>
+</table>
 
 <%= link_to "New conducteur", new_conducteur_path %>

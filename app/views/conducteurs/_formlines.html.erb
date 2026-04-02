@@ -1,6 +1,5 @@
 <%= form_with(model: conducteur) do |form| %>
-  <% if conducteur.errors.any? %>
-    <div style="color: red">
+  <% if conducteur.errors.any? %> <div style="color: red">
       <h2><%= pluralize(conducteur.errors.count, "error") %> prohibited this conducteur from being saved:</h2>
 
       <ul>
@@ -36,7 +35,11 @@
 
   <td>
     <%= f.label :son, style: "display: block" %>
+<%if File.exists("./public/uploads/"+f.object.son)%>
+    <%= f.file_field :son %>
+<%else%>
     <%= f.text_field :son %>
+<%end%>
   </td>
   <td>
     <%= f.label :lumieres_ambiante, style: "display: block" %>
@@ -55,7 +58,11 @@
 
   <td>
     <%= f.label :videoprojection, style: "display: block" %>
+<%if File.exists("./public/uploads/"+f.object.videoprojection)%>
+    <%= f.file_field :videoprojection %>
+<%else%>
     <%= f.text_field :videoprojection %>
+<%end%>
   </td>
 
   <td>

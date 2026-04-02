@@ -15,8 +15,7 @@
   <% end %>
 
   <td style="display:none;">
-    <%= form.label :conducteur_id, style: "display: block" %>
-    <%= form.text_field :conducteur_id %>
+    <%= form.hidden_field :conducteur_id %>
   </td>
 
   <td>
@@ -25,7 +24,7 @@
   </td>
 
   <td>
-    <%= form.label :sequenceaction, style: "display: block" %>
+    <%= form.label :sequenceaction, "SEQUENCE - action", style: "display: block" %>
     <%= form.text_field :sequenceaction %>
   </td>
 
@@ -36,31 +35,35 @@
 
   <td>
     <%= form.label :son, style: "display: block" %>
-    <%= form.text_field :son %>
+    <%= form.file_field :son %>
+<button style="display:block;" id='buttonson1' onclick="conducteurline_son.type='text';buttonson2.style.display='block';this.style.display='none';return false;">entrer du texte au lieu de donner une musique/un son à jouer </button>
+<button style="display:none;" id='buttonson2' onclick="conducteurline_son.type='file';buttonson1.style.display='block';this.style.display='none';return false;">donner une musique/un son à jouer au lieu de rentrer un texte</button>
   </td>
   <td>
     <%= form.label :lumieres_ambiante, "lumiere ambiante (noir total, rouge, violet, jaune, mi-scene eclairee couleur, blanc doux, blanc chaud, toutes couleurs, salle rallumée)", style: "display: block" %>
-    <%= form.text_field :lumieres_ambiante %>
+    <%= form.select :lumieres_ambiante, ["", "noir total", "rouge", "violet", "jaune", "mi-scene eclairee couleur", "blanc doux", "blanc chaud", "toutes les couleurs", "salle rallumée"] %>
   </td>
 
   <td>
     <%= form.label :lumieres_effet, "effet de lumieres : noir, douche, effet clignotant, intensité, rasant, parled", style: "display: block" %>
-    <%= form.text_field :lumieres_effet %>
+    <%= form.select :lumieres_effet, ["", "noir", "douche", "effet clignotant", "intensité", "rasant", "parled"] %>
   </td>
 
   <td>
-    <%= form.label :machine_brouillard, style: "display: block" %>
+    <%= form.label :machine_brouillard,"oui/non/combien de secondes", style: "display: block" %>
     <%= form.text_field :machine_brouillard %>
   </td>
 
   <td>
     <%= form.label :videoprojection, style: "display: block" %>
-    <%= form.text_field :videoprojection %>
+    <%= form.file_field :videoprojection %>
+<button type="button" style="display:block;" id='buttonvideo1' onclick="conducteurline_videoprojection.type='text';buttonvideo2.style.display='block';this.style.display='none';return false;">entrer du texte au lieu de donner une image à regarder pour la videoprojection </button>
+<button type="button" style="display:none;" id='buttonvideo2' onclick="conducteurline_videoprojection.type='file';buttonvideo1.style.display='block';this.style.display='none';return false;">donner une image à voir pour la videoprojection au lieu de rentrer un texte</button>
   </td>
 
   <td>
-    <%= form.label :notes_technicien, style: "display: block" %>
-    <%= form.text_field :notes_technicien %>
+    <%= form.label :notes_technicien, "notes pour le technicien", style: "display: block" %>
+    <%= form.text_area :notes_technicien %>
   </td>
 
   <td>
