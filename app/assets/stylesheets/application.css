@@ -29,3 +29,22 @@ font-size:18;
 .plandescene p {
 width:100%;
 }
+/*
+Source - https://stackoverflow.com/a/76600210
+Posted by Roko C. Buljan, modified by community. See post 'Timeline' for change history
+Retrieved 2026-04-02, License - CC BY-SA 4.0
+*/
+
+.grid {
+  display: inline-grid;
+  grid-template-columns: repeat(1, 1fr);
+  background-color: #d3d3d3;
+  gap: 0.3rem;
+  padding: 0.3rem;
+}
+
+.item {
+  display: inline-flex;
+  background-color: #fffac2;
+  padding: 0.3rem;
+}
