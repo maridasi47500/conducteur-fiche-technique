@@ -120,7 +120,10 @@ def parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit):
 
     #note_pattern = r'\s*(?!(?:fermata|bar)\b)([abcdefgr](?:is|es)?)?\'*\,*(\d+(?:\.|~)?|\d*)\s*'
     #note_pattern = r'\s*\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es|))?\'*\,*(\d+[\.]?|\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es)).~.\d+|\<([abcdefgr](?:is|es)).([abcdefgr](?:is|es))\>\d+\.*|)\s*' #marche sans double corde
-    note_pattern = r'\s*\b(<\s*\b(?!(?:bar|fermata)\b)([abcdefg](?:is|es)?\,*\'*).([abcdefg](?:is|es)?\,*\'*)\s*>(\d+)?\.*|\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es)?|))\'*\,*(\d+[\.]?|\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es)\'*\,*?).~.\d+|)\s*' ##essaie de marcher dans la double corde dans lilypond
+    #note_pattern = r'\s*\b(<\s*\b(?!(?:bar|fermata)\b)([abcdefg](?:is|es)?\,*\'*).([abcdefg](?:is|es)?\,*\'*)\s*>(\d+)?\.*|\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es)?|))\'*\,*(\d+[\.]?|\b(?!(?:bar|fermata)\b)([abcdefgr](?:is|es)\'*\,*?).~.\d+|)\s*' ##essaie de marcher dans la double corde dans lilypond
+    note_pattern=r'((?:(?:\d+)?[\.]?)|(?:\b(?!(?:bar|fermata)\b)(?:[abcdefgr](?:is|es)\'*\,*(?:\d+))?.~.\d+|(?:<\s*\b(?!bar|fermata)\b(?:[abcdefg](?:is|es)?)\,*\'*.(?:[abcdefg](?:is|es)?\,*\'*)\s*>)(?:\d+)?(?:\')?(?:\.)?)|\b(?!(?:bar|fermata)\b)(?:[abcdefgr](?:is|es)?))\'*\,*(\d+)?(\.)?'
+    note_pattern=r'((?:(?:\d+)?[\.]?)|(?:\b(?!(?:bar|fermata)\b)(?:[abcdefgr](?:is|es)\'*\,*(?:\d+))?.~.\d+|\b(?:<\s*\b(?!bar|fermata)\b(?:[abcdefg](?:is|es)?)\,*\'*.(?:[abcdefg](?:is|es)?\,*\'*)\s*>)(?:\d+)?(?:\')?(?:\.)?)|\b(?!(?:bar|fermata)\b)(?:[abcdefgr](?:is|es)?))\'*\,*(\d+)?(\.)?'
+    note_pattern=r'((?:(?:\d+)?[\.]?)|(?:\b(?!(?:bar|fermata)\b)(?:[abcdefgr](?:is|es)\'*\,*(?:\d+))?.~.\d+|(?:<\s*\b(?!bar|fermata)\b(?:[abcdefg](?:is|es)?)\,*\'*.(?:[abcdefg](?:is|es)?\,*\'*)\s*>)(?:\d+)?(?:\')?(?:\.)?)|\b(?!(?:bar|fermata)\b)(?:[abcdefgr](?:is|es)?))\'*\,*(\d+)?(\.)?'
     notes = []
     measure = 1
     beat = 0
@@ -130,7 +133,10 @@ def parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit):
     for match in re.finditer(note_pattern, notes_str):
 
         note = match.group(1)
-        othernote = match.group(2)
+        othernote = match.group(1)
+        rythme = match.group(2)
+        if note != "":
+            print("NOTE:",note)
 
         if (othernote == "" or othernote == None) and (note == "" or note == None):
             #print("passe")
@@ -138,32 +144,49 @@ def parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit):
         elif othernote != None and "~" in othernote:
             my_duration_str = match.group(1)
             second_duration_str=re.search("\d+", my_duration_str)
-            duration = 1 / int(previous_duration)+ 1 / int(second_duration_str)
+            if previous_duration != None and previous_duration != '':
+                duration = 1 / int(previous_duration)+ 1 / int(second_duration_str.group(0))
+            else:
+                duration = 1 / int(second_duration_str.group(0))
+
             note=re.search("([abcdefgr](?:is|es|)|)\'*\,*", my_duration_str)
+            try:
+                print(note.group())
+                note=note.group()
+            except:
+                print(note)
             #print("option ~~j")
-            is_dotted_str = match.group(2)
-            is_dotted = match.group(2) is not None and "." in is_dotted_str
+            is_dotted_str = match.group(1)
+            is_dotted = match.group(1) is not None and "." in is_dotted_str
             if is_dotted and is_dotted_str != "":
                 duration = float(duration) * 1.5
-            previous_duration= second_duration_str
+            previous_duration= second_duration_str.group(0)
             previous_note= note
         elif othernote != None and ">" in othernote and "<" in othernote:
             print("par ici")
-            my_duration_str = match.group(2)
+            my_duration_str = match.group(1)
             second_duration_str=re.search("\d+", my_duration_str)
             if second_duration_str == None:
                 second_duration_str = previous_duration
+            print(int(previous_duration))
+            try: 
+                print("group:",int(second_duration_str.group()))
+                second_duration_str=second_duration_str.group()
+            except:
+                print(second_duration_str)
             duration = 1 / int(previous_duration)+ 1 / int(second_duration_str)
-            note=re.findall("([abcdefgr](?:is|es|)|)\'*\,*", my_duration_str).join(" ")
+            note=re.search("([abcdefgr](?:is|es|)|)\'*\,*", my_duration_str)
+            if note != None:
+                note=note.group(0)
             #print("option ~~j")
-            is_dotted_str = match.group(2)
-            is_dotted = match.group(2) is not None and "." in is_dotted_str
+            is_dotted_str = match.group(1)
+            is_dotted = match.group(1) is not None and "." in is_dotted_str
             if is_dotted and is_dotted_str != "":
                 duration = float(duration) * 1.5
             previous_duration= second_duration_str
             previous_note= note
             
-        else:
+        elif note != None and rythme != None:
             #print(match.groups())
             #print(othernote)
             if othernote != None and "~" in othernote:
@@ -178,8 +201,46 @@ def parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit):
             if (duration_str == '' or duration_str == None) and previous_duration != '':
                 duration_str = previous_duration
                 #print("option1")
-            is_dotted_str = match.group(2)
-            is_dotted = match.group(2) is not None and "." in is_dotted_str
+            is_dotted_str = match.group(1)
+            is_dotted = match.group(1) is not None and "." in is_dotted_str
+
+
+            # Calcul de la durée en beats
+            if duration_str != '' and duration_str != None:
+                duration = 1.0 / int(duration_str) # noire
+                #print("option2")
+            elif duration_str == '' or duration_str == None:
+                duration = 1.0 / beats_per_measure # noire
+                #print("option3")
+            else:
+                duration = 1.0 / int(duration_str)
+                #print("option4")
+            if is_dotted and is_dotted_str != "":
+                duration = float(duration) * 1.5
+            if note == None or note == '':
+                note=previous_note
+            if duration_str == None or duration_str == '':
+                duration_str=previous_duration
+
+            previous_duration= duration_str
+            previous_note= note
+        else:
+            #print(match.groups())
+            #print(othernote)
+            if othernote != None and "~" in othernote:
+                othernote=""
+                note=previous_note
+            my_duration_str = match.group(1)
+            if my_duration_str != None:
+                duration_str=re.search("\d+", my_duration_str)
+            #print(duration_str)
+            if duration_str != '' and duration_str != None:
+                duration_str=duration_str[0]
+            if (duration_str == '' or duration_str == None) and previous_duration != '':
+                duration_str = previous_duration
+                #print("option1")
+            is_dotted_str = match.group(1)
+            is_dotted = match.group(1) is not None and "." in is_dotted_str
 
 
             # Calcul de la durée en beats
