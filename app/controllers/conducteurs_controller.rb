@@ -3,7 +3,7 @@ class ConducteursController < ApplicationController
 
   # GET /conducteurs or /conducteurs.json
   def index
-    @conducteurs = Conducteur.all.order(:created_at => :desc)
+    @conducteurs = Conducteur.all.order(:created_at => :desc).page params[:page]
   end
 
   # GET /conducteurs/1 or /conducteurs/1.json

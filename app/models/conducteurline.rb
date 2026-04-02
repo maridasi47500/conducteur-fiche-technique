@@ -10,6 +10,8 @@ File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), '
   file.write(uploaded_io.read)
 end
 write_attribute(:videoprojection, uploaded_io.original_filename)
+rescue => e
+write_attribute(:videoprojection, uploaded_io)
 end
 def videoprojection
 read_attribute(:videoprojection)
@@ -20,6 +22,8 @@ File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), '
   file.write(uploaded_io.read)
 end
 write_attribute(:son, uploaded_io.original_filename)
+rescue => e
+write_attribute(:videoprojection, uploaded_io)
 end
 def son
 read_attribute(:son)

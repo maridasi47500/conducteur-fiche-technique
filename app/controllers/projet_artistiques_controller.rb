@@ -3,7 +3,7 @@ class ProjetArtistiquesController < ApplicationController
 
   # GET /projet_artistiques or /projet_artistiques.json
   def index
-    @projet_artistiques = ProjetArtistique.all
+    @projet_artistiques = ProjetArtistique.all.order(:created_at => :desc).page params[:page]
   end
 
   # GET /projet_artistiques/1 or /projet_artistiques/1.json

@@ -2,6 +2,7 @@
   <p>
     <strong>Name event:</strong>
     <%= fiche_technique.name_event %>
+    <%= link_to "voir la fiche technique", fiche_technique %>
   </p>
 
   <p>
@@ -22,6 +23,9 @@
   <p>
     <strong>Notes complementaires:</strong>
     <%= fiche_technique.notes_complementaires %>
+  </p>
+  <p>
+    <%= I18n.l(fiche_technique.created_at, format: :veryshort) %>
   </p>
 
 </div>

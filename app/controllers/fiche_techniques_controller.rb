@@ -3,7 +3,7 @@ class FicheTechniquesController < ApplicationController
 
   # GET /fiche_techniques or /fiche_techniques.json
   def index
-    @fiche_techniques = FicheTechnique.all
+    @fiche_techniques = FicheTechnique.all.order(:created_at => :desc).page params[:page]
   end
 
   # GET /fiche_techniques/1 or /fiche_techniques/1.json
@@ -14,7 +14,7 @@ class FicheTechniquesController < ApplicationController
 
   # GET /fiche_techniques/new
   def new
-    @fiche_technique = FicheTechnique.new
+    @fiche_technique = FicheTechnique.new(date: Date.today)
   end
 
   # GET /fiche_techniques/1/edit

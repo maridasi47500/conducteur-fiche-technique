@@ -10,13 +10,14 @@
     </div>
   <% end %>
 
-<table>
+<table class="grid">
 <%mycounter = 0%>
 <%=form.fields_for :conducteurlines do |f|%>
 <%mycounter += 1%>
-<tr>
+<tr class="item" data-index="<%=mycounter%>">
  <td>
     <%= mycounter %>
+    <%= f.hidden_field :ordre %>
   </td>
  <td>
     <%= f.label :duree, style: "display: block" %>
@@ -35,7 +36,7 @@
 
   <td>
     <%= f.label :son, style: "display: block" %>
-<%if File.exists("./public/uploads/"+f.object.son)%>
+<%if f.object.son.to_s.length > 0 and File.exists?("./public/uploads/"+f.object.son)%>
     <%= f.file_field :son %>
 <%else%>
     <%= f.text_field :son %>
@@ -58,7 +59,7 @@
 
   <td>
     <%= f.label :videoprojection, style: "display: block" %>
-<%if File.exists("./public/uploads/"+f.object.videoprojection)%>
+<%if f.object.videoprojection.to_s.length > 0 and File.exists?("./public/uploads/"+f.object.videoprojection)%>
     <%= f.file_field :videoprojection %>
 <%else%>
     <%= f.text_field :videoprojection %>
@@ -83,3 +84,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+<div id="order"></div>

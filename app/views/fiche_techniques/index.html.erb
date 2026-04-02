@@ -1,14 +1,55 @@
-<p style="color: green"><%= notice %></p>
+<p style="color: green"><%= notice %></td>
 
 <h1>Fiche techniques</h1>
 
-<div id="fiche_techniques">
+<table id="fiche_techniques">
+<tr >
+  <td>
+    <strong>Name event:</strong>
+  </td>
+
+  <td>
+    <strong>Eleve responsable:</strong>
+  </td>
+
+  <td>
+    <strong>Date:</strong>
+  </td>
+
+  <td>
+    <strong>Professeur referent:</strong>
+  </td>
+
+
+</tr>
   <% @fiche_techniques.each do |fiche_technique| %>
-    <%= render fiche_technique %>
-    <p>
-      <%= link_to "Show this fiche technique", fiche_technique %>
-    </p>
+<tr id="<%= dom_id fiche_technique %>">
+  <td>
+    <%= fiche_technique.name_event %>
+  </td>
+
+  <td>
+    <%= fiche_technique.eleve_responsable %>
+  </td>
+
+  <td>
+    <%= l(Date.parse(fiche_technique.date), format: :veryveryshort) %>
+  </td>
+
+  <td>
+    <%= fiche_technique.professeur_referent %>
+  </td>
+  <td>
+    <%= l(fiche_technique.created_at.to_date, format: :veryshort1) %>
+  </td>
+
+
+    <td>
+      <%= link_to "voir cette fiche technique", fiche_technique %>
+    </td>
+</tr>
   <% end %>
-</div>
+</table>
+<%= paginate @fiche_techniques %>
 
 <%= link_to "New fiche technique", new_fiche_technique_path %>

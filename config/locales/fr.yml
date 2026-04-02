@@ -43,6 +43,8 @@ fr:
       default: "%d/%m/%Y"
       long: "%-d %B %Y"
       short: "%-d %b"
+      veryveryshort: "fait le %-d %b %Y"
+      veryshort1: "créé le %-d %b %Y"
     month_names:
     - 
     - janvier

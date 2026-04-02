@@ -44,7 +44,7 @@
   </td>
 
 </tr>
-<%= render @conducteur.conducteurlines %>
+<%= render @conducteur.conducteurlines.order(:ordre) %>
 </table>
 <%= render "conducteurlines/form", conducteurline: @conducteurline %>
 
