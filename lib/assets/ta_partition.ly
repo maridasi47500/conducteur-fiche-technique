@@ -102,6 +102,7 @@ partIV = \relative {
       \override StaffGrouper.staff-staff-spacing.padding = #1
     }
   }
+  \midi { }
 }
 
 
