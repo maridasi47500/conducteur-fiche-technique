@@ -36,8 +36,8 @@
   <td>
     <%= form.label :son, style: "display: block" %>
     <%= form.file_field :son %>
-<button style="display:block;" id='buttonson1' onclick="conducteurline_son.type='text';buttonson2.style.display='block';this.style.display='none';return false;">entrer du texte au lieu de donner une musique/un son à jouer </button>
-<button style="display:none;" id='buttonson2' onclick="conducteurline_son.type='file';buttonson1.style.display='block';this.style.display='none';return false;">donner une musique/un son à jouer au lieu de rentrer un texte</button>
+<a href="" style="display:block;" id='buttonson1' onclick="conducteurline_son.type='text';buttonson2.style.display='block';this.style.display='none';return false;">entrer du texte pour dire ce que tu veux comme musique au lieu de donner une musique/un son à jouer </a>
+<a href="" style="display:none;" id='buttonson2' onclick="conducteurline_son.type='file';buttonson1.style.display='block';this.style.display='none';return false;">donner une musique/un son à jouer au lieu de rentrer un texte pour dire ce que tu veux comme musique</a>
   </td>
   <td>
     <%= form.label :lumieres_ambiante, "lumiere ambiante (noir total, rouge, violet, jaune, mi-scene eclairee couleur, blanc doux, blanc chaud, toutes couleurs, salle rallumée)", style: "display: block" %>
@@ -57,8 +57,8 @@
   <td>
     <%= form.label :videoprojection, style: "display: block" %>
     <%= form.file_field :videoprojection %>
-<button type="button" style="display:block;" id='buttonvideo1' onclick="conducteurline_videoprojection.type='text';buttonvideo2.style.display='block';this.style.display='none';return false;">entrer du texte au lieu de donner une image à regarder pour la videoprojection </button>
-<button type="button" style="display:none;" id='buttonvideo2' onclick="conducteurline_videoprojection.type='file';buttonvideo1.style.display='block';this.style.display='none';return false;">donner une image à voir pour la videoprojection au lieu de rentrer un texte</button>
+<a href="" style="display:block;" id='buttonvideo1' onclick="conducteurline_videoprojection.type='text';buttonvideo2.style.display='block';this.style.display='none';return false;">seulement rentrer du texte pour dire ce que tu veux comme videoprojection au lieu de donner une image à regarder pour la videoprojection </a>
+<a href="" style="display:none;" id='buttonvideo2' onclick="conducteurline_videoprojection.type='file';buttonvideo1.style.display='block';this.style.display='none';return false;">donner une image à voir pour la videoprojection au lieu de seulement rentrer un texte pour dire ce que tu veux comme image</a>
   </td>
 
   <td>

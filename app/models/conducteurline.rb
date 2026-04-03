@@ -3,9 +3,11 @@ belongs_to :conducteur
 def maduree
 x=read_attribute(:duree)
 ("%02d" % x.hour+":"+ "%02d" % x.min)
+rescue
+"00:00"
 end
 def videoprojection=(uploaded_io)
-
+p "hello"
 File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
   file.write(uploaded_io.read)
 end
