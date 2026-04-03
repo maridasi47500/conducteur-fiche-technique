@@ -4,6 +4,16 @@
 
 
 const elGrid = document.querySelector(".grid");
+function submitlines(){
+var elGrid1 = document.querySelectorAll(".grid [data-index]").length;
+    for (var i = 0;i<elGrid1;i++){
+      document.querySelectorAll("[id*=conducteur_conducteurlines_attributes][id*=_ordre")[i].value=i+1;
+    }
+
+return;
+}
+
+
 const elOrder = document.querySelector("#order");
 const order = [...elGrid.children].map(el => el.dataset.index);
 let elDrag;
@@ -17,12 +27,6 @@ const events = {
     if (elDrag === this) return;
     const ia = [...elGrid.children].indexOf(elDrag);
     const ib = [...elGrid.children].indexOf(this);
-    for (var i = 0;i<elGrid.children.length;i++){
-      document.getElementById("conducteur_conducteurlines_attributes_"+String(elGrid.children[i].dataset.index)+"_ordre").value=i+1;
-      #document.findElementById("conducteur_conducteurlines_attributes_"+String(i+1)+"_ordre").value=document.findElementById("conducteur_conducteurlines_attributes_"+String(i+1)+"_ordre").parentElement.dataset.index
-      #.value=document.findElementById("conducteur_conducteurlines_attributes_"+String(i+1)+"_ordre").parentElement.dataset.index
-      #document.findElementById("conducteur_conducteurlines_attributes_"+String(i+1)+"_ordre").value=document.findElementById("conducteur_conducteurlines_attributes_"+String(i+1)+"_ordre").parentElement.dataset.index
-    }   
     elDrag.replaceWith(this.cloneNode(true));
     this.replaceWith(elDrag);
     [order[ia], order[ib]] = [order[ib], order[ia]];
@@ -42,5 +46,9 @@ const events = {
 });
 window.onload=function(){
 showOrder();
+
 }
+
+console.log(elGrid1);
+
 

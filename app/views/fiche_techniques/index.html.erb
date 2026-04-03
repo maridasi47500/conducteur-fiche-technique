@@ -33,7 +33,11 @@
   </td>
 
   <td>
+<%begin%>
     <%= l(Date.parse(fiche_technique.date), format: :veryveryshort) %>
+<%rescue => e%>
+    <%= l(fiche_technique.created_at.to_date, format: :veryshort1) %>
+<%end%>
   </td>
 
   <td>

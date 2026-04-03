@@ -48,3 +48,6 @@ Retrieved 2026-04-02, License - CC BY-SA 4.0
   background-color: #fffac2;
   padding: 0.3rem;
 }
+input[type="time"] {
+	width: 150px;
+}
