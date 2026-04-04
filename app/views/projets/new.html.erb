@@ -1,0 +1,52 @@
+<%= form_with url: projets_path, local: true, multipart: true do |f| %>
+  
+  <div class="section">
+    <h3>1. La Partition</h3>
+    <%= f.label :partition_ly, "Collez votre code LilyPond ici :" %>
+    <%= f.text_area :partition_ly, rows: 10, class: "form-control", placeholder: "\\relative c' { c4 d e f }" %>
+  </div>
+
+  <div class="section">
+    <h3>2. Configuration Artistique</h3>
+    <%= f.label :style, "Style / Époque :" %>
+    <%= f.text_field :style, class: "form-control", placeholder: "Romantique, Minimaliste..." %>
+    
+    <%= f.label :nb_photos, "Nombre d'images max :" %>
+    <%= f.number_field :nb_photos, value: 10, class: "form-control" %>
+  </div>
+
+  <div class="section">
+    <h3>3. Géographie (Choisissez ou écrivez)</h3>
+    <div class="villes-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px;">
+      <% @villes_suggestions.each do |nom, coords| %>
+        <label>
+          <input type="checkbox" class="ville-checkbox" data-coords="<%= coords %>"> <%= nom %>
+        </label>
+      <% end %>
+    </div>
+
+    <%= f.label :coords, "Coordonnées finales (Lat, Lon ; séparées par des points-virgules) :" %>
+    <%= f.text_area :coords, id: "coords_field", class: "form-control", rows: 3 %>
+  </div>
+
+  <%= f.submit "Générer le Projet Artistique", class: "btn btn-primary" %>
+
+<% end %>
+
+<script>
+  // Petit script pour remplir le champ texte quand on coche une ville
+  document.querySelectorAll('.ville-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      const field = document.getElementById('coords_field');
+      let currentCoords = field.value.split(';').map(s => s.trim()).filter(s => s !== "");
+      const newCoord = checkbox.dataset.coords;
+
+      if (checkbox.checked) {
+        if (!currentCoords.includes(newCoord)) currentCoords.push(newCoord);
+      } else {
+        currentCoords = currentCoords.filter(c => c !== newCoord);
+      }
+      field.value = currentCoords.join(' ; ');
+    });
+  });
+</script>

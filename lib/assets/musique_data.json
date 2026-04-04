@@ -1,0 +1,130 @@
+{
+    "nuances": [
+        {
+            "measure": 34,
+            "previous_note": "<e'' b'>",
+            "previous_duration": 2.0,
+            "beat": 1.0,
+            "type": "\\p",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 36,
+            "previous_note": "<b'! a'>",
+            "previous_duration": 2.0,
+            "beat": 1.0,
+            "type": "\\cresc",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 37,
+            "previous_note": "b'",
+            "previous_duration": 3.0,
+            "beat": 1.0,
+            "type": "\\sf",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 37,
+            "previous_note": "b'",
+            "previous_duration": 3.0,
+            "beat": 1.0,
+            "type": "\\>",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 38,
+            "previous_note": "a'",
+            "previous_duration": 1.0,
+            "beat": 0.0,
+            "type": "\\p",
+            "voice": "Voice_2"
+        }
+    ],
+    "alterations": [
+        {
+            "measure": 34,
+            "duration_str": "2",
+            "beat": 1.0,
+            "note": "<e'' b'>",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 34,
+            "duration_str": "4",
+            "beat": 3.0,
+            "note": "<ds'' a'>",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 34,
+            "duration_str": "4",
+            "beat": 4.0,
+            "note": "<cs'' gs'>",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 35,
+            "duration_str": "2",
+            "beat": 1.0,
+            "note": "<bs' fs'>",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 35,
+            "duration_str": "2",
+            "beat": 3.0,
+            "note": "e'",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 36,
+            "duration_str": "2",
+            "beat": 1.0,
+            "note": "<b'! a'>",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 36,
+            "duration_str": "4",
+            "beat": 3.0,
+            "note": "b'",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 36,
+            "duration_str": "4",
+            "beat": 4.0,
+            "note": "<e'' cs''>",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 37,
+            "duration_str": "2.",
+            "beat": 1.0,
+            "note": "b'",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 37,
+            "duration_str": "4",
+            "beat": 4.0,
+            "note": "a'",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 38,
+            "duration_str": "4",
+            "beat": 1.0,
+            "note": "<gs e>",
+            "voice": "Voice_2"
+        },
+        {
+            "measure": 38,
+            "duration_str": "2.",
+            "beat": 2.0,
+            "note": "<a fs>",
+            "voice": "Voice_2"
+        }
+    ]
+}

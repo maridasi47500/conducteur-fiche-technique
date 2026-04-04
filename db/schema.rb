@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_02_030018) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_04_033938) do
   create_table "conducteurlines", force: :cascade do |t|
     t.string "conducteur_id"
     t.time "duree"
@@ -77,6 +77,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_02_030018) do
     t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status"
+    t.string "style"
   end
 
 end

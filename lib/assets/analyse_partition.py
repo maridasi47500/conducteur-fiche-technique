@@ -1,4 +1,5 @@
 import re
+import sys
 import json
 from collections import defaultdict
 
@@ -188,7 +189,11 @@ def enharmonic(note):
 # ... (votre code précédent)
 
 if __name__ == "__main__":
-    fichier = "waldstein.ly"
+    if len(sys.argv) > 1:
+        fichier = sys.argv[1]
+    else:
+        # Fallback pour le développement local
+        fichier = "waldstein.ly"
     
     try:
         # Extraction des données
@@ -217,7 +222,7 @@ if __name__ == "__main__":
             "nuances": all_dynamics,
             "alterations": [n for n in notes_extraites if n['note'].lower() not in notes_in_scale and n['note'] not in ["r", "s", "R"]]
         }
-        with open('musique_data.json', 'w', encoding='utf-8') as f:
+        with open('tmp/musique_data.json', 'w', encoding='utf-8') as f:
             json.dump(data_export, f, indent=4)
 
 

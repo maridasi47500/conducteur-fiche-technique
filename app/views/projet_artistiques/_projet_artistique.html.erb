@@ -1,12 +1,16 @@
 <div id="<%= dom_id projet_artistique %>">
   <p>
+    <strong>Projet artistique n°</strong>
+    <%= projet_artistique.id %>
+  </p>
+  <p>
     <strong>Fiche technique:</strong>
-    <%= projet_artistique.fiche_technique_id %>
+    <%= link_to "Voir ma fiche technique", projet_artistique.fiche_technique %>
   </p>
 
   <p>
     <strong>Conducteur:</strong>
-    <%= projet_artistique.conducteur_id %>
+    <%= link_to "voir mon conducteur", projet_artistique.conducteur %>
   </p>
 
   <p>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :projet_artistiques
   resources :materiel_necessaires
   resources :plan_de_scene_dessins
+  resources :projets
   resources :fiche_techniques do
    member do
    get "editplandescene"

@@ -6,3 +6,4 @@
 - cree des conducteur au hasard : rails db:seed
 # conducteur-fiche-technique
 - python3 improvedscript
+* python3 improvednuancenote.py
