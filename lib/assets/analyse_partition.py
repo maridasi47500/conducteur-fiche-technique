@@ -34,9 +34,10 @@ def parse_lilypond(file_path):
     # 4. Extraction des voix (Pattern Triple)
     voice_blocks = []
     voice_pattern_std = r'(part(?:I|II|III|IV))(?!(?:relative))(?:[(?!(?:\\))=a-z.\{\}^:\s]*)\\(voice(?:One|Two|Three|Four))\s*([^}]*)\}'
-    matches_std = re.findall(voice_pattern_std, content, re.DOTALL)
-    if matches_std:
-        voice_blocks = [(f"{m[0]} {m[1]}", m[2]) for m in matches_std]
+    #matches_std = re.findall(voice_pattern_std, content, re.DOTALL)
+    #if matches_std:
+    #    voice_blocks = [(f"{m[0]} {m[1]}", m[2]) for m in matches_std]
+    voice_blocks=[["voice 1",content]]
     
     if not voice_blocks:
         matches_rel = re.findall(r'(\w+)\s*=\s*\\relative\s*[a-g\']*[\s]*\{([^}]*)\}', content, re.DOTALL)

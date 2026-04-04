@@ -81,14 +81,14 @@ def verifier_et_generer_donnees_python(fichier_ly)
   end
 end
 
-def generer_projet_artistique(partition = "./lib/assets/waldstein.ly", style = "romantique", input_coords = "48.8,2.3 ; 45.7,4.8", nb_photos_demande = 10)
+def generer_projet_artistique(partition = "./lib/assets/waldstein.ly", style = "romantique", input_coords = "48.8,2.3 ; 45.7,4.8", nb_photos_demande = 10, projet_id = 1)
   fichier_source =partition
   
   # On automatise l'appel Python avant de continuer
   #verifier_et_generer_donnees_python(fichier_source)
 
   # Chargement du JSON fraîchement copié
-  music_data = JSON.parse(File.read('musique_data.json'))
+  music_data = JSON.parse(File.read('tmp/musique_data.json'))
   
   # --- STATISTIQUES ---
   nb_nuances = music_data['nuances'].length
@@ -105,12 +105,6 @@ def generer_projet_artistique(partition = "./lib/assets/waldstein.ly", style = "
     return
   end
   
-  file_content = File.read('musique_data.json')
-  music_data = JSON.parse(file_content)
-
-  # --- ANALYSE DES DONNÉES ---
-  nb_nuances = music_data['nuances'].length
-  nb_alterations = music_data['alterations'].length
   total_evenements = nb_nuances + nb_alterations
 
   puts "==============================================="
@@ -134,10 +128,14 @@ def generer_projet_artistique(partition = "./lib/assets/waldstein.ly", style = "
   #nb_photos_demande = gets.chomp.to_i
 
   # Sécurité : on ne peut pas demander plus de photos qu'il n'y a d'événements
-  nb_photos = [nb_photos_demande, total_evenements].min
-  puts "Info : Le projet sera généré avec #{nb_photos} images." if nb_photos < nb_photos_demande
+  p [nb_photos_demande, total_evenements]
+  nb_photos = [nb_photos_demande.to_i, total_evenements.to_i].min.to_i
+  puts "Info : Le projet sera généré avec #{nb_photos} images."
+  puts "Info : Le projet sera généré avec #{nb_photos} images." if nb_photos < nb_photos_demande.to_i
 
   # 3. Préparation et Tri
+  p "==NUANCE et ALTERATIONS=="
+  p (music_data['nuances'] + music_data['alterations'])
   evenements = (music_data['nuances'] + music_data['alterations']).sort_by do |e| 
     [e['measure'], e['beat']] 
   end.first(nb_photos)
@@ -145,7 +143,9 @@ def generer_projet_artistique(partition = "./lib/assets/waldstein.ly", style = "
   # ... (La suite du code de création Rails reste la même)
   
   # 4. Création du Conducteur
+  projet=ProjetArtistique.find(projet_id)
   conducteur = Conducteur.create!(title: "Projet #{style}", username: "Admin")
+  projet.update(conducteur_id: conducteur.id)
 
   # ... (Chargement JSON et Questions précédentes) ...
 
@@ -194,7 +194,7 @@ def generer_projet_artistique(partition = "./lib/assets/waldstein.ly", style = "
       lumieres_effet: evt.key?('type') ? "Effet Dynamique" : "Teinte Harmonique",
       duree: "Mes. #{evt['measure']} Temps #{evt['beat']}"
     )
-    return conducteur
+    #return conducteur
     #conducteur.conducteurlines.create!(
     #  notes_technicien: "#{label} - GPS: #{current_gps}",
     #  videoprojection: "Image #{i+1} - Localisation #{current_gps}",
@@ -204,5 +204,7 @@ def generer_projet_artistique(partition = "./lib/assets/waldstein.ly", style = "
     #)
   end
 
+
   puts "\n✅ Terminé ! #{nb_photos} lignes créées dans le conducteur."
+  return conducteur
 end
