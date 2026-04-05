@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @metier_dependency %>
+
+<div>
+  <%= link_to "Edit this metier dependency", edit_metier_dependency_path(@metier_dependency) %> |
+  <%= link_to "Back to metier dependencies", metier_dependencies_path %>
+
+  <%= button_to "Destroy this metier dependency", @metier_dependency, method: :delete %>
+</div>

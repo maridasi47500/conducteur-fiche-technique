@@ -1,0 +1,2 @@
+module AmbianceOptionsHelper
+end

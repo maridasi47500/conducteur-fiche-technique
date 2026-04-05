@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Ambiance options</h1>
+
+<div id="ambiance_options">
+  <% @ambiance_options.each do |ambiance_option| %>
+    <%= render ambiance_option %>
+    <p>
+      <%= link_to "Show this ambiance option", ambiance_option %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New ambiance option", new_ambiance_option_path %>

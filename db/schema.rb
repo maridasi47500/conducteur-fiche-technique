@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_05_034603) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_05_194246) do
+  create_table "ambiance_options", force: :cascade do |t|
+    t.integer "style_id", null: false
+    t.string "category"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["style_id"], name: "index_ambiance_options_on_style_id"
+  end
+
   create_table "conducteurlines", force: :cascade do |t|
     t.string "conducteur_id"
     t.time "duree"
@@ -66,6 +75,19 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_05_034603) do
     t.string "default_layer"
     t.boolean "requires_power", default: false
     t.boolean "is_bundle", default: false
+    t.string "spread"
+    t.string "x_pref"
+    t.integer "zone_id"
+    t.index ["zone_id"], name: "index_materiels_on_zone_id"
+  end
+
+  create_table "metier_dependencies", force: :cascade do |t|
+    t.integer "materiel_id"
+    t.integer "required_item_id"
+    t.integer "qty_multiplier"
+    t.string "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "plan_de_scene_dessins", force: :cascade do |t|
@@ -99,6 +121,25 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_05_034603) do
     t.string "intensity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "style_id", null: false
+    t.index ["style_id"], name: "index_sequence_templates_on_style_id"
   end
 
+  create_table "styles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "zones", force: :cascade do |t|
+    t.string "name"
+    t.integer "y_min"
+    t.integer "y_max"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "ambiance_options", "styles"
+  add_foreign_key "materiels", "zones"
+  add_foreign_key "sequence_templates", "styles"
 end

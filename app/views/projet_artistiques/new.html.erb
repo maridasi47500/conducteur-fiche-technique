@@ -7,3 +7,67 @@
 <div>
   <%= link_to "Back to projet artistiques", projet_artistiques_path %>
 </div>
+<p>
+Pour que ton système fonctionne, tu dois rentrer "Concert de Rock" dans le formulaire de création d'un Projet Artistique.
+
+C’est le point de départ qui sert de "clé" à l'IA pour aller piocher dans toutes les autres tables. Voici le cheminement exact :
+1. Le Formulaire "Projet Artistique"
+
+C'est ici que l'utilisateur exprime son intention.
+
+    Champ Title : "Concert de Rock" (ou le nom du groupe).
+
+    Champ Style : Tu dois choisir "Rock" (ce mot doit correspondre exactement au name dans ta table Styles).
+
+    Champ Username : Le nom de l'élève ou du responsable.
+
+2. Comment l'IA fait le lien (Le "Behind the scenes")
+
+Dès que tu valides ce formulaire, ton script (souvent placé dans le controller ProjetsArtistiquesController ou un Service) s'exécute et fait les recherches suivantes :
+A. Adaptation au Style (Table Styles)
+
+L'IA cherche : Style.find_by(name: "Rock").
+
+    Elle trouve l'ID du style Rock.
+
+    Elle regarde la table AmbianceOptions liée à cet ID pour savoir que pour ce projet, elle devra utiliser du "Rouge" et du "Brouillard continu".
+
+B. Adaptation aux Séquences (Table SequenceTemplates)
+
+L'IA cherche : SequenceTemplates.where(style_id: rock_id).
+
+    Elle récupère les étapes : "Intro sombre", "Solo Guitare", "Final Explosif".
+
+    Elle crée les ConducteurLines en mélangeant ces étapes avec les options de lumières trouvées juste avant.
+
+C. Adaptation au Matériel (Tables Materiels & Zones)
+
+Si l'utilisateur ajoute une "Batterie" à ce projet :
+
+    L'IA regarde la table Materiels : elle voit que la batterie est liée à la Zone "Back".
+
+    Elle consulte MetierDependencies : elle voit qu'un projet "Rock" avec une batterie nécessite automatiquement 4 micros supplémentaires.
+
+3. Où trouver ces formulaires ?
+
+Si tu as suivi la logique des Scaffolds, voici tes URLs :
+
+    Pour créer le projet : /projet_artistiques/new
+
+        C'est ici que tu tapes "Concert de Rock".
+
+    Pour configurer le "Cerveau" (Admin) :
+
+        /styles : Créer le style "Rock".
+
+        /ambiance_options : Dire que "Rock" = "Lumière Rouge".
+
+        /sequence_templates : Dire que "Rock" contient une séquence "Solo".
+
+En résumé
+
+Tu entres le titre dans ProjetArtistique, et le script utilise le champ style de ce formulaire comme un filtre pour aspirer les bonnes données dans toutes tes tables de configuration.
+
+Conseil : Dans ton formulaire new_projet_artistique, utilise un f.select :style (une liste déroulante) basé sur Style.all.pluck(:name) pour être sûr que l'utilisateur ne fasse pas de faute de frappe !
+
+</p>

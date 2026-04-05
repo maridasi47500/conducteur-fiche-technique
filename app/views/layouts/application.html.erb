@@ -15,7 +15,14 @@
 <%=link_to "projets artistiques", projet_artistiques_path%>
 <%=link_to "fiche techniques", fiche_techniques_path%>
 <%=link_to "conducteurs", conducteurs_path%>
-<%=link_to "nouveau projet avec IA", new_projet_path%>
+<%=link_to "photos pour videoprojecteur et captations radio avec IA", new_projet_path%>
+<hr>
+<h3>Configuration de l'IA & Scène</h3>
+<%= link_to "Catalogue Matériel", materiels_path %>
+<%= link_to "Zones de Scène", zones_path %>
+<%= link_to "Styles & Ambiances", styles_path %>
+<%= link_to "Dépendances Techniques", metier_dependencies_path %>
+<%= link_to "Templates de Séquences", sequence_templates_path %>
     <%= yield %>
 <script src="/submitlines.js" type="text/javascript"></script>
   </body>

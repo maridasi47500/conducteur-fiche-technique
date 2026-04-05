@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Metier dependencies</h1>
+
+<div id="metier_dependencies">
+  <% @metier_dependencies.each do |metier_dependency| %>
+    <%= render metier_dependency %>
+    <p>
+      <%= link_to "Show this metier dependency", metier_dependency %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New metier dependency", new_metier_dependency_path %>

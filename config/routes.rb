@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :zones
+  resources :ambiance_options
+  resources :styles
+  resources :metier_dependencies
   resources :sequence_templates
   resources :projet_artistiques
   resources :materiel_necessaires

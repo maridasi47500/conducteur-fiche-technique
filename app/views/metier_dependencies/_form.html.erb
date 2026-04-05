@@ -1,0 +1,37 @@
+<%= form_with(model: metier_dependency) do |form| %>
+  <% if metier_dependency.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(metier_dependency.errors.count, "error") %> prohibited this metier_dependency from being saved:</h2>
+
+      <ul>
+        <% metier_dependency.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :materiel_id, style: "display: block" %>
+    <%= form.number_field :materiel_id %>
+  </div>
+
+  <div>
+    <%= form.label :required_item_id, style: "display: block" %>
+    <%= form.number_field :required_item_id %>
+  </div>
+
+  <div>
+    <%= form.label :qty_multiplier, style: "display: block" %>
+    <%= form.number_field :qty_multiplier %>
+  </div>
+
+  <div>
+    <%= form.label :note, style: "display: block" %>
+    <%= form.text_field :note %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

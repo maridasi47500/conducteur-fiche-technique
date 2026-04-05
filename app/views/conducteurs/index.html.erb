@@ -21,3 +21,24 @@
 <%= paginate @conducteurs %>
 
 <%= link_to "New conducteur", new_conducteur_path %>
+<p>
+3. Résumé visuel de la chaîne de production
+
+    Entrée : Tu tapes "Concert de Rock" dans ton formulaire.
+
+    Traitement :
+
+        Le script va voir dans Styles pour savoir que Rock = Rouge + Brouillard.
+
+        Il va voir dans MetierDependencies pour savoir que Rock = Gros volume de micros.
+
+        Il va voir dans Zones pour savoir que la batterie Rock doit être au fond (Back).
+
+        Il va voir dans SequenceTemplates pour savoir qu'un show Rock commence par une intro sombre.
+
+    Sortie : Une fiche technique complète, un plan de scène dessiné et un conducteur de 5 à 10 lignes prêt à imprimer.
+
+Ce qu'il te reste à faire :
+
+Utilise tes Scaffolds pour remplir tes tables "Cerveaux". Plus tu mettras de lignes dans SequenceTemplates et AmbianceOptions, plus tes spectacles générés seront variés et réalistes
+</p>

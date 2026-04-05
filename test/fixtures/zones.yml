@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  y_min: 1
+  y_max: 1
+
+two:
+  name: MyString
+  y_min: 1
+  y_max: 1

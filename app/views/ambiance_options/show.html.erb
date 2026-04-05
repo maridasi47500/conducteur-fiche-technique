@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @ambiance_option %>
+
+<div>
+  <%= link_to "Edit this ambiance option", edit_ambiance_option_path(@ambiance_option) %> |
+  <%= link_to "Back to ambiance options", ambiance_options_path %>
+
+  <%= button_to "Destroy this ambiance option", @ambiance_option, method: :delete %>
+</div>
