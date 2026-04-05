@@ -1,0 +1,2 @@
+class SequenceTemplate < ApplicationRecord
+end

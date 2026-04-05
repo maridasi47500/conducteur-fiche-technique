@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_04_033938) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_05_034603) do
   create_table "conducteurlines", force: :cascade do |t|
     t.string "conducteur_id"
     t.time "duree"
@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_04_033938) do
     t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "fiche_technique_id"
   end
 
   create_table "fiche_techniques", force: :cascade do |t|
@@ -59,6 +60,12 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_04_033938) do
     t.datetime "updated_at", null: false
     t.boolean "on_stage"
     t.integer "maximum"
+    t.string "zone_y"
+    t.boolean "power_needed"
+    t.string "category"
+    t.string "default_layer"
+    t.boolean "requires_power", default: false
+    t.boolean "is_bundle", default: false
   end
 
   create_table "plan_de_scene_dessins", force: :cascade do |t|
@@ -68,6 +75,9 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_04_033938) do
     t.string "ordre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "coord_x"
+    t.integer "coord_y"
+    t.string "layer"
   end
 
   create_table "projet_artistiques", force: :cascade do |t|
@@ -79,6 +89,16 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_04_033938) do
     t.datetime "updated_at", null: false
     t.string "status"
     t.string "style"
+  end
+
+  create_table "sequence_templates", force: :cascade do |t|
+    t.string "label"
+    t.string "phase"
+    t.string "target_talent"
+    t.string "suggested_light"
+    t.string "intensity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

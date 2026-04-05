@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @sequence_template %>
+
+<div>
+  <%= link_to "Edit this sequence template", edit_sequence_template_path(@sequence_template) %> |
+  <%= link_to "Back to sequence templates", sequence_templates_path %>
+
+  <%= button_to "Destroy this sequence template", @sequence_template, method: :delete %>
+</div>

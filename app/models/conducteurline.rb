@@ -25,7 +25,7 @@ File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), '
 end
 write_attribute(:son, uploaded_io.original_filename)
 rescue => e
-write_attribute(:videoprojection, uploaded_io)
+write_attribute(:son, uploaded_io)
 end
 def son
 read_attribute(:son)

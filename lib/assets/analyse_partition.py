@@ -74,7 +74,7 @@ def parse_notes_in_voice(notes_str, voice_name, beats_per_measure, beat_unit, st
         r'(<[^>]+>)([\d\.]*)',                                 # 2. Accords
         r'\b([a-g](?:is|es)?[\',]*)([\d\.]*)\s*~\s*([\d\.]*)', # 3. Tied notes
         # 4. Simple notes/rests (Modifié pour exclure s1, S1, bass, fermata, bar)
-        #r'\b(?![sS]\d|dolce.e.molto.legato|markup|italic|bass|\bass|fermata|bar|oneVoice|voiceOne|clef|tweak|style|none|cresc|sf\b)([a-grR](?:is|es)?[\',]*)([\d\.]*)',
+        #r'\b(?![sS]\d|dolce.e.molto.legato|markup|italic|relative|major|minor|key|bass|\bass|fermata|bar|oneVoice|voiceOne|clef|tweak|style|none|cresc|sf\b)([a-grR](?:is|es)?[\',]*)([\d\.]*)',
 # 4. Simple notes/rests (Sécurisé)
         #r'\b(?![sS]\d|dolce|markup|italic|bass|fermata|bar|oneVoice|voiceOne|clef|tweak|style|none|cresc|sf\b)([a-grRsS](?:is|es)?[\',]*)([\d\.]*)\b',
         #r'\b(?!dolce|markup|italic|bass|fermata|bar|oneVoice|voiceOne|clef|tweak|style|none|cresc|sf\b)([a-grRsS](?:is|es)?[\',]*)([\d\.]*)',

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sequence_templates
   resources :projet_artistiques
   resources :materiel_necessaires
   resources :plan_de_scene_dessins

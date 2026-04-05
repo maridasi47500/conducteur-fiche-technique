@@ -1,0 +1,2 @@
+module SequenceTemplatesHelper
+end

@@ -22,7 +22,8 @@ class ProjetsController < ApplicationController
       params[:coords], 
 
       params[:style],
-      params[:nb_photos]
+      params[:nb_photos],
+      params[:radio_urls]
     )
   
     redirect_to projet_artistique_path(@projet), notice: "Analyse en cours... cette page s'actualisera automatiquement."

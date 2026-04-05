@@ -4,7 +4,7 @@ require "./lib/assets/projet_artistique"
 class GenerateArtProjectJob < ApplicationJob
   queue_as :default
 
-  def perform(project_id, partition_content, coords_string, style,nbphotos)
+  def perform(project_id, partition_content, coords_string, style,nbphotos, radio_string)
     project = ProjetArtistique.find(project_id)
     
     # 1. Créer le fichier .ly temporaire
@@ -28,7 +28,7 @@ class GenerateArtProjectJob < ApplicationJob
     # Appel de votre logique de téléchargement d'images et création de conducteur...
     # (On réutilise ici les méthodes obtenir_nom_lieu_en et download_art_image)
     p temp_ly.to_s, temp_ly, style, coords_string, nbphotos
-    generer_projet_artistique(partition = temp_ly, style = style, input_coords = coords_string,nb_photos_demande = nbphotos, projet_id = project_id)
+    generer_projet_artistique(partition = temp_ly, style = style, input_coords = coords_string,nb_photos_demande = nbphotos, projet_id = project_id, radio_string = radio_string)
     
     # 4. Marquer le projet comme terminé
     project.update(status: 'completed')

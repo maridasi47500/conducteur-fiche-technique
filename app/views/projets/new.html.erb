@@ -28,6 +28,60 @@
     <%= f.label :coords, "Coordonnées finales (Lat, Lon ; séparées par des points-virgules) :" %>
     <%= f.text_area :coords, id: "coords_field", class: "form-control", rows: 3 %>
   </div>
+<div class="section">
+  <h3>4. Ambiance Sonore (Hit Music)</h3>
+  
+
+  <div class="radios-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px;overflow-y:auto;">
+    <% # On définit une liste en dur ou via une variable d'instance @radios_suggestions %>
+        <%
+      radios = {
+        "Ado FM" => "http://broadcast.infomaniak.net/adofm-high.mp3",
+        "Africa Radio" => "http://stats001.pro-fhi.net:8000/1",
+        "Beur FM" => "http://beurfm.ice.infomaniak.ch/beurfm-high.mp3",
+        "BFM Business" => "http://audio.bfm-business.v3.ne1612.com/index.html",
+        "Chérie FM" => "https://scdn.nrjaudio.fr/adwapi/php/wm/get.php?id=4",
+        "Europe 1" => "http://ais-live.double-metaphone.com/europe1.mp3",
+        "Europe 2" => "http://ais-live.double-metaphone.com/europe2.mp3",
+        "FIP" => "https://stream.radiofrance.fr/fip/fip.m3u8?id=radiofrance",
+        "France Culture" => "https://stream.radiofrance.fr/franceculture/franceculture.m3u8?id=radiofrance",
+        "France Info" => "https://stream.radiofrance.fr/franceinfo/franceinfo.m3u8?id=radiofrance",
+        "France Inter" => "https://stream.radiofrance.fr/franceinter/franceinter.m3u8?id=radiofrance",
+        "France Musique" => "https://stream.radiofrance.fr/francemusique/francemusique.m3u8?id=radiofrance",
+        "Fun Radio" => "http://streaming.radio.funradio.fr/fun-1-44-128",
+        "Jazz Radio" => "http://jazzradio.ice.infomaniak.ch/jazzradio-high.mp3",
+        "Latina" => "http://broadcast.infomaniak.net/radiolatina-high.mp3",
+        "Mouv'" => "https://stream.radiofrance.fr/mouv/mouv.m3u8?id=radiofrance",
+        "Nostalgie" => "https://scdn.nrjaudio.fr/adwapi/php/wm/get.php?id=2",
+        "NRJ" => "https://scdn.nrjaudio.fr/adwapi/php/wm/get.php?id=1",
+        "Oüi FM" => "http://broadcast.infomaniak.net/ouifm-high.mp3",
+        "Radio Classique" => "http://radioclassique.ice.infomaniak.ch/radioclassique-high.mp3",
+        "Radio Nova" => "http://novazz.ice.infomaniak.ch/novazz-128.mp3",
+        "RFM" => "http://ais-live.double-metaphone.com/rfm.mp3",
+        "Rire & Chansons" => "https://scdn.nrjaudio.fr/adwapi/php/wm/get.php?id=3",
+        "RMC" => "http://audio.rmc.v3.ne1612.com/index.html",
+        "RTL" => "http://streaming.radio.rtl.fr/rtl-1-44-128",
+        "RTL 2" => "http://streaming.radio.rtl2.fr/rtl2-1-44-128",
+        "Skyrock" => "http://www.skyrock.fm/stream.php",
+        "TSF Jazz" => "http://tsfjazz.ice.infomaniak.ch/tsfjazz-high.mp3"
+      }
+    %>
+<h2>essayer une radio</h2>
+  <div class="radios-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 15px;overflow-y:auto;">
+    <% radios.each do |nom, url| %>
+<%=link_to nom, url, target: "_blank"%>
+<%end%>
+</div>
+    <% radios.each do |nom, url| %>
+      <label class="radio-card">
+        <input type="checkbox" class="radio-checkbox" data-url="<%= url %>"> <%= nom %>
+      </label>
+    <% end %>
+  </div>
+
+  <%= f.label :radio_urls, "Flux radio sélectionnés (URLs) :" %>
+  <%= f.text_area :radio_urls, id: "radio_field", class: "form-control", rows: 2, placeholder: "Les URLs s'afficheront ici..." %>
+</div>
 
   <%= f.submit "Générer le Projet Artistique", class: "btn btn-primary" %>
 
@@ -49,4 +103,131 @@
       field.value = currentCoords.join(' ; ');
     });
   });
+  document.querySelectorAll('.radio-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      const field = document.getElementById('radio_field');
+      let currentCoords = field.value.split(';').map(s => s.trim()).filter(s => s !== "");
+      const newCoord = checkbox.dataset.url;
+
+      if (checkbox.checked) {
+        if (!currentCoords.includes(newCoord)) currentCoords.push(newCoord);
+      } else {
+        currentCoords = currentCoords.filter(c => c !== newCoord);
+      }
+      field.value = currentCoords.join(' ; ');
+    });
+  });
 </script>
+<p>commentaires par rapport à l'ia : Alors que votre script choisit des éléments de manière isolée, une IA (via une API comme celle de Gemini ou GPT) peut générer du contenu structuré par un scénario.
+Ce que l'IA apporte au Plan de Scène :
+
+    Logique spatiale : Au lieu de ["left", "center", "right"].sample, l'IA comprend que la batterie doit être au "center-back" (fond centre) et les voix au "front" (devant).
+
+    Regroupement : Elle placera l'ampli guitare à côté du guitariste, et non à l'opposé de la scène par pur hasard.
+
+Ce que l'IA apporte au Conducteur :
+
+    Narration : Au lieu de lignes aléatoires, l'IA crée une progression.
+
+        Ligne 1 : Noir total, intro piano (ambiance intime).
+
+        Ligne 2 : Montée progressive des lumières rouges, entrée de la batterie (montée en puissance).
+
+    Adaptation au titre : Si l'événement s'appelle "Concert de Jazz", l'IA ne proposera pas "machine à brouillard maximum + stroboscope" comme le ferait un sample.</p>
+<p>
+Ce que l'IA apporte au Conducteur :
+
+    Narration : Au lieu de lignes aléatoires, l'IA crée une progression.
+
+        Ligne 1 : Noir total, intro piano (ambiance intime).
+
+        Ligne 2 : Montée progressive des lumières rouges, entrée de la batterie (montée en puissance).
+
+    Adaptation au titre : Si l'événement s'appelle "Concert de Jazz", l'IA ne proposera pas "machine à brouillard maximum + stroboscope" comme le ferait un sample.
+</p>
+<p>
+
+Si vous ne voulez pas utiliser une IA externe, vous pouvez améliorer votre script avec un peu de logique géométrique :
+
+    Grille de coordonnées : Au lieu de "gauche/droite", utilisez des coordonnées X et Y (de 0 à 100).
+
+    Zones réservées : Définissez que les "amplis" doivent avoir un Y élevé (fond de scène) et les "micros" un Y bas (bord de scène).
+
+Cela donnerait un résultat beaucoup plus professionnel pour vos PlanDeSceneDessin qu'un simple placement latéral aléatoire.
+</p>
+<p>
+Pour transformer un script de "hasard pur" en un outil capable de générer une scène artistique cohérente, vous devez passer d'une liste plate à une structure de données hiérarchique.
+
+Voici les logiques dont vous avez besoin, classées par l'aide que l'IA (interne ou externe) peut vous apporter.
+1. Logique Spatiale (La "Grille" de Scène)
+
+Actuellement, votre script utilise ["left", "center", "right"]. C'est trop limité pour un dessin.
+
+    Le concept : Diviser la scène en une grille (ex: 10x10). Les instruments ne sont pas juste à gauche, ils sont au "Fond-Gauche" ou "Devant-Centre".
+
+    Sans IA externe : Vous devez créer un dictionnaire de zones.
+
+        Batterie/Piano : Priorité Zone "Back" (Fond).
+
+        Chanteur/Micros : Priorité Zone "Front" (Devant).
+
+    Avec IA : Elle peut calculer des coordonnées (x,y) précises pour éviter que deux objets ne se chevauchent (collision).
+
+2. Logique de "Groupement" (Clusters)
+
+Dans une vraie scène, les objets ne sont pas isolés.
+
+    Le concept : Si vous avez une "Guitare", l' "Ampli" et le "Retour" doivent avoir des coordonnées proches.
+
+    Sans IA externe : Vous créez des "familles" dans votre code. Si l'objet A est placé en (5,2), l'objet B (son extension) est placé en (5+1,2).
+
+    Avec IA : L'IA peut générer des "îlots" de musiciens de manière organique, en regroupant par exemple toute la section cuivre ensemble.
+
+3. Logique de Dépendance Technique
+
+C'est ce que nous avons vu précédemment (1 ampli pour 1 basse).
+
+    Le concept : Un instrument a besoin d'énergie (prise) et de son (micro/jack).
+
+    Sans IA externe : Des règles if/else ou un dictionnaire de dépendances.
+
+    Avec IA : Elle peut inventer des besoins complexes (ex: "Il faut un pied de micro perche pour le piano car le musicien chante aussi").
+
+4. Logique de Progression (Conducteur)
+
+C'est ici que l'IA externe est la plus puissante.
+
+    Le concept : Une ligne de conducteur doit être la suite logique de la précédente.
+
+    Le problème du hasard : Votre script peut dire "Noir total" à la ligne 1 et "Baisser la lumière" à la ligne 2 (ce qui est impossible s'il fait déjà noir).
+
+    Logique nécessaire : La Gestion d'État. Chaque ligne doit connaître l'état de la ligne précédente (Lumière : ON ou OFF ?).
+
+Tableau récapitulatif : IA vs Code Manuel
+Logique	Approche "Code Manuel" (Algorithmique)	Approche "IA Externe" (Générative)
+Placement	Géométrique : Utilise des zones fixes (X, Y).	Artistique : Place les objets selon l'esthétique d'un genre (ex: Jazz).
+Quantités	Stricte : Applique des ratios (1 micro par chanteur).	Contextuelle : Décide qu'un grand concert a besoin de plus de retours.
+Conducteur	Aléatoire : Pioche dans une liste sans lien.	Narrative : Écrit une histoire (Intro -> Couplet -> Final).
+Erreurs	Prévisible : Le code fait exactement ce qu'on dit.	Créative : Peut proposer des idées auxquelles on n'a pas pensé.
+</p>
+<p>
+Pour le Conducteur (la timeline technique du spectacle), le défi est différent de la géométrie du plan de scène. Ici, on ne gère pas de l'espace, mais du temps et de la narration.
+
+Sans IA externe, vous pouvez tout à fait simuler une "intelligence narrative" en utilisant une Machine à États (State Machine) et des Templates de Scénarios.
+1. La Structure de Données : Le "Répertoire de Scénarios"
+
+Plutôt que de piocher des lignes au hasard, vous créez une table ScenarioTemplates qui regroupe des séquences logiques par style de musique.
+
+Base de données (Conceptuelle) :
+
+    Scenario : name: "Jazz Intime", intensity: 2
+
+    ScenarioLine : order: 1, action: "Intro Solo", light_state: "soft_warm", smoke: "none"
+
+    ScenarioLine : order: 2, action: "Arrivée Trio", light_state: "full_warm", smoke: "light"
+
+2. Le Trick : La Machine à États (State Machine)
+
+Le secret pour qu'une ligne 2 soit cohérente avec une ligne 1 sans IA, c'est que le script doit "se souvenir" de ce qu'il a fait juste avant.
+
+Le script de génération "narrative" :</p>

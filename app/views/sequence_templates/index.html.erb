@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Sequence templates</h1>
+
+<div id="sequence_templates">
+  <% @sequence_templates.each do |sequence_template| %>
+    <%= render sequence_template %>
+    <p>
+      <%= link_to "Show this sequence template", sequence_template %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New sequence template", new_sequence_template_path %>

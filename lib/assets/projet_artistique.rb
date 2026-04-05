@@ -81,7 +81,7 @@ def verifier_et_generer_donnees_python(fichier_ly)
   end
 end
 
-def generer_projet_artistique(partition = "./lib/assets/waldstein.ly", style = "romantique", input_coords = "48.8,2.3 ; 45.7,4.8", nb_photos_demande = 10, projet_id = 1)
+def generer_projet_artistique(partition = "./lib/assets/waldstein.ly", style = "romantique", input_coords = "48.8,2.3 ; 45.7,4.8", nb_photos_demande = 10, projet_id = 1, radio_string = "")
   fichier_source =partition
   
   # On automatise l'appel Python avant de continuer
@@ -123,6 +123,7 @@ def generer_projet_artistique(partition = "./lib/assets/waldstein.ly", style = "
 
   puts "Entrez vos coordonnées GPS (ex: 48.8,2.3 ; 45.7,4.8) :"
   input_coords = input_coords.split(';').map(&:strip)
+  my_radio_string = radio_string.split(';').map(&:strip)
 
   print "Combien de photos voulez-vous placer ? (Max conseillé: #{total_evenements}) : "
   #nb_photos_demande = gets.chomp.to_i
@@ -184,16 +185,31 @@ def generer_projet_artistique(partition = "./lib/assets/waldstein.ly", style = "
 
     # 4. Enregistrement dans la base de données
     # On enregistre le chemin relatif pour que Rails puisse l'afficher via /uploads/nom.jpg
-    # 4. Enregistrement dans le conducteur
+    # Extraction de l'URL de la radio actuelle
+    my_current_radio = my_radio_string[i % my_radio_string.length].strip
+    
+    # Définition du nom de fichier pour le son
+    sound_file_name = "radio_#{i}_#{Time.now.to_i}.mp3"
+    sound_path = Rails.root.join('public', 'uploads', sound_file_name)
+    
+    # Exécution de l'enregistrement (15 secondes)
+    # On utilise 'timeout 15' pour couper wget après 15 secondes
+    # L'option -O force la sortie vers le fichier spécifié
+    #hellothere=`timeout 15 wget #{my_current_radio} -O #{sound_path} > /dev/null 2>&1`
+    hellothere=`timeout 15 wget #{my_current_radio} -O #{sound_path}`
+    
+    # Création de la ligne du conducteur
     conducteur.conducteurlines.create!(
       notes_technicien: "Lieu : #{nom_lieu} (#{current_gps})",
       interpretes: evt.key?('type') ? "Nuance: #{evt['type']}" : "Note: #{evt['note']}",
-      videoprojection: "#{file_name}", # Stockage du chemin de l'image collectée
-      sequenceaction: "Changement visuel n°#{i+1}",
+      videoprojection: "#{file_name}", # Votre image
+      son: "#{sound_file_name}",  # Ajout de l'enregistrement radio
+      sequenceaction: "Changement visuel n°#{i+1} + Captation Radio",
       lumieres_ambiante: evt.key?('type') ? "Nuance" : "Altération",
       lumieres_effet: evt.key?('type') ? "Effet Dynamique" : "Teinte Harmonique",
       duree: "Mes. #{evt['measure']} Temps #{evt['beat']}"
     )
+    # 4. Enregistrement dans le conducteur
     #return conducteur
     #conducteur.conducteurlines.create!(
     #  notes_technicien: "#{label} - GPS: #{current_gps}",
