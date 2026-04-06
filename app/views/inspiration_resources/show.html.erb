@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @inspiration_resource %>
+
+<div>
+  <%= link_to "Edit this inspiration resource", edit_inspiration_resource_path(@inspiration_resource) %> |
+  <%= link_to "Back to inspiration resources", inspiration_resources_path %>
+
+  <%= button_to "Destroy this inspiration resource", @inspiration_resource, method: :delete %>
+</div>

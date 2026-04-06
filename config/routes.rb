@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :inspiration_resources
   resources :zones
   resources :ambiance_options
   resources :styles
@@ -16,8 +17,10 @@ Rails.application.routes.draw do
   resources :materiels
   resources :conducteurlines
   resources :conducteurs do
+
     member do
       get "editformlines"
+      get :inspiration_view
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

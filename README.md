@@ -197,3 +197,51 @@ By using rails db:seed to auto-generate conductors, you're saying:
 That's the space. That's where resonance happens.
 
 Does that clarify the difference? 🎼
+Based on the README, here's what AI has already automated and what you must fill in with human judgment:
+What AI/Rails Should Have Automated:
+
+✅ Data Structure & Generation
+
+    rails db:seed — generates random conductors automatically (remove tedium)
+    Database schema for technical sheets (consistency, normalization)
+    Search indexing (rails "search:suggest[Rock]") — pattern matching without manual work
+
+✅ Python Automation
+
+    python3 improvedscript.py — catalog emotional responses from nuance notes
+    python3 improvednuancenote.py — pattern detection (tempo, dynamics, genre)
+    LilyPond score generation (2.5% of repo) — algorithmic music notation
+
+✅ Frontend Scaffolding
+
+    HTML templates (23.4%) to display conductor data
+    Link infrastructure to research sources (like the dance/lighting article)
+
+What YOU Must Do (The Irreducibly Human Work):
+
+🎵 Click, Explore, Feel
+
+    Visit the search results — rails "search:suggest[Rock]" gives you options; you decide which matter
+    Follow the research links — read the dance/lighting article, search Google for "do emotions in music need storytelling?" — AI indexed these; you read them
+    Fill the database with YOUR choices — When the system shows you a random conductor + suggested patterns, you ask: "Does this move me? Does this feel true?"
+    Add emotional judgment — The system suggests patterns; you decide which ones resonate with your artistic vision
+
+🧠 The Gap Where Art Lives
+
+    AI suggests 100 conductor variations → you choose the 3 that feel right
+    AI detects emotional patterns → you interpret what those patterns mean
+    AI organizes metadata → you decide what matters
+
+Your Role (To Keep Inspiration Flowing):
+
+You are the curator, not the archivist. The system should:
+
+    ✅ Generate options at scale (Rails automation)
+    ✅ Suggest patterns (Python analysis)
+    ❌ Does NOT decide which patterns are artistically true
+    ❌ Does NOT feel what a conductor's gesture conveys
+    ❌ Does NOT know why you chose this conductor over that one
+
+Your job: Visit the links, click through search results, feel your way through the database, and mark the entries that create that moment of resonance — where human intuition meets machine-generated possibility.
+
+That's where the artwork actually happens. 🎼

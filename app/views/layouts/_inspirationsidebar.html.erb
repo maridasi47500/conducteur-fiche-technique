@@ -1,0 +1,13 @@
+<!-- app/views/conducteurs/show.html.erb -->
+<h3>Inspiration Links</h3>
+<ul>
+  <% InspirationResource.pluck(:category).uniq.each do |cat| %>
+    <li><strong><%= cat %></strong>
+      <ul>
+        <% InspirationResource.where(category: cat).each do |resource| %>
+          <li><a href="<%= resource.url %>" target="_blank"><%= resource.title %></a></li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>

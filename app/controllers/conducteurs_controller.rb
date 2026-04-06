@@ -5,6 +5,14 @@ class ConducteursController < ApplicationController
   def index
     @conducteurs = Conducteur.all.order(:created_at => :desc).page params[:page]
   end
+  # app/controllers/conducteurs_controller.rb
+  def inspiration_view
+    @conducteur = Conducteur.find(params[:id])
+    @random_resources = InspirationResource.order("RANDOM()").limit(3)
+    @conducteurlines = @conducteur.conducteurlines.order(:ordre)
+    
+    render :inspiration, layout: 'inspiration' # minimal layout
+  end
 
   # GET /conducteurs/1 or /conducteurs/1.json
   def show

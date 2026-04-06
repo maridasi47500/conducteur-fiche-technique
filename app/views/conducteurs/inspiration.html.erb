@@ -1,6 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @conducteur %>
 <table>
 <tr class="conducteurlineheader" >
 
@@ -21,7 +18,6 @@
 
   <td>
     <strong>son Fichier / Source</strong>
-
   </td>
   <td>
     <strong>Lumieres ambiante:</strong>
@@ -44,16 +40,8 @@
   </td>
 
 </tr>
+
 <%= render @conducteur.conducteurlines.order(:ordre) %>
 </table>
 <%= render "conducteurlines/form", conducteurline: @conducteurline %>
 
-
-<div>
-  <%= link_to "Editer toutes les lignes du conducteur", editformlines_conducteur_path(@conducteur) %> |
-  <%= link_to "Edit this conducteur", edit_conducteur_path(@conducteur) %> |
-  <%= link_to "chercher de l'inspiration pour ce  conducteur", inspiration_view_conducteur_path(@conducteur) %> |
-  <%= link_to "Back to conducteurs", conducteurs_path %>
-
-  <%= button_to "Destroy this conducteur", @conducteur, method: :delete %>
-</div>

@@ -1,17 +1,22 @@
+<!-- app/views/layouts/inspiration.html.erb -->
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ConducteurScene</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-
-  </head>
-
-  <body>
+<head>
+  <title>Inspiration Space</title>
+  <style>
+    body { 
+      background: #f5f5f5; 
+      font-family: serif; 
+      margin: 0; 
+      padding: 20px;
+    }
+    .sidebar { position: fixed; right: 0; top: 0; width: 300px; background: white; padding: 20px; }
+    .main { margin-right: 350px; }
+    a { color: #666; text-decoration: none; border-bottom: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+<nav>
 <%=link_to "projets artistiques", projet_artistiques_path%>
 <%=link_to "ressources d'inspirations", inspiration_resources_path%>
 <%=link_to "fiche techniques", fiche_techniques_path%>
@@ -24,7 +29,14 @@
 <%= link_to "Styles & Ambiances", styles_path %>
 <%= link_to "Dépendances Techniques", metier_dependencies_path %>
 <%= link_to "Templates de Séquences", sequence_templates_path %>
+</nav>
+
+  <div class="main">
     <%= yield %>
-<script src="/submitlines.js" type="text/javascript"></script>
-  </body>
+  </div>
+  <div class="sidebar">
+    <h4>Resources</h4>
+    <%= render 'inspiration_sidebar' %>
+  </div>
+</body>
 </html>

@@ -62,3 +62,21 @@ def generer_spectacle_complet(projet_id)
     )
   end
 end
+# db/seeds.rb - expand with research links
+InspirationResource.find_or_create_by!(
+  title: "Stage Lighting for Dance",
+  url: "https://illuminated-integration.com/blog/stage-lighting-for-dance/",
+  category: "Stage Lighting"
+)
+
+InspirationResource.find_or_create_by!(
+  title: "How do emotions in music work?",
+  url: "https://www.ted.com/talks",
+  category: "Music Theory"
+)
+
+InspirationResource.find_or_create_by!(
+  title: "Conducting technique masterclass",
+  url: "https://www.youtube.com/results?search_query=conducting+masterclass",
+  category: "Conducting Technique"
+)
