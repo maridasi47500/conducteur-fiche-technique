@@ -1,6 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @conducteur %>
+<!-- app/views/conducteurs/show.html.erb -->
+
+<div style="display: flex; gap: 20px;">
+  <!-- Main conductor table -->
+  <div style="flex: 1;">
+
 <table>
 <tr class="conducteurlineheader" >
 
@@ -46,6 +52,16 @@
 </tr>
 <%= render @conducteur.conducteurlines.order(:ordre) %>
 </table>
+      <!-- Your existing table -->
+    </table>
+  </div>
+  
+  <!-- INSPIRATION SIDEBAR (always visible while editing) -->
+  <div style="width: 300px; position: sticky; top: 20px; background: #f5f5f5; padding: 15px; border: 1px solid #ddd;">
+    <h3>🎨 Inspiration Now</h3>
+    <%= render 'my_inspiration_sidebar', conducteur: @conducteur %>
+  </div>
+</div>
 <%= render "conducteurlines/form", conducteurline: @conducteurline %>
 
 

@@ -1,0 +1,23 @@
+<!-- app/views/conducteurs/_inspiration_sidebar.html.erb -->
+
+<div id="inspiration-sidebar">
+  <% InspirationResource::CATEGORIES.each do |category| %>
+    <details>
+      <summary style="cursor: pointer; font-weight: bold;"><%= category %></summary>
+      <ul style="padding-left: 15px;">
+        <% InspirationResource.where(category: category).limit(3).each do |resource| %>
+          <li>
+            <a href="<%= resource.url %>" target="_blank" style="font-size: 12px;">
+              <%= truncate(resource.title, length: 30) %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </details>
+  <% end %>
+  
+  <hr>
+  <p style="font-size: 11px; color: #666;">
+    <%= link_to "See all resources", inspiration_resources_path %>
+  </p>
+</div>

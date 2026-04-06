@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :inspiration_resources
+  # config/routes.rb
+  resources :inspiration_resources do
+    collection do
+      get :completeness_audit
+    end
+  end
   resources :zones
   resources :ambiance_options
   resources :styles

@@ -5,6 +5,25 @@ class InspirationResourcesController < ApplicationController
   def index
     @inspiration_resources = InspirationResource.all
   end
+  # app/controllers/inspiration_resources_controller.rb - ADD THIS METHOD
+  
+  def completeness_audit
+    all_categories = InspirationResource::CATEGORIES
+    populated_categories = InspirationResource.distinct.pluck(:category)
+    missing_categories = all_categories - populated_categories
+    
+    @audit = {
+      total_resources: InspirationResource.count,
+      categories_filled: populated_categories.count,
+      categories_total: all_categories.count,
+      missing_categories: missing_categories,
+      by_category: all_categories.map { |cat| 
+        { category: cat, count: InspirationResource.where(category: cat).count } 
+      }
+    }
+    
+    render :completeness_audit
+  end
 
   # GET /inspiration_resources/1 or /inspiration_resources/1.json
   def show

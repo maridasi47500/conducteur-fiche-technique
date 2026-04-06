@@ -3,12 +3,35 @@ class InspirationResource < ApplicationRecord
   validates :title, :url, :category, presence: true
   
   CATEGORIES = [
-    "Dance & Movement",
-    "Stage Lighting",
-    "Music Theory",
+    # Conducting & Direction
     "Conducting Technique",
-    "Emotion in Performance",
+    "Gesture & Body Language",
+    
+    # Music & Sound
+    "Music Theory",
     "Music History",
-    "Visual Design"
+    "Emotion in Music",
+    "Rhythm & Tempo",
+    
+    # Performance & Choreography
+    "Dance & Movement",
+    "Choreography",
+    "Performance Art",
+    
+    # Staging & Technical
+    "Stage Lighting",
+    "Stage Design",
+    "Sound Engineering",
+    "Projection & Video",
+    
+    # Visual & Aesthetic
+    "Visual Design",
+    "Color & Composition",
+    "Photography & Cinematography",
+    
+    # Emotional & Philosophical
+    "Storytelling",
+    "Emotion & Psychology",
+    "Audience Engagement"
   ]
 end

@@ -1,0 +1,39 @@
+<!-- app/views/inspiration_resources/completeness_audit.html.erb -->
+
+<h1>📊 Inspiration Database Completeness</h1>
+
+<p><strong><%= @audit[:total_resources] %></strong> total resources</p>
+<p><strong><%= @audit[:categories_filled] %></strong> / <strong><%= @audit[:categories_total] %></strong> categories populated</p>
+
+<% if @audit[:missing_categories].any? %>
+  <h3>⚠️ Missing Categories:</h3>
+  <ul>
+    <% @audit[:missing_categories].each do |cat| %>
+      <li><%= cat %> - <%= link_to "Add resource", new_inspiration_resource_path(category: cat) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h3>Coverage by Category:</h3>
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Resources</th>
+    <th>Status</th>
+  </tr>
+  <% @audit[:by_category].each do |item| %>
+    <tr>
+      <td><%= item[:category] %></td>
+      <td><%= item[:count] %></td>
+      <td>
+        <% if item[:count] >= 3 %>
+          ✅ Good
+        <% elsif item[:count] > 0 %>
+          ⚠️ Add more
+        <% else %>
+          ❌ Empty
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
