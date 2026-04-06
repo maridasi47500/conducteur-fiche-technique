@@ -3,5 +3,21 @@
     <strong>Name:</strong>
     <%= style.name %>
   </p>
+<%["#{style.name} stage lighting cues list", "#{style.name} performer stage entrance ideas","Theater script lighting and sound notations #{style.name}", "Live concert video projection mapping examples #{style.name}"].each_with_index do |x,i|%>
+<div class="search-actions">
+<%case i%>
+<%when 0%>
+lumieres
+<%when 1%>
+mouvement
+<%when 2%>
+technique
+<%when 3%>
+video
+<%end%>
+      <%= link_to_google_search(x, "🔍 Google") %>
+      <%= link_to_bing_search(x, "🖼️  Bing Images") %>
+    </div>
+<%end%>
 
-</div>
+

@@ -1,6 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Metier dependencies</h1>
+<p>
+Le concept de Metier Dependencies (ou "dépendances métier") dans un logiciel de gestion technique ou de logistique événementielle sert à automatiser la planification en créant des liens logiques entre différents éléments de matériel.
+
+En clair, cela permet de dire au logiciel : "Si je sors cet instrument, n'oublie pas qu'il me faut impérativement tel accessoire pour qu'il fonctionne."
+
+Voici l'analyse de votre exemple concret :
+1. À quoi ça sert concrètement ?
+
+    Éviter les oublis : En ajoutant une "Batterie" sur un devis ou une fiche technique, le logiciel ajoute automatiquement (ou suggère) les micros et le praticable.
+
+    Calculer les quantités exactes : Grâce au multiplicateur, vous n'avez pas besoin de compter manuellement combien de micros il faut pour 2 ou 3 batteries.
+
+    Préciser l'usage : Les notes permettent de savoir exactement où va le matériel (ex: quels micros vont sur quels fûts).
+
+
+</p>
 
 <div id="metier_dependencies">
   <% @metier_dependencies.each do |metier_dependency| %>
@@ -12,3 +28,27 @@
 </div>
 
 <%= link_to "New metier dependency", new_metier_dependency_path %>
+<p>
+2. Analyse de vos deux règles
+
+Dans votre configuration, la "Batterie" est l'élément déclencheur (Parent). Elle génère deux dépendances :
+Dépendance A : La Captation (Micros)
+
+    Condition : Si "Batterie" est présent.
+
+    Action : Ajouter l'item "Micros".
+
+    Quantité : 4 micros pour 1 batterie (Qty multiplier: 4).
+
+    Note technique : Ces micros sont destinés aux Overheads (micros d'ambiance au-dessus) et à la Grosse caisse.
+
+Dépendance B : L'Installation (Praticable)
+
+    Condition : Si "Batterie" est présent.
+
+    Action : Ajouter l'item "Praticable (estrade)".
+
+    Quantité : 1 pour 1 (Qty multiplier: 1).
+
+    Note technique : Aucune note spécifique ici, c'est le support standard
+</p>

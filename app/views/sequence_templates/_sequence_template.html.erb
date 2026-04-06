@@ -2,6 +2,7 @@
   <p>
     <strong>Label:</strong>
     <%= sequence_template.label %>
+    (<%= sequence_template.style.name %>)
   </p>
 
   <p>
@@ -17,6 +18,7 @@
   <p>
     <strong>Suggested light:</strong>
     <%= sequence_template.suggested_light %>
+<%= link_to "💡 Idées de lumières", "https://www.google.com/search?q=stage+lighting+ideas+#{sequence_template.style&.name}", target: "_blank" %>
   </p>
 
   <p>

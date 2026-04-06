@@ -1,6 +1,60 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @materiel %>
+<div class="materiel-card">
+  <h2><%= @materiel.name %> <span class="badge"><%= @materiel.category %></span></h2>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3><i class="fas fa-map-marker-alt"></i> Placement</h3>
+      <ul>
+        <li><strong>Sur scène :</strong> <%= @materiel.on_stage ? "Oui" : "Non" %></li>
+        <li><strong>Zone :</strong> <%= @materiel.zone&.name || "Non définie" %></li>
+        <li><strong>Calque (Layer) :</strong> <%= @materiel.default_layer %></li>
+      </ul>
+    </div>
+</div>
+<div class="card p-3">
+  <h4>Configuration du placement : <%= @materiel.name %></h4>
+  <hr>
+  <div class="d-flex justify-content-around">
+    <div>
+      <p><strong>Position X préférée :</strong></p>
+      <span class="badge bg-primary"><%= @materiel.x_pref %> % de la scène</span>
+    </div>
+
+    <div>
+      <p><strong>Dispersion (Spread) :</strong></p>
+      <span class="badge bg-info"><%= @materiel.spread %> unités</span>
+    </div>
+  </div>
+
+  <%# Petit visuel d'aide pour l'utilisateur %>
+  <div class="mt-3 text-muted">
+    <small>
+      <i class="fas fa-info-circle"></i> 
+      Ce matériel sera placé à <%= @materiel.x_pref %>% du bord gauche avec un écartement de <%= @materiel.spread %>.
+    </small>
+  </div>
+</div>
+
+    <div class="col-md-6">
+      <h3><i class="fas fa-tools"></i> Technique</h3>
+      <ul>
+        <li><strong>Besoin électrique :</strong> 
+          <% if @materiel.requires_power %>
+            <span class="text-danger font-bold">OUI (Prise nécessaire)</span>
+          <% else %>
+            <span class="text-muted">Non</span>
+          <% end %>
+        </li>
+        <li><strong>Quantité Max :</strong> <%= @materiel.maximum %></li>
+        <li><strong>Type :</strong> <%= @materiel.is_bundle ? "Pack / Bundle" : "Unité simple" %></li>
+        <li><strong>Dispersion (Spread) :</strong> <%= @materiel.spread %></li>
+      </ul>
+    </div>
+  </div>
+
 
 <div>
   <%= link_to "Edit this materiel", edit_materiel_path(@materiel) %> |

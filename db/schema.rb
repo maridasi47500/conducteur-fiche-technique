@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_05_194246) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_06_013446) do
   create_table "ambiance_options", force: :cascade do |t|
     t.integer "style_id", null: false
     t.string "category"
@@ -75,8 +75,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_05_194246) do
     t.string "default_layer"
     t.boolean "requires_power", default: false
     t.boolean "is_bundle", default: false
-    t.string "spread"
-    t.string "x_pref"
+    t.integer "spread"
+    t.integer "x_pref"
     t.integer "zone_id"
     t.index ["zone_id"], name: "index_materiels_on_zone_id"
   end

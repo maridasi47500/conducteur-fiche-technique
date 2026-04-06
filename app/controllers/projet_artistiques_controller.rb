@@ -1,3 +1,4 @@
+require "./app/services/projet_artistique"
 class ProjetArtistiquesController < ApplicationController
   before_action :set_projet_artistique, only: %i[ show edit update destroy ]
 
@@ -25,6 +26,7 @@ class ProjetArtistiquesController < ApplicationController
 
     respond_to do |format|
       if @projet_artistique.save
+        g=MonProjetArtistique.new(@projet_artistique).generer_spectacle_complet()
         format.html { redirect_to @projet_artistique, notice: "Projet artistique was successfully created." }
         format.json { render :show, status: :created, location: @projet_artistique }
       else
@@ -38,6 +40,7 @@ class ProjetArtistiquesController < ApplicationController
   def update
     respond_to do |format|
       if @projet_artistique.update(projet_artistique_params)
+        g=MonProjetArtistique.new(@projet_artistique).generer_spectacle_complet()
         format.html { redirect_to @projet_artistique, notice: "Projet artistique was successfully updated.", status: :see_other }
         format.json { render :show, status: :ok, location: @projet_artistique }
       else
@@ -65,6 +68,6 @@ class ProjetArtistiquesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def projet_artistique_params
-      params.require(:projet_artistique).permit(:fiche_technique_id, :conducteur_id, :title, :username)
+      params.require(:projet_artistique).permit(:fiche_technique_id, :conducteur_id, :title, :username, :useia, :style, :instrument_principal_id)
     end
 end

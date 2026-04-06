@@ -1,6 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Zones</h1>
+<p>
+Dans le contexte d'une scène ou d'un espace de performance, les Zones servent à diviser l'espace physique en segments logiques. Cela permet au système (ou aux techniciens) de savoir précisément où se trouvent les éléments et de leur appliquer des réglages spécifiques selon leur position.
+
+Voici à quoi sert concrètement la zone "Back" (Arrière-scène) que vous avez définie :
+1. Organisation de l'espace
+
+Le découpage en zones permet de structurer la scène. Généralement, on divise le plateau en :
+
+    Front : Le devant de scène (proche du public).
+
+    Center : Le milieu.
+
+    Back : Le fond de scène.
+
+
+</p>
 
 <div id="zones">
   <% @zones.each do |zone| %>
@@ -12,3 +28,25 @@
 </div>
 
 <%= link_to "New zone", new_zone_path %>
+<p>
+2. Automatisation de l'éclairage et du son
+
+Les coordonnées (Y min: 0 et Y max: 30) définissent la profondeur de cette zone.
+
+    Côté Lumière : Si vous placez un musicien dans la zone "Back", le logiciel peut automatiquement activer les projecteurs de contre-jour ou les lyres situées au fond sans que vous ayez à les sélectionner un par un.
+
+    Côté Son : Cela peut servir à ajuster les délais (delay) ou le mixage des retours en fonction de la distance par rapport aux enceintes de façade.
+
+3. Gestion des mouvements (Tracking)
+
+Si vous utilisez un système de tracking (suivi automatique), définir des zones permet de créer des conditions :
+
+    Exemple : "Si l'artiste entre dans la zone Back, baisse l'intensité des projecteurs de face de 20% pour éviter d'éclairer le rideau de fond."
+
+Résumé de votre configuration :
+Paramètre	Valeur	Signification
+Name	Back	Identifie l'arrière de la scène.
+Y min / max	0 à 30	Délimite la "tranche" de profondeur au sol (ex: de 0 à 3 mètres du mur du fond).
+
+En somme, les Zones sont les "coordonnées GPS" de votre scène qui permettent aux Sequence Templates et aux Metier Dependencies de savoir exactement sur quel espace physique ils doivent agir.
+</p>

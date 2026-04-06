@@ -1,42 +1,40 @@
 <%= form_with(model: sequence_template) do |form| %>
-  <% if sequence_template.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(sequence_template.errors.count, "error") %> prohibited this sequence_template from being saved:</h2>
+  <%# ... (bloc erreurs identique) ... %>
 
-      <ul>
-        <% sequence_template.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div>
+    <%= form.label :style_id, "Style de musique", style: "display: block" %>
+    <%= form.collection_select :style_id, Style.all, :id, :name, { prompt: "Sélectionnez un style" } %>
+  </div>
+
+  <div>
+    <%= form.label :label, "Action de l'artiste (ex: Solo, Entrée...)", style: "display: block" %>
+    <%= form.text_field :label, placeholder: "Que fait l'artiste ?" %>
+  </div>
+
+  <div>
+    <%= form.label :phase, "Moment du spectacle", style: "display: block" %>
+    <%# On affiche le texte mais on stocke 1, 2 ou 3 pour le tri SQL %>
+    <%= form.select :phase, [["1 - Début (Intro)", "1"], ["2 - Milieu (Body)", "2"], ["3 - Fin (Outro)", "3"]] %>
+  </div>
+
+  <div>
+    <%= form.label :target_talent, "Qui est concerné ?", style: "display: block" %>
+    <%= form.select :target_talent, ["Musicien/ne", "Danseur/se", "Chanteur/se", "Acteur/ce", "Tous"] %>
+  </div>
+
+  <div style="display: flex; gap: 20px;">
+    <div>
+      <%= form.label :suggested_light, "Lumière suggérée", style: "display: block" %>
+      <%= form.text_field :suggested_light, placeholder: "ex: Douche bleue" %>
     </div>
-  <% end %>
 
-  <div>
-    <%= form.label :label, style: "display: block" %>
-    <%= form.text_field :label %>
+    <div>
+      <%= form.label :intensity, "Intensité (0-100%)", style: "display: block" %>
+      <%= form.number_field :intensity, in: 0..100, step: 10 %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :phase, style: "display: block" %>
-    <%= form.text_field :phase %>
-  </div>
-
-  <div>
-    <%= form.label :target_talent, style: "display: block" %>
-    <%= form.text_field :target_talent %>
-  </div>
-
-  <div>
-    <%= form.label :suggested_light, style: "display: block" %>
-    <%= form.text_field :suggested_light %>
-  </div>
-
-  <div>
-    <%= form.label :intensity, style: "display: block" %>
-    <%= form.text_field :intensity %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div style="margin-top: 20px;">
+    <%= form.submit "Enregistrer le template", class: "btn-submit" %>
   </div>
 <% end %>

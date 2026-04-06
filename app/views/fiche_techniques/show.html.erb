@@ -37,6 +37,9 @@ dessinez ci dessous la disposition de votre scene : placement des musiciens des 
 <%= render @fiche_technique.plan_de_scene_dessins.order(:ordre) %>
 <p class="fonddescenepublic">public</p>
 </section>
+<div id="monplandescene">
+<%= render collection: @fiche_technique.plan_de_scene_dessins.order(:ordre), as: :instrument, partial: "fiche_techniques/instrument" %>
+</div>
 
 
 <%= render "plan_de_scene_dessins/form", plan_de_scene_dessin: @plan_de_scene_dessin %>

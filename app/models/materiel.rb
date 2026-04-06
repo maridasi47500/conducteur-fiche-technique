@@ -6,4 +6,12 @@ class Materiel < ApplicationRecord
   # Valeurs par défaut si non renseignées
   def safe_x_pref; x_pref || 50; end
   def safe_spread; spread || 20; end
+  has_many :materiel_necessaires
+  
+  # Exemple de validations cohérentes avec votre schéma
+  validates :name, presence: true
+  validates :maximum, numericality: { only_integer: true, greater_than: 0 }
+  
+  # Scope pour filtrer rapidement le matériel électrique
+  scope :electrique, -> { where(requires_power: true) }
 end

@@ -30,6 +30,21 @@
     <%= form.label :username, style: "display: block" %>
     <%= form.text_field :username %>
   </div>
+  <div>
+    <%= form.label :style, style: "display: block" %>
+    <%= form.select :style, Style.all.pluck(:name) %>
+  </div>
+  <div>
+    <%= form.check_box :useia %>
+    <%= form.label :useia, style: "display: block" %>
+
+  </div>
+  <div>
+
+    <%= form.label :instrument_principal_id, "quel est l'instrument principal (ssi tu veux utiliser l'IA dans ce projet)", style: "display: block" %>
+    <%= form.select :instrument_principal_id, [""]+Materiel.all.joins(:metier_dependencies).group("materiels.id").collect{|h|[h.name, h.id]} %>
+
+  </div>
 
   <div>
     <%= form.submit %>

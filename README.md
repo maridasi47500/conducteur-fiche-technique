@@ -7,3 +7,4 @@
 # conducteur-fiche-technique
 - python3 improvedscript
 * python3 improvednuancenote.py
+* rails "search:suggest[Rock]"

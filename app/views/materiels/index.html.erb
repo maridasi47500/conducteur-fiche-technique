@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Materiels</h1>
+<p>
+Ces attributs servent à définir le positionnement spatial et technique d'un objet (par exemple, la batterie) au sein d'un environnement virtuel ou d'un plan de scène. Ils permettent au logiciel de calculer automatiquement où placer l'équipement et comment gérer ses contraintes logistiques.
+</p>
 
 <div id="materiels">
   <% @materiels.each do |materiel| %>
@@ -11,4 +14,62 @@
   <% end %>
 </div>
 
+
 <%= link_to "New materiel", new_materiel_path %>
+<p>
+on_stage (boolean) : C'est la case à cocher "Sur scène : Oui/Non".
+
+maximum (integer) : La limite de quantité (ex: 1 pour la batterie).
+
+zone_id (integer) : La clé étrangère qui relie le matériel à une Zone spécifique (comme la zone "Back").
+
+power_needed / requires_power : Détermine si le logiciel doit prévoir une arrivée électrique.
+
+x_pref (integer) : Stocke la valeur du curseur "Position X préférée" (ex: 50%).
+
+spread (integer) : Stocke la zone d'écartement (ex: 10 unités).
+
+is_bundle (boolean) : Permet de savoir si l'item est un pack contenant d'autres objets.
+</p>
+<p>
+
+
+Voici l'explication détaillée par bloc :
+1. Le bloc Placement (Localisation)
+
+Ce bloc définit l'adresse physique de l'objet sur le plateau.
+
+    Sur scène : Oui : Indique que l'objet doit être visible sur le plan de scène (et non stocké en coulisses ou en flight-case).
+
+    Zone : Back : Lie l'objet à la zone que nous avons vue précédemment. La batterie sera donc placée d'office entre Y=0 et Y=30 (le fond de scène).
+
+    Calque (Layer) : Permet d'organiser la visibilité (comme sur Photoshop). On pourrait avoir un calque "Musiciens" et un calque "Lumières" pour les afficher ou les masquer séparément.
+
+2. Configuration du placement (Géométrie)
+
+C'est ici que l'on affine la position précise de l'instrument sur la largeur de la scène.
+
+    Position X préférée : 50 % : C'est le centre parfait de la scène (gauche/droite). La batterie est donc alignée sur l'axe central.
+
+    Dispersion (Spread) : 10 unités : Cela définit "l'encombrement" ou la marge de manoeuvre autour de l'objet.
+
+        Utilité : Cela empêche le logiciel de placer un autre instrument (comme un ampli) trop près ou par-dessus la batterie. C'est sa "bulle" de sécurité.
+
+3. Le bloc Technique (Logistique)
+
+Ce bloc donne des instructions aux techniciens et aux gestionnaires de stock.
+
+    Besoin électrique : Non : Très important pour le plan de câblage. Le logiciel sait qu'il n'a pas besoin de tirer une ligne de courant (PC) vers cette position (contrairement à un clavier ou un ampli).
+
+    Quantité Max : 1 : Empêche les erreurs de saisie. On ne peut pas ajouter deux batteries sur ce poste de travail spécifique.
+
+    Type : Unité simple : Signifie que l'objet est considéré comme un bloc unique dans l'inventaire, et non comme un kit composé de multiples éléments séparés à scanner un par un.
+
+Résumé visuel de la situation
+
+Grâce à ces attributs, le logiciel "dessine" mentalement ceci :
+
+    "Je place une seule batterie au fond de la scène (Back), pile au milieu (50%), je lui réserve un espace de 10 unités de large pour que le batteur puisse bouger, et je ne prévois pas de prise de courant."
+
+C'est ce qui permet de passer d'une simple liste de matériel à un plan de scène intelligent et automatisé.
+</p>

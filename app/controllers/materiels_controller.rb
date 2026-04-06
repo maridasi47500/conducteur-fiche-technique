@@ -65,6 +65,18 @@ class MaterielsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def materiel_params
-      params.require(:materiel).permit(:name)
+      params.require(:materiel).permit(
+        :name, 
+        :on_stage, 
+        :maximum, 
+        :zone_id, 
+        :power_needed, 
+        :category, 
+        :default_layer, 
+        :requires_power, 
+        :is_bundle, 
+        :spread, 
+        :x_pref
+      )
     end
 end

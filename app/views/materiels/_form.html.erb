@@ -15,8 +15,52 @@
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
+  
+  <fieldset>
+    <legend>Visibilité sur le plan</legend>
+    
+    <div class="field">
+      <%= form.label :on_stage, "Afficher sur la scène ?" %>
+      <%= form.check_box :on_stage %>
+    </div>
+
+    <div class="field">
+      <%= form.label :zone_id, "Zone assignée" %>
+      <%= form.collection_select :zone_id, Zone.all, :id, :name, prompt: "Choisir une zone" %>
+    </div>
+    
+    <div class="field">
+      <%= form.label :zone_y, "zone : back, mid ou front" %>
+      <%= form.select :zone_y, ["back", "mid", "front"] %>
+    </div>
+    <div class="field">
+      <%= form.label :default_layer, "Calque d'affichage" %>
+      <%= form.select :default_layer, ["Background", "Instruments", "Câblage", "Top"] %>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Configuration Technique</legend>
+    
+    <div class="field">
+      <%= form.label :requires_power, "Nécessite du courant" %>
+      <%= form.check_box :requires_power %>
+    </div>
+
+    <div class="field">
+      <%= form.label :maximum, "Quantité maximum autorisée" %>
+      <%= form.number_field :maximum, min: 1 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :spread, "Mode de dispersion" %>
+      <%= form.select :spread, ["Unique", "Ligne", "Arc", "Aléatoire"] %>
+    </div>
+  </fieldset>
+
+
 
   <div>
-    <%= form.submit %>
+  <%= form.rm.submit "Enregistrer le matériel", class: "btn-primary" %>
   </div>
 <% end %>

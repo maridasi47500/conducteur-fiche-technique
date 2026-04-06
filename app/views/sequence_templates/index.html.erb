@@ -1,6 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Sequence templates</h1>
+<p>
+Les Sequence Templates (ou modèles de séquences) servent à créer des scénarios prédéfinis de mise en scène. Ils permettent de standardiser et d'automatiser l'ambiance visuelle et technique en fonction des moments forts d'un spectacle ou d'un événement.
+
+Au lieu de configurer manuellement chaque projecteur à chaque fois, vous appliquez un "modèle" qui sait déjà quoi faire.
+
+</p>
 
 <div id="sequence_templates">
   <% @sequence_templates.each do |sequence_template| %>
@@ -12,3 +18,48 @@
 </div>
 
 <%= link_to "New sequence template", new_sequence_template_path %>
+
+<p>
+À quoi cela sert-il concrètement ?
+
+    Gain de temps : On ne recrée pas l'éclairage de zéro pour chaque morceau ; on applique un modèle (ex: "Solo Guitare").
+
+    Cohérence artistique : Garantit que chaque "entrée" ou chaque "solo" aura le même impact visuel, peu importe l'endroit où vous jouez.
+
+    Coordination simplifiée : Le technicien lumière sait immédiatement quel type d'effet est attendu selon la phase du concert.
+
+Analyse de vos exemples
+
+Chaque modèle définit des paramètres précis pour un instant T :
+1. Le modèle "Entrée fracassante"
+
+    Moment (Phase) : L'introduction du show.
+
+    Cible (Target) : Tout le groupe est concerné.
+
+    Effet visuel : Utilisation du stroboscope à une intensité de 100%.
+
+    Objectif : Créer un choc visuel immédiat pour marquer le début de la performance.
+
+2. Le modèle "Solo Guitare"
+
+    Moment (Phase) : Le corps du morceau (body).
+
+    Cible (Target) : Un seul musicien (le guitariste).
+
+    Effet visuel : Une douche (un faisceau vertical qui isole l'artiste du reste de la scène).
+
+    Objectif : Focaliser toute l'attention du public sur la performance individuelle.
+
+En résumé
+
+Un Sequence Template est une "recette" technique qui lie :
+
+    Le moment (Intro, solo, fin).
+
+    L'actionneur (Qui est mis en avant).
+
+    L'ambiance (Type de lumière et puissance).
+
+C'est l'outil indispensable pour passer d'un simple éclairage statique à un véritable show dynamique et pro.
+</p>
