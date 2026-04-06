@@ -8,3 +8,4 @@
 - python3 improvedscript
 * python3 improvednuancenote.py
 * rails "search:suggest[Rock]"
+visit https://illuminated-integration.com/blog/stage-lighting-for-dance/
