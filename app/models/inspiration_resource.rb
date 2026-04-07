@@ -34,4 +34,7 @@ class InspirationResource < ApplicationRecord
     "Emotion & Psychology",
     "Audience Engagement"
   ]
+  def listcategories
+    CATEGORIES
+  end
 end

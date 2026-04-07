@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_06_013446) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_06_191208) do
   create_table "ambiance_options", force: :cascade do |t|
     t.integer "style_id", null: false
     t.string "category"
@@ -50,6 +50,14 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_06_013446) do
     t.string "date"
     t.string "professeur_referent"
     t.string "notes_complementaires"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inspiration_resources", force: :cascade do |t|
+    t.string "title"
+    t.string "url"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
