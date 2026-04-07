@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_06_191208) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_07_024452) do
   create_table "ambiance_options", force: :cascade do |t|
     t.integer "style_id", null: false
     t.string "category"
@@ -18,6 +18,13 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_06_191208) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["style_id"], name: "index_ambiance_options_on_style_id"
+  end
+
+  create_table "conducteurhasmarkers", force: :cascade do |t|
+    t.integer "conducteur_id"
+    t.integer "emotional_marker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "conducteurlines", force: :cascade do |t|
@@ -42,6 +49,13 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_06_191208) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "fiche_technique_id"
+    t.string "tempo_range"
+  end
+
+  create_table "emotional_markers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "fiche_techniques", force: :cascade do |t|

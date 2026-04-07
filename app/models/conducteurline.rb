@@ -5,7 +5,7 @@ belongs_to :conducteur
   # Génère une requête de recherche propre
   def search_query
     # On récupère le nom du style via le conducteur
-    style_name = conducteur.projet_artistique&.style || ""
+    style_name = conducteur.try(:projet_artistique)&.style || ""
     
     # On combine les termes importants
     # Exemple : "Rock Solo de guitare lights inspiration stage plot"

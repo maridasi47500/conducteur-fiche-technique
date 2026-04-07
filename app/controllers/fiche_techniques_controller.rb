@@ -69,6 +69,6 @@ class FicheTechniquesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fiche_technique_params
-      params.require(:fiche_technique).permit(:name_event, :eleve_responsable, :date, :professeur_referent, :notes_complementaires, :plan_de_scene_dessins_attributes=>{})
+      params.require(:fiche_technique).permit(:name_event, :eleve_responsable, :date, :professeur_referent, :notes_complementaires, :plan_de_scene_dessins_attributes=>{}, :materiel_necessaires_attributes=>{})
     end
 end

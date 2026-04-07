@@ -40,6 +40,17 @@
   </fieldset>
 
   <fieldset>
+    <legend>Position sur le plan</legend>
+    <div class="field">
+      <%= form.label :x_pref, "position x préférée" %>
+      <%= form.number_field :x_pref, min:0, max: 100 %>
+    </div>
+    <div class="field">
+      <%= form.label :spread, "spread (espace autour)" %>
+      <%= form.number_field :spread %>
+    </div>
+  </fieldset>
+  <fieldset>
     <legend>Configuration Technique</legend>
     
     <div class="field">
@@ -52,15 +63,11 @@
       <%= form.number_field :maximum, min: 1 %>
     </div>
 
-    <div class="field">
-      <%= form.label :spread, "Mode de dispersion" %>
-      <%= form.select :spread, ["Unique", "Ligne", "Arc", "Aléatoire"] %>
-    </div>
   </fieldset>
 
 
 
   <div>
-  <%= form.rm.submit "Enregistrer le matériel", class: "btn-primary" %>
+  <%= form.submit "Enregistrer le matériel", class: "btn-primary" %>
   </div>
 <% end %>

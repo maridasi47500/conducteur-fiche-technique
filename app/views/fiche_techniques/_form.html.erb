@@ -35,6 +35,41 @@
     <%= form.label :notes_complementaires, style: "display: block" %>
     <%= form.text_area :notes_complementaires, style: "width:100%;height:100px;" %>
   </div>
+<h3>Matériel nécessaire</h3>
+<div class="grid">
+<%mycounter = 0%>
+<%=form.fields_for :materiel_necessaires, fiche_technique.materiel_necessaires do |f|%>
+<%mycounter+=1%>
+<div class="item">
+
+  <td>
+    <%= f.label :materiel_id, style: "display: block" %>
+    <%= f.select :materiel_id, Materiel.all.collect{|h|[h.name, h.id]} %>
+  </td>
+
+  <td>
+    <%= f.label :quantite, style: "display: block" %>
+    <%= f.text_field :quantite %>
+  </td>
+
+  <td>
+    <%= f.label :precisions_observations, style: "display: block" %>
+    <%= f.text_area :precisions_observations %>
+  </td>
+
+
+  <td>
+
+<%= f.check_box :_destroy %>
+    <%= f.label :_destroy, "supprimer ce materiel du matériel nécessaire",  style: "display: block" %>
+  </td>
+
+
+
+</div>
+<%end%>
+</div>
+
 
   <div>
     <%= form.submit %>

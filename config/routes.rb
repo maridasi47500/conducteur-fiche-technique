@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :emotional_markers
   # config/routes.rb
   resources :inspiration_resources do
     collection do

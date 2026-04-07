@@ -76,6 +76,6 @@ class ConducteursController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def conducteur_params
-      params.require(:conducteur).permit(:title, :username, :conducteurlines_attributes => {})
+      params.require(:conducteur).permit(:title, :fiche_technique_id, :username,:tempo_range, :conducteurlines_attributes => {}, :emotional_marker_ids=>[])
     end
 end

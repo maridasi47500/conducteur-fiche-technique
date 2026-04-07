@@ -1,0 +1,53 @@
+<!-- app/views/fiches_techniques/gemini_analysis.html.erb -->
+
+<div class="analysis-container">
+  <h1>Ce que Gemini voit & ce qu'elle rate</h1>
+  
+  <% @prompts_results.each do |result| %>
+    <div class="prompt-result">
+      <h2><%= result[:prompt_name] %></h2>
+      <p class="intent"><strong>Intention:</strong> <%= result[:intent] %></p>
+      
+      <!-- Réponse de Gemini -->
+      <div class="gemini-response">
+        <h3>Ce que Gemini a dit:</h3>
+        <blockquote><%= result[:response] %></blockquote>
+      </div>
+      
+      <!-- Analyse des limites -->
+      <div class="analysis">
+        <h3>Où l'IA échoue (révélation artistique):</h3>
+        
+        <div class="success">
+          <h4>✅ Ce que l'IA a bien compris:</h4>
+          <ul>
+            <% result[:analysis][:what_ai_got_right].each do |point| %>
+              <li><%= point %></li>
+            <% end %>
+          </ul>
+        </div>
+        
+        <div class="failure">
+          <h4>❌ Ce que l'IA a complètement raté:</h4>
+          <ul>
+            <% result[:analysis][:what_ai_missed].each do |point| %>
+              <li><%= point %></li>
+            <% end %>
+          </ul>
+        </div>
+        
+        <div class="hallucination">
+          <h4>🤖 Où l'IA a inventé une certitude:</h4>
+          <p><%= result[:analysis][:where_ai_invented_certainty] %></p>
+        </div>
+        
+        <div class="gap">
+          <h4>🌊 L'écart (où tu entres, toi):</h4>
+          <p><strong>Machine dit:</strong> <%= result[:response].truncate(100) %></p>
+          <p><strong>Tu dois sentir:</strong> [Ton espace d'interprétation]</p>
+          <textarea placeholder="Tes notes personnelles..." class="artist-notes"></textarea>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

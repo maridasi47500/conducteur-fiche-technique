@@ -12,17 +12,17 @@
   <% end %>
 
   <div>
-    <%= form.label :materiel_id, style: "display: block" %>
-    <%= form.number_field :materiel_id %>
+    <%= form.label :materiel_id, "Un (matériel) vient souvent avec:", style: "display: block" %>
+    <%= form.select :materiel_id, Materiel.all.collect{|h|[h.name, h.id]} %>
   </div>
 
   <div>
-    <%= form.label :required_item_id, style: "display: block" %>
-    <%= form.number_field :required_item_id %>
+    <%= form.label :required_item_id, "Avec quel matériel vient souvent le premier materiel", style: "display: block" %>
+    <%= form.select :required_item_id, Materiel.all.collect{|h|[h.name, h.id]} %>
   </div>
 
   <div>
-    <%= form.label :qty_multiplier, style: "display: block" %>
+    <%= form.label :qty_multiplier, "remplir en quelle quantité", style: "display: block" %>
     <%= form.number_field :qty_multiplier %>
   </div>
 

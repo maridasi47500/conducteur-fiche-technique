@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Emotional markers</h1>
+
+<div id="emotional_markers">
+  <% @emotional_markers.each do |emotional_marker| %>
+    <%= render emotional_marker %>
+    <p>
+      <%= link_to "Show this emotional marker", emotional_marker %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New emotional marker", new_emotional_marker_path %>

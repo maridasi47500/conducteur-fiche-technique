@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @emotional_marker %>
+
+<div>
+  <%= link_to "Edit this emotional marker", edit_emotional_marker_path(@emotional_marker) %> |
+  <%= link_to "Back to emotional markers", emotional_markers_path %>
+
+  <%= button_to "Destroy this emotional marker", @emotional_marker, method: :delete %>
+</div>

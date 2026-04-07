@@ -1,0 +1,2 @@
+class EmotionalMarker < ApplicationRecord
+end

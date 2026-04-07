@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<h2>informations générales </h2>
+<h2>informations générales fiche N°<%=@fiche_technique.id%></h2>
 <%= render @fiche_technique %>
 
 <h2>materiel nécessaire </h2>
@@ -58,7 +58,7 @@ dessinez ci dessous la disposition de votre scene : placement des musiciens des 
 <% end %>
 
 <div>
-  <%= link_to "Editer les informations generales de cette fiche technique", edit_fiche_technique_path(@fiche_technique) %> |
+  <%= link_to "Editer les informations generales de cette fiche technique et le matériel nécessaire", edit_fiche_technique_path(@fiche_technique) %> |
   <%= link_to "Editer l'ordre du plan de scene de cette fiche technique", editplandescene_fiche_technique_path(@fiche_technique) %> |
   <%= link_to "Back to fiche techniques", fiche_techniques_path %>
 

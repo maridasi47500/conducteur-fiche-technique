@@ -80,3 +80,12 @@ InspirationResource.find_or_create_by!(
   url: "https://www.youtube.com/results?search_query=conducting+masterclass",
   category: "Conducting Technique"
 )
+# db/seeds.rb — remplir avec VOS données, pas juste du hasard
+Conducteur.create!(
+  name: "Les Vagues",
+  tempo_range: "60-80 bpm",
+  notes: "Mouvement comme l'océan. Mains larges, respirées.",
+  style: "Impressionniste",
+  emotional_markers: ["fluide", "triste-beau", "sans direction"]
+)
+# × 20-30 de VOS conducteurs, choisis émotionnellement
