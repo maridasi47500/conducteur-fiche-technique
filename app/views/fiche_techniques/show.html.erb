@@ -31,6 +31,7 @@
 <p>
 dessinez ci dessous la disposition de votre scene : placement des musiciens des instruments , micros, praticables, convention : le public se trouve en bas du cadre
 
+  <%= link_to "faire/refaire le plan de scene en utilisant le matériel nécessaire", refaireplandescene_fiche_technique_path(@fiche_technique), onclick: "return confirm('êtes vous sûr(e) de vouloir (re)faire le plan de scène de zéro?');" %> |
 </p>
 <section class="plandescene">
 <p class="fonddescenepublic">fond de scène</p>

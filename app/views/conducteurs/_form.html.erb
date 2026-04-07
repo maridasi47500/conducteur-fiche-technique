@@ -37,7 +37,7 @@
 
   <div>
     <%= form.label :fiche_technique_id, style: "display: block" %>
-    <%= form.text_field :fiche_technique_id %>
+    <%= form.select :fiche_technique_id, FicheTechnique.all.order(:created_at => :desc).collect{|x|[x.id.to_s+" - "+x.name_event, x.id]}, {prompt: "selectionnez une fiche technique"} %>
   </div>
   <div>
     <%= form.submit %>

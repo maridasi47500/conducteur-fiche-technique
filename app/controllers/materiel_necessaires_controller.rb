@@ -36,23 +36,6 @@ class MaterielNecessairesController < ApplicationController
               precisions_observations: "Auto: Requis pour #{instrument_principal.name}"
             )
         end
-        # --- ÉTAPE 3 : Placer les trucs sur la scène (Zones & Materiels) ---
-        fiche.materiel_necessaires.each do |mn|
-          mat = mn.materiel
-          zone = mat.zone # On utilise la table Zone liée au matériel
-
-          mn.quantite.to_i.times do
-            x = (mat.x_pref.to_i + rand(-mat.spread.to_i..mat.spread.to_i)).clamp(5, 95)
-            y = rand(zone.y_min..zone.y_max)
-
-            PlanDeSceneDessin.create!(
-              fiche_technique: fiche,
-              materiel_musicien: mat.name,
-              coord_x: x, coord_y: y,
-              layer: zone.name
-            )
-          end
-        end
 
 
         format.html { redirect_to @materiel_necessaire.fiche_technique, notice: "Materiel necessaire was successfully created." }

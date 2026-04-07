@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :fiche_techniques do
    member do
    get "editplandescene"
+   get "refaireplandescene"
    end
   end
   resources :materiels

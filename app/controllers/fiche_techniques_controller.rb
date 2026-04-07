@@ -1,7 +1,31 @@
 class FicheTechniquesController < ApplicationController
-  before_action :set_fiche_technique, only: %i[ show edit update destroy editplandescene]
+  before_action :set_fiche_technique, only: %i[ show edit update destroy editplandescene refaireplandescene]
 
   # GET /fiche_techniques or /fiche_techniques.json
+  def refaireplandescene
+    fiche=@fiche_technique
+    fiche.plan_de_scene_dessins.destroy_all
+    @materiel_necessaire=MaterielNecessaire.new(fiche_technique_id:@fiche_technique.id)
+    @plan_de_scene_dessin=PlanDeSceneDessin.new(fiche_technique_id: @fiche_technique.id)
+    fiche.materiel_necessaires.each do |mn|
+      mat = mn.materiel
+      zone = mat.zone # On utilise la table Zone liée au matériel
+
+      mn.quantite.to_i.times do
+        x = (mat.x_pref.to_i + rand(-mat.spread.to_i..mat.spread.to_i)).clamp(5, 95)
+        y = rand(zone.y_min..zone.y_max)
+
+        PlanDeSceneDessin.create!(
+          fiche_technique: fiche,
+          materiel_musicien: mat.name,
+          coord_x: x, coord_y: y,
+          layer: zone.name
+        )
+      end
+    end
+    render :show
+
+  end
   def index
     @fiche_techniques = FicheTechnique.all.order(:created_at => :desc).page params[:page]
   end
