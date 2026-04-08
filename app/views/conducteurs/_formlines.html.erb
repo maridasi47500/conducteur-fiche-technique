@@ -18,7 +18,7 @@
  <td>
     <%= mycounter %>
 < ! -- déplacer ici pour changer l'ordre -->
-    <%= f.hidden_field :ordre %>
+    <%= f.hidden_field :ordre, value: mycounter %>
   </td>
  <td>
     <%= f.label :duree, style: "display: block" %>
