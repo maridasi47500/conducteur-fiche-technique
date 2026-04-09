@@ -1,9 +1,51 @@
 class ConducteursController < ApplicationController
-  before_action :set_conducteur, only: %i[ show edit update destroy editformlines star ingredients mixer_ingredients]
+  before_action :set_conducteur, only: %i[ show edit update destroy editformlines star ingredients mixer_ingredients advanced_generator generate_advanced_conductor]
+  # Ce dictionnaire fait le pont entre le "Truc" coché et les colonnes SQL
+  ARTISTIC_CONFIGS=StageTheme.to_artistic_hash
+  #ARTISTIC_CONFIGS = {
+  #    "Conducting Technique" => {
+  #      "Directives" => {
+  #        "Gestes amples (Air)" => { lumieres_effet: "gradateur lent", videoprojection: "nuages fluides", son: "nappes synthé" },
+  #        "Saccades (Électricité)" => { lumieres_effet: "stroboscope", videoprojection: "flashs blancs", son: "glitch audio" }
+  #      }
+  #    },
+  #    "Stage Lighting" => {
+  #      "Directives" => {
+  #        "Ombres décalées" => { lumieres_ambiante: "rasant", videoprojection: "silhouette différée", machine_brouillard: "léger" },
+  #        "Douche isolante" => { lumieres_effet: "douche", lumieres_ambiante: "noir", notes_technicien: "Suivre l'interprète" }
+  #      }
+  #    },
+  #    "Storytelling" => {
+  #      "Directives" => {
+  #        "Voix IA déformée" => { son: "ia_voice_pitch.mp3", videoprojection: "texte défilant", interpretes: "Acteur + IA" },
+  #        "Souvenirs numériques" => { videoprojection: "photos archives", son: "bruit de bande", lumieres_ambiante: "ambre" }
+  #      }
+  #    }  # Ajoutez les autres 13 thématiques ici...
+  #}.freeze
 
   # GET /conducteurs or /conducteurs.json
   def index
     @conducteurs = Conducteur.all.order(:created_at => :desc).page params[:page]
+  end
+  def advanced_generator
+    # Un exemple de structure de données pour alimenter votre formulaire dynamique
+    @ARTISTIC_MAPPING=ARTISTIC_CONFIGS
+  end
+  def generate_advanced_conductor
+    @conducteur.update(starred: true)
+    
+    params[:directives].each_with_index do |label, index|
+      # On retrouve la configuration technique associée au label choisi
+      config = find_config_by_label(label) 
+  
+      @conducteur.conducteurlines.create!(
+        ordre: index + 1,
+        sequenceaction: "Exploration de : #{label}",
+        # On fusionne les valeurs par défaut avec la config spécifique
+        **config 
+      )
+    end
+    redirect_to @conducteur
   end
   def ingredients
   end
@@ -84,6 +126,16 @@ class ConducteursController < ApplicationController
   end
 
   private
+  
+  def find_config_by_label(label)
+    # On cherche dans le dictionnaire, sinon on renvoie une config par défaut vide
+    ARTISTIC_CONFIGS.values.find { |v| v["Directives"].key?(label) }&.dig("Directives", label) || { 
+      lumieres_ambiante: "neutre", 
+      lumieres_effet: "aucun", 
+      videoprojection: "rien", 
+      son: "aucun" 
+    }
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_conducteur
       @conducteur = Conducteur.find(params[:id])

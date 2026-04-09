@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @directive_artistique %>
+
+<div>
+  <%= link_to "Edit this directive artistique", edit_directive_artistique_path(@directive_artistique) %> |
+  <%= link_to "Back to directive artistiques", directive_artistiques_path %>
+
+  <%= button_to "Destroy this directive artistique", @directive_artistique, method: :delete %>
+</div>

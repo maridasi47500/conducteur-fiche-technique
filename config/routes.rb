@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :directive_artistiques
   resources :stage_themes
   resources :emotional_markers
   # config/routes.rb
@@ -11,7 +12,12 @@ Rails.application.routes.draw do
   resources :ambiance_options
   resources :styles
   resources :metier_dependencies
-  resources :sequence_templates
+  resources :sequence_templates do
+    collection do
+      get "newconducteur"
+      patch "generateconducteur"
+    end
+  end
   resources :projet_artistiques
   resources :materiel_necessaires
   resources :plan_de_scene_dessins
@@ -27,6 +33,8 @@ Rails.application.routes.draw do
   resources :conducteurs do
 
     member do
+      post "generate_advanced_conductor"
+      get "advanced_generator"
       patch "mixer_ingredients"
       get "ingredients"
       get "star"

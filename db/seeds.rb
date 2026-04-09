@@ -99,3 +99,26 @@ themes = [
 ]
 
 themes.each { |t| StageTheme.find_or_create_by(name: t) }
+# db/seeds.rb
+
+# 1. Créer les thèmes parents
+lighting = StageTheme.find_or_create_by!(name: "Stage Lighting")
+music = StageTheme.find_or_create_by!(name: "Music Theory")
+
+# 2. Créer les directives artistiques liées
+DirectiveArtistique.create!([
+  {
+    name: "Ombres décalées",
+    stage_theme: lighting,
+    default_lumieres_ambiante: "rasant",
+    default_videoprojection: "silhouette différée",
+    default_notes_technicien: "L'ombre doit précéder l'acteur."
+  },
+  {
+    name: "Dissonance Cognitive",
+    stage_theme: music,
+    default_son: "atonal_noise.mp3",
+    default_lumieres_effet: "clignotant",
+    default_notes_technicien: "Briser l'harmonie visuelle et sonore."
+  }
+])

@@ -1,0 +1,2 @@
+module DirectiveArtistiquesHelper
+end

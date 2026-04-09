@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Directive artistiques</h1>
+
+<div id="directive_artistiques">
+  <% @directive_artistiques.each do |directive_artistique| %>
+    <%= render directive_artistique %>
+    <p>
+      <%= link_to "Show this directive artistique", directive_artistique %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New directive artistique", new_directive_artistique_path %>

@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  stage_theme: one
+  default_lumieres_ambiante: MyString
+  default_lumieres_effet: MyString
+  default_videoprojection: MyString
+  default_son: MyString
+  default_notes_technicien: MyString
+  default_sequenceaction: MyString
+  default_duree: 2026-04-09 00:49:30
+  default_interpretes: MyString
+
+two:
+  name: MyString
+  stage_theme: two
+  default_lumieres_ambiante: MyString
+  default_lumieres_effet: MyString
+  default_videoprojection: MyString
+  default_son: MyString
+  default_notes_technicien: MyString
+  default_sequenceaction: MyString
+  default_duree: 2026-04-09 00:49:30
+  default_interpretes: MyString

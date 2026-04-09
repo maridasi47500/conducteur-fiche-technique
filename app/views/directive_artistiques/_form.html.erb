@@ -1,0 +1,67 @@
+<%= form_with(model: directive_artistique) do |form| %>
+  <% if directive_artistique.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(directive_artistique.errors.count, "error") %> prohibited this directive_artistique from being saved:</h2>
+
+      <ul>
+        <% directive_artistique.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :stage_theme_id, style: "display: block" %>
+    <%= form.select :stage_theme_id, StageTheme.all.collect{|g|[g.name, g.id]} %>
+  </div>
+
+  <div>
+    <%= form.label :default_lumieres_ambiante, style: "display: block" %>
+    <%= form.text_field :default_lumieres_ambiante %>
+  </div>
+
+  <div>
+    <%= form.label :default_lumieres_effet, style: "display: block" %>
+    <%= form.text_field :default_lumieres_effet %>
+  </div>
+
+  <div>
+    <%= form.label :default_videoprojection, style: "display: block" %>
+    <%= form.text_field :default_videoprojection %>
+  </div>
+
+  <div>
+    <%= form.label :default_son, style: "display: block" %>
+    <%= form.text_field :default_son %>
+  </div>
+
+  <div>
+    <%= form.label :default_notes_technicien, style: "display: block" %>
+    <%= form.text_field :default_notes_technicien %>
+  </div>
+
+  <div>
+    <%= form.label :default_sequenceaction, style: "display: block" %>
+    <%= form.text_field :default_sequenceaction %>
+  </div>
+
+  <div>
+    <%= form.label :default_duree, style: "display: block" %>
+    <%= form.time_field :default_duree %>
+  </div>
+
+  <div>
+    <%= form.label :default_interpretes, style: "display: block" %>
+    <%= form.text_field :default_interpretes %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

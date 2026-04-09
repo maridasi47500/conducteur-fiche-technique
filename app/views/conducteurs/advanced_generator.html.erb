@@ -1,0 +1,19 @@
+<%# app/views/conducteurs/_advanced_generator.html.erb %>
+<%= form_with(url: generate_advanced_conductor_conducteur_path(@conducteur)) do |f| %>
+  
+  <% @ARTISTIC_MAPPING.each do |theme, details| %>
+    <fieldset class="theme-section">
+      <legend><%= theme %></legend>
+      
+      <% details["Directives"].each do |label, config| %>
+        <div class="option-row">
+          <%= check_box_tag "directives[]", label %>
+          <strong><%= label %></strong> 
+          <small>(Impacte : <%= config.keys.join(', ') %>)</small>
+        </div>
+      <% end %>
+    </fieldset>
+  <% end %>
+
+  <%= f.submit "Composer la partition hybride" %>
+<% end %>

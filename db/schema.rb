@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_09_024223) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_09_034930) do
   create_table "ambiance_options", force: :cascade do |t|
     t.integer "style_id", null: false
     t.string "category"
@@ -59,6 +59,22 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_09_024223) do
     t.string "tempo_range"
     t.boolean "starred"
     t.string "notes"
+  end
+
+  create_table "directive_artistiques", force: :cascade do |t|
+    t.string "name"
+    t.integer "stage_theme_id", null: false
+    t.string "default_lumieres_ambiante"
+    t.string "default_lumieres_effet"
+    t.string "default_videoprojection"
+    t.string "default_son"
+    t.string "default_notes_technicien"
+    t.string "default_sequenceaction"
+    t.time "default_duree"
+    t.string "default_interpretes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stage_theme_id"], name: "index_directive_artistiques_on_stage_theme_id"
   end
 
   create_table "emotional_markers", force: :cascade do |t|
@@ -177,6 +193,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_09_024223) do
   end
 
   add_foreign_key "ambiance_options", "styles"
+  add_foreign_key "directive_artistiques", "stage_themes"
   add_foreign_key "materiels", "zones"
   add_foreign_key "sequence_templates", "styles"
 end

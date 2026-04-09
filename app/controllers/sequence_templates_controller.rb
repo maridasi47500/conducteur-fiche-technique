@@ -2,6 +2,42 @@ class SequenceTemplatesController < ApplicationController
   before_action :set_sequence_template, only: %i[ show edit update destroy ]
 
   # GET /sequence_templates or /sequence_templates.json
+  def newconducteur
+  end
+  def generatesequencetemplate
+    # --- ÉTAPE 4 : Créer le Conducteur (SequenceTemplates & AmbianceOptions) ---
+    conducteur = Conducteur.create!(fiche_technique: fiche, title: "Conducteur #{projet.title}")
+    projet.update(conducteur: conducteur)
+    ["Tous","Danseur/se","Chanteur/se","Musicien/ne","Acteur/ce"].each do |metier| 
+      # 1. On pioche UNE intro au hasard parmi les intros possibles
+      intro = SequenceTemplate.where(style: style, phase: "intro",target_talent: metier).sample
+      
+      # 2. On pioche DEUX moments de "corps" (body) au hasard
+      milieux = SequenceTemplate.where(style: style, phase: "body",target_talent: metier).sample(2)
+      
+      # 3. On pioche UNE sortie
+      outro = SequenceTemplate.where(style: style, phase: "outro",target_talent: metier).sample
+
+      # 4. On assemble le tout dans un tableau ordonné
+      mon_scenario = [intro] + milieux + [outro]
+
+      # 5. On crée les lignes du conducteur dans l'ordre du tableau
+      next if mon_scenario.length == 0
+      mon_scenario.each_with_index do |temp, index|
+        next if temp.nil? # Sécurité si une phase est vide
+        
+        Conducteurline.create!(
+          conducteur: conducteur,
+          ordre: index + 1,
+          sequenceaction: temp.label,
+          lumieres_ambiante: style.ambiance_options.where(category: "lumieres").sample&.value || "blanc",
+          machine_brouillard: style.ambiance_options.where(category: "machine_brouillard").sample&.value || "non",
+          duree: "00:02:00"
+        )
+      end
+    end
+
+  end
   def index
     @sequence_templates = SequenceTemplate.all
   end
