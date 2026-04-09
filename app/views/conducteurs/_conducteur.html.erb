@@ -9,5 +9,9 @@
   <td>
     <%= I18n.l(conducteur.created_at.to_time, format: :veryshort)%>
   </td>
+  <td id="star<%=conducteur.id%>" data-on="&#9733;" data-off="&#x2606;" onclick="$.ajax({url:'<%=star_conducteur_path(conducteur)%>',success: function(data){star<%=conducteur.id%>.innerHTML = (data.on === 'true' ? star<%=conducteur.id%>.dataset.on : star<%=conducteur.id%>.dataset.off);}});return false;">
+   <%=(conducteur.starred ? "&#9733;" : "&#x2606;").html_safe%>
+    
+  </td>
 
 </tr>

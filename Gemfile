@@ -1,10 +1,11 @@
 source "https://rubygems.org"
 
-ruby "3.0.0"
+ruby "3.3.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.6"
 gem 'kaminari'
+gem 'gemini-ai'#, '~> 4.3.0'
 gem 'faker'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]

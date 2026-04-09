@@ -1,9 +1,15 @@
 class ConducteursController < ApplicationController
-  before_action :set_conducteur, only: %i[ show edit update destroy editformlines]
+  before_action :set_conducteur, only: %i[ show edit update destroy editformlines star ingredients mixer_ingredients]
 
   # GET /conducteurs or /conducteurs.json
   def index
     @conducteurs = Conducteur.all.order(:created_at => :desc).page params[:page]
+  end
+  def ingredients
+  end
+  def mixer_ingredients
+    @conducteur.generate_random_performance!(params[:marker_ids])
+    redirect_to @conducteur
   end
   # app/controllers/conducteurs_controller.rb
   def inspiration_view
@@ -15,6 +21,15 @@ class ConducteursController < ApplicationController
   end
 
   # GET /conducteurs/1 or /conducteurs/1.json
+  def star
+    if @conducteur.starred
+      @conducteur.update(starred: false)
+    else
+      @conducteur.update(starred: true)
+
+    end
+    render json: {on: (@conducteur.starred ? "true" : "false")}
+  end
   def show
     @conducteurline=Conducteurline.new(conducteur_id: @conducteur.id)
   end
@@ -76,6 +91,6 @@ class ConducteursController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def conducteur_params
-      params.require(:conducteur).permit(:title, :fiche_technique_id, :username,:tempo_range, :conducteurlines_attributes => {}, :emotional_marker_ids=>[])
+      params.require(:conducteur).permit(:title, :fiche_technique_id, :username,:tempo_range,:notes, :conducteurlines_attributes => {}, :emotional_marker_ids=>[])
     end
 end

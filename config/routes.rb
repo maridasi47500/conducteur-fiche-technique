@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :stage_themes
   resources :emotional_markers
   # config/routes.rb
   resources :inspiration_resources do
@@ -26,6 +27,9 @@ Rails.application.routes.draw do
   resources :conducteurs do
 
     member do
+      patch "mixer_ingredients"
+      get "ingredients"
+      get "star"
       get "editformlines"
       get :inspiration_view
     end

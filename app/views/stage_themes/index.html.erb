@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Stage themes</h1>
+
+<div id="stage_themes">
+  <% @stage_themes.each do |stage_theme| %>
+    <%= render stage_theme %>
+    <p>
+      <%= link_to "Show this stage theme", stage_theme %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New stage theme", new_stage_theme_path %>

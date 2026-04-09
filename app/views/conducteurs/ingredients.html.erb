@@ -1,0 +1,15 @@
+<%# app/views/conducteurs/new.html.erb %>
+<%= form_with(url: mixer_ingredients_conducteur_path(@conducteur), model: @conducteur) do |f| %>
+  <h3>Choisissez les ingrédients de votre Intelligence Artistique :</h3>
+  
+  <div class="checkbox-grid">
+    <% StageTheme.all.each do |marker| %>
+      <div class="item">
+        <%= check_box_tag "marker_ids[]", marker.id, id: "marker#{marker.id}" %>
+        <%= label_tag "marker_ids[]", marker.name, for: "marker#{marker.id}" %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= f.submit "Générer le Conducteur Aléatoire" %>
+<% end %>

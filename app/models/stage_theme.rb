@@ -1,0 +1,2 @@
+class StageTheme < ApplicationRecord
+end

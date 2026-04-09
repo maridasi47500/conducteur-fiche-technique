@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @stage_theme %>
+
+<div>
+  <%= link_to "Edit this stage theme", edit_stage_theme_path(@stage_theme) %> |
+  <%= link_to "Back to stage themes", stage_themes_path %>
+
+  <%= button_to "Destroy this stage theme", @stage_theme, method: :delete %>
+</div>

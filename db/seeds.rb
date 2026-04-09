@@ -82,10 +82,20 @@ InspirationResource.find_or_create_by!(
 )
 # db/seeds.rb — remplir avec VOS données, pas juste du hasard
 Conducteur.create!(
-  name: "Les Vagues",
+  title: "Les Vagues",
   tempo_range: "60-80 bpm",
-  notes: "Mouvement comme l'océan. Mains larges, respirées.",
-  style: "Impressionniste",
-  emotional_markers: ["fluide", "triste-beau", "sans direction"]
+  notes: "Mouvement comme l'océan. Mains larges, respirées."
+  #style: Style.find_or_create_by(name: "Impressionniste")
 )
 # × 20-30 de VOS conducteurs, choisis émotionnellement
+# db/seeds.rb
+themes = [
+  "Conducting Technique", "Gesture & Body Language",
+  "Music Theory", "Music History", "Emotion in Music", "Rhythm & Tempo",
+  "Dance & Movement", "Choreography", "Performance Art",
+  "Stage Lighting", "Stage Design", "Sound Engineering", "Projection & Video",
+  "Visual Design", "Color & Composition", "Photography & Cinematography",
+  "Storytelling", "Emotion & Psychology", "Audience Engagement"
+]
+
+themes.each { |t| StageTheme.find_or_create_by(name: t) }
