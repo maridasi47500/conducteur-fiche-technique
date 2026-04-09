@@ -79,7 +79,6 @@ class MonProjetArtistique
         )
       end
     end
-end
   
   end
 
