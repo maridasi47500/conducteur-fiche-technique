@@ -9,9 +9,10 @@ Au lieu de configurer manuellement chaque projecteur à chaque fois, vous appliq
 </p>
 <%= form_with(url: generateconducteur_sequence_templates_path) do |f| %>
   <h3>Par exemple Choisissez les danseur-ses/acteur-ices/musicien-nes de votre Intelligence Artistique :</h3>
+<p>attention avant d'utiliser ce formulaire remplir des options d'ambiance <%=link_to "ici", ambiance_options_path%></p>
 
   <div class="checkbox-grid">
-    <% ["Tous","Danseur/se","Chanteur/se","Musicien/ne","Acteur/ce"].each_with_index do |marker| %>
+    <% SequenceTemplate.where(target_talent: ["Tous","Danseur/se","Chanteur/se","Musicien/ne","Acteur/ce"]).pluck(:target_talent).uniq.each_with_index do |marker| %>
       <div class="item">
         <%= check_box_tag "marker_ids[]", marker, id: "marker#{marker.parameterize}" %>
         <%= label_tag "marker_ids[]", marker, for: "marker#{marker.parameterize}" %>
@@ -21,10 +22,10 @@ Au lieu de configurer manuellement chaque projecteur à chaque fois, vous appliq
   <h3>Choisissez le style de musique votre Intelligence Artistique :</h3>
 
   <div class="checkbox-grid">
-    <% Style.all.each do |marker| %>
+    <% Style.all.left_joins(:sequence_templates).group("styles.id").having("count(sequence_templates.id) > 0").each do |marker| %>
       <div class="item">
-        <%= radio_button_tag "style_ids[]", marker.id, id: "style#{marker.id}" %>
-        <%= label_tag "style_ids[]", marker.name, for: "style#{marker.id}" %>
+        <%= radio_button_tag "style_id", marker.id, id: "style#{marker.id}" %>
+        <%= label_tag "style_id", marker.name, for: "style#{marker.id}" %>
       </div>
     <% end %>
   </div>

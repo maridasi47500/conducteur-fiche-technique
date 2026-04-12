@@ -4,11 +4,15 @@ class SequenceTemplatesController < ApplicationController
   # GET /sequence_templates or /sequence_templates.json
   def newconducteur
   end
-  def generatesequencetemplate
+  def generateconducteur
     # --- ÉTAPE 4 : Créer le Conducteur (SequenceTemplates & AmbianceOptions) ---
+
+    mystyle=style=Style.find(params[:style_id])
+    fiche=FicheTechnique.create(name_event: "Projet #{mystyle.name}", date: Date.today, eleve_responsable: "eleve #{mystyle.name}", professeur_referent: "professeur #{mystyle.name}", notes_complementaires: "yeah")
+    projet=ProjetArtistique.create(title: "Projet #{mystyle.name}")
     conducteur = Conducteur.create!(fiche_technique: fiche, title: "Conducteur #{projet.title}")
     projet.update(conducteur: conducteur)
-    ["Tous","Danseur/se","Chanteur/se","Musicien/ne","Acteur/ce"].each do |metier| 
+    params[:marker_ids].each do |metier| 
       # 1. On pioche UNE intro au hasard parmi les intros possibles
       intro = SequenceTemplate.where(style: style, phase: "intro",target_talent: metier).sample
       
@@ -30,12 +34,14 @@ class SequenceTemplatesController < ApplicationController
           conducteur: conducteur,
           ordre: index + 1,
           sequenceaction: temp.label,
+          interpretes: metier,
           lumieres_ambiante: style.ambiance_options.where(category: "lumieres").sample&.value || "blanc",
           machine_brouillard: style.ambiance_options.where(category: "machine_brouillard").sample&.value || "non",
           duree: "00:02:00"
         )
       end
     end
+    redirect_to conducteur
 
   end
   def index

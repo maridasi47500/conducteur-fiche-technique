@@ -11,4 +11,11 @@ class DirectiveArtistique < ApplicationRecord
       notes_technicien: "[#{stage_theme.name}] - #{self.default_notes_technicien}"
     }
   end
+def maduree
+x=read_attribute(:default_duree)
+("%02d" % x.hour+":"+ "%02d" % x.min)
+rescue
+"00:00"
+end
+
 end

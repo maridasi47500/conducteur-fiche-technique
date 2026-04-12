@@ -14,7 +14,7 @@
   <div>
     <%= form.label :phase, "Moment du spectacle", style: "display: block" %>
     <%# On affiche le texte mais on stocke 1, 2 ou 3 pour le tri SQL %>
-    <%= form.select :phase, [["1 - Début (Intro)", "1"], ["2 - Milieu (Body)", "2"], ["3 - Fin (Outro)", "3"]] %>
+    <%= form.select :phase, [["1 - Début (Intro)", "intro"], ["2 - Milieu (Body)", "body"], ["3 - Fin (Outro)", "outro"]] %>
   </div>
 
   <div>

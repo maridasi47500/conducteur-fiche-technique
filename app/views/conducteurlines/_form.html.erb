@@ -42,11 +42,16 @@
   <td>
     <%= form.label :lumieres_ambiante, "lumiere ambiante (noir total, rouge, violet, jaune, mi-scene eclairee couleur, blanc doux, blanc chaud, toutes couleurs, salle rallumée)", style: "display: block" %>
     <%= form.select :lumieres_ambiante, ["", "noir total", "rouge", "violet", "jaune", "mi-scene eclairee couleur", "blanc doux", "blanc chaud", "toutes les couleurs", "salle rallumée"] %>
+<%= form.select :lumieres_ambiante, [
+  ['Classiques', ["blanc chaud", "blanc doux", "salle rallumée", "plein feu"]],
+  ['Couleurs', ["rouge", "violet", "jaune", "ambre", "bleu nuit", "magenta", "lavande", "toutes les couleurs"]],
+  ['Technique/Scène', ["noir total", "mi-scene eclairee couleur", "douche", "contre-jour", "rasants"]]
+], { include_blank: "Choisir une ambiance..." }, { class: "votre-classe-css" } %>
   </td>
 
   <td>
     <%= form.label :lumieres_effet, "effet de lumieres : noir, douche, effet clignotant, intensité, rasant, parled", style: "display: block" %>
-    <%= form.select :lumieres_effet, ["", "noir", "douche", "effet clignotant", "intensité", "rasant", "parled"] %>
+    <%= form.select :lumieres_effet, ["", "scintillement", "fondu au noir", "blackout sec", "noir", "douche", "effet clignotant", "intensité", "rasant", "parled", "stroboscope"] %>
   </td>
 
   <td>

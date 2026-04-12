@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :sequence_templates do
     collection do
       get "newconducteur"
-      patch "generateconducteur"
+      post "generateconducteur"
     end
   end
   resources :projet_artistiques

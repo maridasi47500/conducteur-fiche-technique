@@ -21,15 +21,52 @@
     <%= form.select :stage_theme_id, StageTheme.all.collect{|g|[g.name, g.id]} %>
   </div>
 
-  <div>
-    <%= form.label :default_lumieres_ambiante, style: "display: block" %>
-    <%= form.text_field :default_lumieres_ambiante %>
-  </div>
+<div>
+  <%= form.label :default_lumieres_ambiante, "Ambiance Lumineuse par Défaut", style: "display: block" %>
+  <%= form.select :default_lumieres_ambiante, [
+    ["--- États Standard ---", ""],
+    ["Noir Total (Blackout)", "noir_total"],
+    ["Plein Feu (Wash Blanc)", "plein_feu"],
+    ["Salle Rallumée (Public)", "salle_rallumee"],
+    ["Demi-Salle (Accueil)", "demi_salle"],
+    ["--- Couleurs Chaudes ---", ""],
+    ["Blanc Chaud", "blanc_chaud"],
+    ["Ambre Doré", "ambre"],
+    ["Rouge Sang", "rouge"],
+    ["Rose / Magenta", "magenta"],
+    ["Jaune Soleil", "jaune"],
+    ["--- Couleurs Froides ---", ""],
+    ["Blanc Doux / Froid", "blanc_doux"],
+    ["Bleu Nuit", "bleu_nuit"],
+    ["Bleu Cyan", "cyan"],
+    ["Violet / Lavande", "violet"],
+    ["Vert Émeraude", "vert"],
+    ["--- Mélanges ---", ""],
+    ["Toutes les couleurs (Arc-en-ciel)", "multi_couleurs"],
+    ["Mi-scène éclairée (Couleur)", "mi_scene_couleur"]
+  ], {}, { style: "width: 100%; padding: 5px;" } %>
+</div>
 
-  <div>
-    <%= form.label :default_lumieres_effet, style: "display: block" %>
-    <%= form.text_field :default_lumieres_effet %>
-  </div>
+<div>
+  <%= form.label :default_lumieres_effet, "Effet Lumineux par Défaut", style: "display: block" %>
+  <%= form.select :default_lumieres_effet, [
+    ["Aucun effet", "aucun"],
+    ["--- Mouvements ---", ""],
+    ["Stroboscope lent", "strobo_lent"],
+    ["Stroboscope rapide", "strobo_rapide"],
+    ["Poursuite (Suivi)", "poursuite"],
+    ["Scintillement (Effet bougie)", "scintillement"],
+    ["Balayage (Scan)", "balayage"],
+    ["--- Transitions ---", ""],
+    ["Fondu enchaîné lent", "fade_lent"],
+    ["Coupure sèche (Cut)", "cut"],
+    ["--- Machines ---", ""],
+    ["Brouillard léger (Haze)", "brouillard"],
+    ["Fumée épaisse (Fog)", "fumee"],
+    ["Étincelles (Sparkular)", "etincelles"],
+    ["Bulles", "bulles"]
+  ], {}, { style: "width: 100%; padding: 5px;" } %>
+</div>
 
   <div>
     <%= form.label :default_videoprojection, style: "display: block" %>
@@ -53,7 +90,7 @@
 
   <div>
     <%= form.label :default_duree, style: "display: block" %>
-    <%= form.time_field :default_duree %>
+    <%= form.time_field :default_duree, value: directive_artistique.maduree %>
   </div>
 
   <div>

@@ -95,7 +95,7 @@ SequenceTemplate.create!(
   style: rock,
   label: "Entrée fracassante",
   phase: "intro",
-  target_talent: "tous",
+  target_talent: "Tous",
   suggested_light: "stroboscope",
   intensity: "100%"
 )
@@ -104,7 +104,7 @@ SequenceTemplate.create!(
   style: rock,
   label: "Solo Guitare",
   phase: "body",
-  target_talent: "musicien",
+  target_talent: "Musicien/ne",
   suggested_light: "douche",
   intensity: "80%"
 )
@@ -114,7 +114,7 @@ SequenceTemplate.create!(
   style: jazz,
   label: "Ambiance Club",
   phase: "body",
-  target_talent: "tous",
+  target_talent: "Tous",
   suggested_light: "bleu nuit",
   intensity: "40%"
 )
@@ -123,7 +123,7 @@ SequenceTemplate.create!(
   style: jazz,
   label: "Final Doux",
   phase: "outro",
-  target_talent: "tous",
+  target_talent: "Tous",
   suggested_light: "blanc chaud",
   intensity: "20%"
 )
