@@ -1,6 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Directive artistiques</h1>
+<p>
+La Directive Artistique (modélisée ici par ta table DirectivesArtistiques) est le "cerveau" créatif de ton application. Elle sert à transformer un concept abstrait (ex: "Ombres décalées") en une configuration technique concrète et automatisée.
+
+Voici une explication structurée de son rôle et de son fonctionnement dans ton code :
+1. À quoi sert la Directive Artistique ?
+
+C'est un modèle de configuration (Template). Au lieu de remplir manuellement chaque champ (son, lumière, vidéo) pour chaque scène, l'utilisateur choisit une intention artistique, et la directive remplit le reste.
+
+    Standardisation : Elle garantit que l'effet "Ombres décalées" sera le même, peu importe qui remplit le conducteur.
+
+    Gain de temps : Elle pré-remplit les réglages complexes (ex: la vidéoprojection en "silhouette différée").
+
+    Communication : Elle contient la Default notes technicien, ce qui permet de transmettre instantanément l'intention au régisseur (ex: "L'ombre doit précéder l'acteur").
+
+
+</p>
 
 <div id="directive_artistiques">
   <% @directive_artistiques.each do |directive_artistique| %>
@@ -12,3 +28,44 @@
 </div>
 
 <%= link_to "New directive artistique", new_directive_artistique_path %>
+<p>
+comment cette "recette" artistique est utilisée pour cuisiner ton conducteur :
+
+Ce qui se passe techniquement :
+Si l'utilisateur sélectionne "Ombres décalées", ton application ne crée pas juste un mot, elle injecte dans la base de données :
+
+    Lumière : rasant
+
+    Vidéo : silhouette différée
+
+    Note : L'ombre doit précéder l'acteur.
+
+3. Comment la compléter pour qu'elle soit efficace ?
+
+Pour que tes directives soient vraiment utiles, voici les champs clés à bien renseigner :
+
+    Name : Le titre évocateur pour l'artiste (ex: "Tempête", "Intimité", "Chaos").
+
+    Stage Theme : Pour trier tes directives (Lumière, Son, Global).
+
+    Default Videoprojection : Indispensable pour la Guyane ou les spectacles visuels, permet de définir si on projette sur un écran, sur le sol ou sur les corps.
+
+    Default Sequenceaction : Tu peux y mettre une description par défaut du mouvement attendu (ex: "Entrée lente par le fond").
+
+4. Exemple d'utilisation concrète
+
+Imaginons un spectacle de danse en Guyane utilisant le thème "Forêt Nocturne" :
+
+    Nom : Forêt Nocturne
+
+    Lumière ambiante : bleu nuit
+
+    Lumière effet : scintillement (pour simuler des lucioles)
+
+    Notes technicien : "Pas de lumière directe sur les visages, ambiance tamisée."
+
+En un clic, ton script generate_advanced_conductor génère une ligne technique complète sans que l'utilisateur n'ait à connaître les termes techniques de régie.
+En résumé
+
+La Directive Artistique est le dictionnaire qui traduit le langage de l'Artiste en langage pour le Technicien. C'est elle qui donne de l'intelligence et de la rapidité à ton générateur de conducteur.
+</p>
