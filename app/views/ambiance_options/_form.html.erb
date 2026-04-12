@@ -13,7 +13,7 @@
 
   <div>
     <%= form.label :style_id, style: "display: block" %>
-    <%= form.text_field :style_id %>
+    <%= form.select :style_id, Style.all.collect{|h|[h.name, h.id]} %>
   </div>
 
   <div>
@@ -22,7 +22,7 @@
   </div>
 
   <div>
-    <%= form.label :value, style: "display: block" %>
+    <%= form.label :value, "Valeur, exemple de valeur pour machine à brouillard: oui - continu, oui - 10 sec, ou non, et lumieres : blanc chaud, jaune, rouge, vert, bleu, stroboscope, rasant, parled, etc.", style: "display: block" %>
     <%= form.text_field :value %>
   </div>
 

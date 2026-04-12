@@ -1,6 +1,29 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Emotional markers</h1>
+<p>
+la table Emotional Markers sert de "méta-données émotionnelles". Contrairement aux données techniques (comme le choix d'un projecteur ou d'une machine à fumée), elle permet de définir l'intention artistique ou le ressenti d'un moment précis du spectacle.
+
+Voici comment l'expliquer et comment l'exploiter :
+1. À quoi sert cette table ?
+
+Le but est de créer un pont entre la technique et l'artistique. Elle sert à :
+
+    Guider les techniciens : Si un régisseur voit le marqueur "Éthéré", il saura qu'il doit privilégier des transitions douces, même si la couleur n'est pas spécifiée.
+
+    Filtrer le contenu : Tu pourrais, par exemple, vouloir afficher tous les moments "Calmes" de ton conducteur pour vérifier l'équilibre du spectacle.
+
+    Automatisation : À terme, tu pourrais décider que le marqueur "Romantique" active automatiquement un préréglage de lumières roses/ambres.
+💡 Suggestions de marqueurs pour ta liste
+
+Pour rendre ton application vraiment complète pour un artiste, voici des groupes d'émotions à ajouter :
+
+    Atmosphère : Éthéré, Spatial, Urbain, Intime.
+
+    Énergie : Explosif, Minimaliste, Crescendo, Statique.
+
+    Sentiment : Nostalgique, Joyeux, Angoissant, Solennel.
+</p>
 
 <div id="emotional_markers">
   <% @emotional_markers.each do |emotional_marker| %>
@@ -12,3 +35,8 @@
 </div>
 
 <%= link_to "New emotional marker", new_emotional_marker_path %>
+<p>
+Question pour ton code :
+Souhaites-tu que ces marqueurs soient globaux pour tout le Conducteur (le spectacle entier), ou veux-tu les lier à chaque ligne du conducteur (ConducteurLine) pour changer d'émotion à chaque morceau ?
+
+</p>
