@@ -25,7 +25,7 @@
 
   <td>
     <strong>son Fichier / Source</strong>
-<%if conducteurline.son.to_s.length > 0 and File.exists?("./public/uploads/"+conducteurline.son)%>
+<%if conducteurline.son.to_s.length > 0 and File.exist?("./public/uploads/"+conducteurline.son)%>
 <%= conducteurline.son%>
     <audio src="/uploads/<%= conducteurline.son %>" controls />
 <%elsif conducteurline.son.to_s.length > 0%>
@@ -49,7 +49,7 @@
 
   <td>
     <strong>Videoprojection:</strong>
-<%if conducteurline.videoprojection.to_s.length > 0 and File.exists?("./public/uploads/"+conducteurline.videoprojection)%>
+<%if conducteurline.videoprojection.to_s.length > 0 and File.exist?("./public/uploads/"+conducteurline.videoprojection)%>
     <img src="/uploads/<%= conducteurline.videoprojection %>" width=200 height=200 />
 <%= conducteurline.videoprojection%>
 <%elsif conducteurline.videoprojection.to_s.length > 0%>

@@ -13,22 +13,22 @@
 
   <div>
     <%= form.label :conducteur_id, style: "display: block" %>
-    <%= form.text_field :conducteur_id %>
+    <%= form.select :conducteur_id, Conducteur.all.collect{|g|[g.title, g.id]} %>
   </div>
 
   <div>
-    <%= form.label :analysis, style: "display: block" %>
-    <%= form.text_field :analysis %>
+    <%= form.label :analysis, "machine analysis", style: "display: block" %>
+    <%= form.text_area :analysis, placeholder: "analyse de la machine, que dit la machine?", style: "width:100%;height:100px;" %>
   </div>
 
   <div>
-    <%= form.label :response, style: "display: block" %>
-    <%= form.text_field :response %>
+    <%= form.label :response, "human response", style: "display: block" %>
+    <%= form.text_area :response, style: "width:100%;height:100px;" %>
   </div>
 
   <div>
-    <%= form.label :interpretation, style: "display: block" %>
-    <%= form.text_field :interpretation %>
+    <%= form.label :interpretation, "human interpretation", style: "display: block" %>
+    <%= form.text_area :interpretation, placeholder: "que dit la machine qu'en pensez vous? êtes vous d'accord?", style: "width:100%;height:100px;" %>
   </div>
 
   <div>

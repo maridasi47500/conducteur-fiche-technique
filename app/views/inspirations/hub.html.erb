@@ -15,15 +15,19 @@
     <p>Un click = une possibilité. Laissez le hasard vous parler.</p>
     
     <div class="trigger-buttons">
-      <button href="<%=emotional_marker_path(EmotionalMarker.all.sample)%>" id="random-emotion-btn" class="inspiration-btn emotion">
+      <form action="<%=emotional_marker_path(EmotionalMarker.all.sample)%>">
+<button type="submit" id="random-emotion-btn" class="inspiration-btn emotion">
         Émotion Aléatoire
       </button>
-      <button href="<%=conducteur_path(Conducteur.all.sample)%>" id="random-conductor-btn" class="inspiration-btn conductor">
+</form>
+      <form action="<%=conducteur_path(Conducteur.all.sample)%>"><button type="submit" id="random-conductor-btn" class="inspiration-btn conductor">
         Conducteur Mystère
       </button>
-      <button id="random-technique-btn" class="inspiration-btn technique">
+</form>
+      <form action="<%=[sequence_templates_path(SequenceTemplate.all.sample)].sample%>"><button type="submit" id="random-conductor-btn" class="inspiration-btn conductor">
         Technique Inattendue
       </button>
+</form>
     </div>
 
     <!-- Display Random Trigger -->
@@ -66,9 +70,10 @@
     <h2>📖 Mon Carnet d'Inspiration</h2>
     <p>Vos pensées, vos doutes, vos découvertes. Ceci est votre espace.</p>
     
-    <form id="notebook-form" class="notebook-entry-form">
+    <form id="notebook-form" class="notebook-entry-form" action="/artistic_notes" method="post">
       <textarea 
         id="notebook-entry"
+        name="artistic_note[content]"
         placeholder="Que ressentez-vous en ce moment ?&#10;Qu'est-ce que la machine ne comprend pas ?&#10;Quelles émotions voulez-vous créer ?"
         class="notebook-textarea"
       ></textarea>
@@ -76,11 +81,12 @@
       <div class="notebook-meta">
         <input 
           type="text" 
+        name="artistic_note[title]"
           id="entry-title" 
           placeholder="Donnez un titre à ce moment..." 
           class="entry-title"
         >
-        <button type="submit" class="btn-save-entry">Sauvegarder</button>
+        <input type="submit" class="btn-save-entry" value="Sauvegarder"/>
       </div>
     </form>
 
@@ -97,7 +103,7 @@
     
     <form method="post" action="/share_your_gaps" id="conductor-analysis-form" class="analysis-form">
       <label for="conductor-select">Choisissez un conducteur :</label>
-      <select id="conductor-select" name="share_your_gaps[conducteur_id]" class="conductor-select">
+      <select id="conductor-select" name="share_your_gap[conducteur_id]" class="conductor-select">
         <option value="">-- Sélectionner --</option>
         <% @conducteurs.each do |c| %>
           <option value="<%= c.id %>"><%= c.title %></option>
@@ -112,13 +118,12 @@
       <div id="human-response" class="human-input">
         <label for="human-interpretation">Ce que vous en pensez vraiment :</label>
         <textarea 
-          id="human-interpretation" name="share_your_gaps[interpretation]"
+          id="human-interpretation" name="share_your_gap[interpretation]"
           placeholder="Êtes-vous d'accord ? Qu'est-ce que la machine a raté ?&#10;Qu'est-ce que ce conducteur VOUS fait ressentir ?"
           class="human-textarea"
         ></textarea>
-        <button type="button" class="btn-save-interpretation">
-          Sauvegarder mon interprétation
-        </button>
+        <input type="submit" class="btn-save-interpretation" value="Sauvegarder mon interprétation"/>
+          
       </div>
     </form>
 
@@ -139,7 +144,7 @@
         <input 
           type="text" 
           id="conductor-name" 
-          name="conducteurr[title]" 
+          name="conducteur[title]" 
           placeholder="Ex: Les Vagues, Colère Retenue, Rêve Éveillé"
           class="form-input"
         >
