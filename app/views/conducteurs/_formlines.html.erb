@@ -72,6 +72,18 @@
     <%= f.text_area :notes_technicien %>
   </td>
   <td>
+    <%= f.label :notes_artistique, style: "display: block" %>
+    <%= f.text_area :notes_artistique %>
+  </td>
+  <td>
+    <%= f.label :emotional_marker_id, style: "display: block" %>
+    <%= f.select :emotional_marker_id, EmotionalMarker.all.collect{|f|[f.name, f.id]} %>
+  </td>
+  <td>
+    <%= f.label :creative_notes, style: "display: block" %>
+    <%= f.text_area :creative_notes %>
+  </td>
+  <td>
 
 <%= f.check_box :_destroy %>
     <%= f.label :_destroy, "supprimer cette ligne du conducteur",  style: "display: block" %>

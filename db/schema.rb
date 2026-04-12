@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_09_034930) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_12_221436) do
   create_table "ambiance_options", force: :cascade do |t|
     t.integer "style_id", null: false
     t.string "category"
@@ -18,6 +18,13 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_09_034930) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["style_id"], name: "index_ambiance_options_on_style_id"
+  end
+
+  create_table "artistic_notes", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "conducteurhasmarkers", force: :cascade do |t|
@@ -170,6 +177,15 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_09_034930) do
     t.datetime "updated_at", null: false
     t.integer "style_id", null: false
     t.index ["style_id"], name: "index_sequence_templates_on_style_id"
+  end
+
+  create_table "share_your_gaps", force: :cascade do |t|
+    t.string "conducteur_id"
+    t.string "analysis"
+    t.string "response"
+    t.string "interpretation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stage_themes", force: :cascade do |t|

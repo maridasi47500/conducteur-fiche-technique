@@ -1,0 +1,327 @@
+
+<div class="database-art-explorer">
+  <header class="db-header">
+    <h1>🗄️ La Base de Données Artistique</h1>
+    <p class="subtitle">
+      Quelles colonnes servent la création artistique ?<br>
+      Quelles colonnes servent la traduction technique ?
+    </p>
+  </header>
+
+  <!-- LEGEND -->
+  <section class="legend">
+    <div class="legend-item artistic">
+      <span class="badge artistic-badge">🎨</span>
+      <span>Colonne Artistique (votre création)</span>
+    </div>
+    <div class="legend-item technical">
+      <span class="badge technical-badge">⚙️</span>
+      <span>Colonne Technique (pour le technicien)</span>
+    </div>
+    <div class="legend-item meta">
+      <span class="badge meta-badge">🔗</span>
+      <span>Métadonnée (système)</span>
+    </div>
+  </section>
+
+  <!-- TABLE 1: CONDUCTEURS -->
+  <section class="table-section">
+    <h2>📋 Table: CONDUCTEURS (Vos conducteurs)</h2>
+    <p class="table-description">
+      Chaque conducteur est une interprétation. Mais quelle colonne capture VOTRE vision ?
+    </p>
+    
+    <div class="table-columns">
+      <!-- Artistic Columns -->
+      <div class="column artistic-column">
+        <h3 class="column-title">🎨 Données Artistiques</h3>
+        
+        <div class="column-row">
+          <span class="column-name">notes</span>
+          <span class="column-type">TEXT</span>
+          <p class="column-desc">
+            <strong>Votre ressenti sur ce conducteur.</strong><br>
+            "Mouvement comme l'océan. Mains larges, respirées."<br>
+            "Colère retenue. Pas d'explosion. Juste du tremblement."
+          </p>
+          <div class="column-usage">
+            <button class="view-data-btn" data-table="conducteurs" data-column="notes">
+              Voir mes notes →
+            </button>
+          </div>
+        </div>
+
+        <div class="column-row">
+          <span class="column-name">starred</span>
+          <span class="column-type">BOOLEAN</span>
+          <p class="column-desc">
+            <strong>Marque-pages artistiques.</strong><br>
+            Vous avez trouvé un conducteur qui vous parle ?<br>
+            Mettez-le en favoris.
+          </p>
+          <div class="column-usage">
+            <button class="view-data-btn" data-table="conducteurs" data-column="starred">
+              Voir mes favoris →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Columns -->
+      <div class="column technical-column">
+        <h3 class="column-title">⚙️ Données Techniques</h3>
+        
+        <div class="column-row">
+          <span class="column-name">title</span>
+          <span class="column-type">STRING</span>
+          <p class="column-desc">Nom du conducteur (ex: "Les Vagues")</p>
+        </div>
+
+        <div class="column-row">
+          <span class="column-name">tempo_range</span>
+          <span class="column-type">STRING</span>
+          <p class="column-desc">BPM technique (ex: "60-80 bpm")</p>
+        </div>
+
+        <div class="column-row">
+          <span class="column-name">username</span>
+          <span class="column-type">STRING</span>
+          <p class="column-desc">Qui a créé ce conducteur</p>
+        </div>
+      </div>
+
+      <!-- Meta -->
+      <div class="column meta-column">
+        <h3 class="column-title">🔗 Métadonnées</h3>
+        
+        <div class="column-row">
+          <span class="column-name">fiche_technique_id</span>
+          <p class="column-desc">Lien vers la fiche technique</p>
+        </div>
+
+        <div class="column-row">
+          <span class="column-name">created_at / updated_at</span>
+          <p class="column-desc">Quand vous l'avez créé</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE 2: CONDUCTEURLINES (The Gap!) -->
+  <section class="table-section warning">
+    <h2>⚠️ Table: CONDUCTEURLINES (Le Problème!)</h2>
+    <p class="table-description">
+      Cette table traduit votre vision en instructions techniques.<br>
+      <strong>MAIS : elle n'a AUCUNE colonne pour capturer votre intention artistique!</strong>
+    </p>
+    
+    <div class="problem-box">
+      <h3>❌ Ce qui manque:</h3>
+      <ul>
+        <li><strong>notes_artistique</strong> — Votre intention émotionnelle pour cette ligne</li>
+        <li><strong>emotional_intent</strong> — Ce que vous VOULEZ que le public resente</li>
+        <li><strong>creative_notes</strong> — Vos doutes, vos questions, votre processus</li>
+      </ul>
+      <button class="btn-add-columns">
+        ➕ Ajouter ces colonnes artistiques
+      </button>
+    </div>
+
+    <div class="table-columns">
+      <!-- Technical Columns (ALL of them!) -->
+      <div class="column technical-column full-width">
+        <h3 class="column-title">⚙️ TOUT EST TECHNIQUE:</h3>
+        
+        <div class="columns-grid">
+          <div class="mini-column">
+            <span>duree</span>
+            <span class="type">TIME</span>
+          </div>
+          <div class="mini-column">
+            <span>sequenceaction</span>
+            <span class="type">STRING</span>
+          </div>
+          <div class="mini-column">
+            <span>interpretes</span>
+            <span class="type">STRING</span>
+          </div>
+          <div class="mini-column">
+            <span>lumieres_ambiante</span>
+            <span class="type">STRING</span>
+          </div>
+          <div class="mini-column">
+            <span>lumieres_effet</span>
+            <span class="type">STRING</span>
+          </div>
+          <div class="mini-column">
+            <span>machine_brouillard</span>
+            <span class="type">STRING</span>
+          </div>
+          <div class="mini-column">
+            <span>videoprojection</span>
+            <span class="type">STRING</span>
+          </div>
+          <div class="mini-column">
+            <span>notes_technicien</span>
+            <span class="type">STRING</span>
+          </div>
+          <div class="mini-column">
+            <span>son</span>
+            <span class="type">STRING</span>
+          </div>
+          <div class="mini-column">
+            <span>ordre</span>
+            <span class="type">STRING</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE 3: EMOTIONAL_MARKERS & CONDUCTEURHASMARKERS -->
+  <section class="table-section">
+    <h2>🎨 Tables: EMOTIONAL_MARKERS + CONDUCTEURHASMARKERS</h2>
+    <p class="table-description">
+      <strong>Cette relation est 100% artistique.</strong><br>
+      Vous avez défini des émotions. Vous les liez à vos conducteurs.<br>
+      Mais où les utilisez-vous ?
+    </p>
+    
+    <div class="emotion-data">
+      <h3>Émotions disponibles:</h3>
+      <div id="emotion-list" class="emotion-grid">
+        <% @emotional_markers.each do |marker| %>
+          <div class="emotion-badge">
+            <%= marker.name %>
+            <span class="usage-count">
+              <% count = Conducteurhasmarker.where(emotional_marker: marker).count %>
+              (<%= count %> conducteurs)
+            </span>
+          </div>
+        <% end %>
+      </div>
+      
+      <button class="btn-edit-emotions">
+        ✏️ Gérer vos émotions
+      </button>
+    </div>
+  </section>
+
+  <!-- TABLE 4: DIRECTIVE_ARTISTIQUES -->
+  <section class="table-section">
+    <h2>📐 Table: DIRECTIVE_ARTISTIQUES</h2>
+    <p class="table-description">
+      Des directives créatives AVANT la traduction technique.<br>
+      Exemple: "Ombres décalées" (l'ombre précède l'acteur)
+    </p>
+    
+    <div class="directives-list">
+      <% @directive_artistiques.each do |directive| %>
+        <div class="directive-card">
+          <h4><%= directive.name %></h4>
+          <p class="theme"><%= directive.stage_theme.name %></p>
+          <p class="instruction">
+            <strong>Instruction artistique:</strong><br>
+            <%= directive.default_notes_technicien %>
+          </p>
+          <button class="btn-use-directive">Utiliser cette directive</button>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <!-- TABLE 5: INSPIRATION_RESOURCES -->
+  <section class="table-section">
+    <h2>📚 Table: INSPIRATION_RESOURCES</h2>
+    <p class="table-description">
+      100% artistique. Ce sont vos sources d'inspiration.<br>
+      Elles devraient être liées à vos conducteurs!
+    </p>
+    
+    <div class="resources-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Ressource</th>
+            <th>Catégorie</th>
+            <th>Lien</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @inspiration_resources.each do |resource| %>
+            <tr>
+              <td><strong><%= resource.title %></strong></td>
+              <td><span class="resource-category"><%= resource.category %></span></td>
+              <td><a href="<%= resource.url %>" target="_blank">Voir →</a></td>
+              <td>
+                <button class="btn-link-resource" data-resource-id="<%= resource.id %>">
+                  Lier à un conducteur
+                </button>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- VISUALIZATION: THE GAP -->
+  <section class="the-gap-section">
+    <h2>🔄 Visualisation: L'écart entre art et technique</h2>
+    
+    <div class="gap-visualization">
+      <div class="gap-stage">
+        <h3>Avant (sans bases de données artistiques)</h3>
+        <div class="flow before">
+          <div class="step feeling">Votre ressenti</div>
+          <div class="arrow">→</div>
+          <div class="step notes">Notes dans un carnet</div>
+          <div class="arrow">→</div>
+          <div class="step translation">Traduction manuelle</div>
+          <div class="arrow">→</div>
+          <div class="step technical">Instructions techniques</div>
+        </div>
+        <p class="problem">❌ Rien ne capture le passage de l'art à la technique</p>
+      </div>
+
+      <div class="gap-stage">
+        <h3>Après (avec colonnes artistiques)</h3>
+        <div class="flow after">
+          <div class="step feeling">Votre ressenti</div>
+          <div class="arrow">→</div>
+          <div class="step notes artistic-highlight">
+            conducteurs.notes<br>
+            <small>(sauvegardé)</small>
+          </div>
+          <div class="arrow">→</div>
+          <div class="step translation artistic-highlight">
+            conducteurlines.notes_artistique<br>
+            <small>(nouvelle colonne)</small>
+          </div>
+          <div class="arrow">→</div>
+          <div class="step technical">Instructions techniques</div>
+        </div>
+        <p class="success">✅ Chaque transformation est documentée</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION -->
+  <section class="cta-section">
+    <h2>📋 Prochaine étape</h2>
+    <p>
+      Vous avez les colonnes artistiques.<br>
+      Vous les utilisez ? Où ?<br>
+      Vous les voyez ? Non.
+    </p>
+    <div class="cta-buttons">
+      <a href="#" class="btn-primary">
+        ✨ Créer une interface pour les colonnes artistiques
+      </a>
+      <a href="#" class="btn-secondary">
+        📝 Ajouter des colonnes manquantes
+      </a>
+    </div>
+  </section>
+</div>
