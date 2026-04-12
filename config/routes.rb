@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  resources :share_your_gaps
+  resources :artistic_notes
   resources :directive_artistiques
   resources :stage_themes
+  get 'inspirations/hub', to: 'inspirations#hub', as: 'inspiration_hub'
   resources :emotional_markers
   # config/routes.rb
   resources :inspiration_resources do

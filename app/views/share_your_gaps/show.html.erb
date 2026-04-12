@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @share_your_gap %>
+
+<div>
+  <%= link_to "Edit this share your gap", edit_share_your_gap_path(@share_your_gap) %> |
+  <%= link_to "Back to share your gaps", share_your_gaps_path %>
+
+  <%= button_to "Destroy this share your gap", @share_your_gap, method: :delete %>
+</div>

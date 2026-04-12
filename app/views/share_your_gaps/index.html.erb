@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Share your gaps</h1>
+
+<div id="share_your_gaps">
+  <% @share_your_gaps.each do |share_your_gap| %>
+    <%= render share_your_gap %>
+    <p>
+      <%= link_to "Show this share your gap", share_your_gap %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New share your gap", new_share_your_gap_path %>

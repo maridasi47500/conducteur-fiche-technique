@@ -1,0 +1,2 @@
+class ArtisticNote < ApplicationRecord
+end

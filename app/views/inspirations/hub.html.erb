@@ -1,0 +1,224 @@
+<div class="inspiration-hub">
+  <!-- Header: The Artistic Question -->
+  <header class="artistic-manifesto">
+    <h1>🎭 I.A. — Intelligence Artistique</h1>
+    <p class="subtitle">
+      En cette ère de numérisation totale, peut-on utiliser la machine 
+      pour libérer la vraie création ?<br><br>
+      <strong>Ici, la machine sert l'artiste. L'artiste décide.</strong>
+    </p>
+  </header>
+
+  <!-- Section 1: Random Inspiration Trigger -->
+  <section class="inspiration-trigger">
+    <h2>✨ Déclenchez votre inspiration</h2>
+    <p>Un click = une possibilité. Laissez le hasard vous parler.</p>
+    
+    <div class="trigger-buttons">
+      <button href="<%=emotional_marker_path(EmotionalMarker.all.sample)%>" id="random-emotion-btn" class="inspiration-btn emotion">
+        Émotion Aléatoire
+      </button>
+      <button href="<%=conducteur_path(Conducteur.all.sample)%>" id="random-conductor-btn" class="inspiration-btn conductor">
+        Conducteur Mystère
+      </button>
+      <button id="random-technique-btn" class="inspiration-btn technique">
+        Technique Inattendue
+      </button>
+    </div>
+
+    <!-- Display Random Trigger -->
+    <div id="trigger-display" class="trigger-result hidden">
+      <div class="trigger-card">
+        <h3 id="trigger-title"></h3>
+        <p id="trigger-content"></p>
+        <div class="trigger-action">
+          <a href="#" id="create-from-trigger" class="btn-primary">
+            Créer à partir de ça →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Research Library (Your Resources) -->
+  <section class="research-library">
+    <h2>📚 Ressources d'Inspiration</h2>
+    <p>Lisez, regardez, écoutez. Laissez ces sources nourrir vos idées.</p>
+    
+    <div class="resources-grid">
+      <% @inspiration_resources.each do |resource| %>
+        <div class="resource-card" data-category="<%= resource.category %>">
+          <h3><%= resource.title %></h3>
+          <p class="category-badge"><%= resource.category %></p>
+          <a href="<%= resource.url %>" target="_blank" class="resource-link">
+            Découvrir →
+          </a>
+          <button class="btn-notebook" data-resource-id="<%= resource.id %>">
+            📝 Ajouter à mon carnet
+          </button>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <!-- Section 3: Your Notebook (Where YOU Write) -->
+  <section class="artistic-notebook">
+    <h2>📖 Mon Carnet d'Inspiration</h2>
+    <p>Vos pensées, vos doutes, vos découvertes. Ceci est votre espace.</p>
+    
+    <form id="notebook-form" class="notebook-entry-form">
+      <textarea 
+        id="notebook-entry"
+        placeholder="Que ressentez-vous en ce moment ?&#10;Qu'est-ce que la machine ne comprend pas ?&#10;Quelles émotions voulez-vous créer ?"
+        class="notebook-textarea"
+      ></textarea>
+      
+      <div class="notebook-meta">
+        <input 
+          type="text" 
+          id="entry-title" 
+          placeholder="Donnez un titre à ce moment..." 
+          class="entry-title"
+        >
+        <button type="submit" class="btn-save-entry">Sauvegarder</button>
+      </div>
+    </form>
+
+    <!-- Display Saved Entries -->
+    <div id="notebook-entries" class="notebook-display">
+      <!-- JavaScript populates this -->
+    </div>
+  </section>
+
+  <!-- Section 4: The Gap Between Human & Machine -->
+  <section class="human-vs-machine">
+    <h2>⚙️ vs 🎨 — Voir l'écart</h2>
+    <p>Que dit la machine ? Qu'en pensez-vous ?</p>
+    
+    <form method="post" action="/share_your_gaps" id="conductor-analysis-form" class="analysis-form">
+      <label for="conductor-select">Choisissez un conducteur :</label>
+      <select id="conductor-select" name="share_your_gaps[conducteur_id]" class="conductor-select">
+        <option value="">-- Sélectionner --</option>
+        <% @conducteurs.each do |c| %>
+          <option value="<%= c.id %>"><%= c.title %></option>
+        <% end %>
+      </select>
+
+      <div id="machine-analysis" class="analysis-display hidden">
+        <h3>Ce que la machine voit :</h3>
+        <div id="machine-output" class="machine-text"></div>
+      </div>
+
+      <div id="human-response" class="human-input">
+        <label for="human-interpretation">Ce que vous en pensez vraiment :</label>
+        <textarea 
+          id="human-interpretation" name="share_your_gaps[interpretation]"
+          placeholder="Êtes-vous d'accord ? Qu'est-ce que la machine a raté ?&#10;Qu'est-ce que ce conducteur VOUS fait ressentir ?"
+          class="human-textarea"
+        ></textarea>
+        <button type="button" class="btn-save-interpretation">
+          Sauvegarder mon interprétation
+        </button>
+      </div>
+    </form>
+
+    <!-- Display Interpretations -->
+    <div id="interpretations-display" class="interpretations">
+      <!-- JavaScript populates -->
+    </div>
+  </section>
+
+  <!-- Section 5: Create New Conductor -->
+  <section class="create-conductor">
+    <h2>✏️ Créer un nouveau conducteur</h2>
+    <p>Transformez vos sentiments en instructions techniques.</p>
+    
+    <form id="new-conductor-form" method="post" action="/conducteurs" class="conductor-creation-form">
+      <div class="form-group">
+        <label>Le nom émotionnel (pas technique) :</label>
+        <input 
+          type="text" 
+          id="conductor-name" 
+          name="conducteurr[title]" 
+          placeholder="Ex: Les Vagues, Colère Retenue, Rêve Éveillé"
+          class="form-input"
+        >
+        <small>C'est pour VOUS, pas pour le programme.</small>
+      </div>
+
+      <div class="form-group">
+        <label>Décrivez ce que vous ressentez :</label>
+        <textarea 
+          id="conductor-feeling"
+          name="conducteur[notes]" 
+          placeholder="Ce conducteur doit donner au public l'impression que...&#10;Décrivez l'émotion, pas la technique."
+          class="form-textarea"
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Tempo approximatif (BPM) :</label>
+        <input 
+          type="number" 
+          name="conducteur[tempo_range]" 
+          id="conductor-tempo" 
+          placeholder="60-120"
+          class="form-input"
+        >
+      </div>
+
+      <button type="submit" class="btn-create-conductor">
+        → Créer & Traduire en Fiche Technique
+      </button>
+    </form>
+  </section>
+
+  <!-- Section 6: Your Artistic Journey (Progress) -->
+  <section class="artistic-journey">
+    <h2>🎼 Votre Parcours Artistique</h2>
+    <p>Combien de créations ? Quelle a été votre progression émotionnelle ?</p>
+    
+    <div class="journey-stats">
+      <div class="stat-card">
+        <span class="stat-number" id="total-conducteurs">0</span>
+        <span class="stat-label">Conducteurs créés</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="total-emotions">0</span>
+        <span class="stat-label">Émotions explorées</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="total-insights">0</span>
+        <span class="stat-label">Insights capturées</span>
+      </div>
+    </div>
+
+    <!-- Timeline of creations -->
+    <div id="creation-timeline" class="timeline">
+      <!-- JavaScript populates -->
+    </div>
+  </section>
+
+  <!-- Section 7: The Philosophical Core -->
+  <section class="philosophy">
+    <h2>💭 Pourquoi c'est important</h2>
+    <div class="philosophy-text">
+      <p>
+        <strong>La machine gère :</strong> Les données, les structures, 
+        les suggestions, les patterns répétitifs.
+      </p>
+      <p>
+        <strong>Vous gérez :</strong> Le sens, l'émotion, l'intention, 
+        la rébellion contre les patterns.
+      </p>
+      <p>
+        C'est en utilisant la machine pour automatiser la drudgerie 
+        que vous vous libérez pour créer.
+      </p>
+      <p style="color: #ff6b6b; font-weight: bold;">
+        Ce site n'est pas un outil pour artistes. 
+        C'est un manifeste que vous habitez.
+      </p>
+    </div>
+  </section>
+</div>
