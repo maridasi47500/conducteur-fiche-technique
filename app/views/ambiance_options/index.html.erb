@@ -2,6 +2,47 @@
 
 <h1>Ambiance options</h1>
 
+<p>Pour expliquer comment remplir ces options d'ambiance de manière claire (que ce soit pour un utilisateur final ou un technicien), il est préférable de structurer l'explication par Style Musical. Cela permet de comprendre que l'ambiance n'est pas choisie au hasard, mais qu'elle doit correspondre à l'énergie du morceau.
+<%= link_to "New ambiance option", new_ambiance_option_path %>
+
+Voici une proposition de guide explicatif :
+💡 Guide : Comment remplir vos options d'ambiance ?
+
+Le formulaire est divisé en trois critères pour créer l'identité visuelle de votre scène. Voici comment les associer :
+1. Choisir le Style (L'intention)
+
+Le Style définit l'atmosphère générale.
+
+    Jazz : Pour une ambiance feutrée, élégante et intimiste.
+
+    Rock : Pour une ambiance dynamique, énergique et contrastée.
+
+2. Choisir la Catégorie (Le matériel)
+
+    Lumières : Définit la couleur ou le type d'éclairage principal.
+
+    Machine à brouillard : Définit la présence de brume pour rendre les faisceaux de lumière visibles.
+
+3. Sélectionner la Valeur (Le réglage)
+
+C'est ici que vous précisez l'effet exact :
+Si le Style est...	Sélectionnez la Valeur...	Pour obtenir...
+
+Jazz	blanc chaud	Une lumière accueillante, type "club de jazz".
+Jazz	bleu nuit	Une ambiance calme et nocturne.
+Jazz	douche	Un faisceau unique centré sur l'artiste (très théâtral).
+Rock	rouge ou jaune	Des couleurs chaudes et agressives qui marquent l'énergie.
+Rock	stroboscope	Un flash rapide pour les moments forts du morceau.
+💨 Gestion du Brouillard
+
+Le brouillard ne se règle pas au hasard :
+
+    Non : Pour une scène parfaitement nette (ex: conférence, acoustique pur).
+
+    Oui - 10 sec : Pour un léger voile qui souligne les lumières sans cacher les artistes.
+
+    Oui - Continu : Pour un effet de concert rock massif où les faisceaux de lumière découpent l'espace.</p>
+
 <div id="ambiance_options">
   <% @ambiance_options.each do |ambiance_option| %>
     <%= render ambiance_option %>
