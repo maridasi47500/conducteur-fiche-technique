@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @interpretation %>
+
+<div>
+  <%= link_to "Edit this interpretation", edit_interpretation_path(@interpretation) %> |
+  <%= link_to "Back to interpretations", interpretations_path %>
+
+  <%= button_to "Destroy this interpretation", @interpretation, method: :delete %>
+</div>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Artistic limits</h1>
+
+<div id="artistic_limits">
+  <% @artistic_limits.each do |artistic_limit| %>
+    <%= render artistic_limit %>
+    <p>
+      <%= link_to "Show this artistic limit", artistic_limit %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New artistic limit", new_artistic_limit_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_12_224157) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_12_235031) do
   create_table "ambiance_options", force: :cascade do |t|
     t.integer "style_id", null: false
     t.string "category"
@@ -20,9 +20,34 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_12_224157) do
     t.index ["style_id"], name: "index_ambiance_options_on_style_id"
   end
 
+  create_table "artistic_limits", force: :cascade do |t|
+    t.integer "conducteur_id"
+    t.string "what_i_want"
+    t.string "why_untranslatable"
+    t.string "contradiction"
+    t.string "emotional_truth"
+    t.string "left_unintentional"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "artistic_notes", force: :cascade do |t|
     t.string "title"
     t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "artistic_processes", force: :cascade do |t|
+    t.integer "conducteur_id"
+    t.string "initial_impulse"
+    t.string "first_attempt"
+    t.string "doubts_questions"
+    t.string "rejected_ideas"
+    t.string "breakthrough"
+    t.string "final_form"
+    t.integer "iteration_count"
+    t.string "what_changed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -107,6 +132,16 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_12_224157) do
     t.string "title"
     t.string "url"
     t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "interpretations", force: :cascade do |t|
+    t.integer "conducteur_id"
+    t.string "machine_analysis"
+    t.string "human_judgment"
+    t.string "the_gap"
+    t.string "artistic_truth"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

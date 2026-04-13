@@ -1,0 +1,47 @@
+<%= form_with(model: artistic_limit) do |form| %>
+  <% if artistic_limit.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(artistic_limit.errors.count, "error") %> prohibited this artistic_limit from being saved:</h2>
+
+      <ul>
+        <% artistic_limit.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :conducteur_id, style: "display: block" %>
+    <%= form.select :conducteur_id, Conducteur.all.collect{|h|[h.title, h.id]} %>
+  </div>
+
+  <div>
+    <%= form.label :what_i_want, "ce que je veux", style: "display: block" %>
+    <%= form.text_area :what_i_want %>
+  </div>
+
+  <div>
+    <%= form.label :why_untranslatable, "pourquoi ça ne peut pas devenir technique", style: "display: block" %>
+    <%= form.text_area :why_untranslatable %>
+  </div>
+
+  <div>
+    <%= form.label :contradiction, style: "display: block" %>
+    <%= form.text_area :contradiction %>
+  </div>
+
+  <div>
+    <%= form.label :emotional_truth, "vérité émotionnelle", style: "display: block" %>
+    <%= form.text_area :emotional_truth %>
+  </div>
+
+  <div>
+    <%= form.label :left_unintentional, "pourquoi tu ne l'as pas résolu?", style: "display: block" %>
+    <%= form.text_area :left_unintentional %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @artistic_limit %>
+
+<div>
+  <%= link_to "Edit this artistic limit", edit_artistic_limit_path(@artistic_limit) %> |
+  <%= link_to "Back to artistic limits", artistic_limits_path %>
+
+  <%= button_to "Destroy this artistic limit", @artistic_limit, method: :delete %>
+</div>

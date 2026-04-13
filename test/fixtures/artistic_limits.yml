@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  conducteur_id: 1
+  what_i_want: MyString
+  why_untranslatable: MyString
+  contradiction: MyString
+  emotional_truth: MyString
+  left_unintentional: MyString
+
+two:
+  conducteur_id: 1
+  what_i_want: MyString
+  why_untranslatable: MyString
+  contradiction: MyString
+  emotional_truth: MyString
+  left_unintentional: MyString

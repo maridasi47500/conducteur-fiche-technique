@@ -1,0 +1,2 @@
+class ArtisticProcess < ApplicationRecord
+end

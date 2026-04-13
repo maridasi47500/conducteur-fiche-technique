@@ -1,0 +1,63 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Artistic processes</h1>
+<p>
+ Idea 2: "The Unfinished" — Capture Your Creative Uncertainty
+
+The concept: Instead of a finished "conductor," create a space for work-in-progress, doubt, contradiction, and transformation.
+
+The database captures:
+
+    What you start with (raw feeling/inspiration)
+    What you question (where you get stuck)
+    What you reject (conductor variations you tried but didn't work)
+    What you finally choose (and why)
+
+
+UI: "Artist's Sketchbook"
+Code
+
+┌─────────────────────────────────────────┐
+│ 📖 MON PROCESSUS CRÉATIF                │
+├─────────────────────────────────────────┤
+│                                         │
+│ 1️⃣ IMPULSION INITIALE (Jour 1)        │
+│   "J'ai entendu une vague. Pas claire." │
+│                                         │
+│ 2️⃣ PREMIÈRE TENTATIVE                 │
+│   Tempo: 70-90 bpm                     │
+│   Lumière: Bleu froid                  │
+│   [❌ Felt wrong]                       │
+│                                         │
+│ 3️⃣ DOUTES                              │
+│   "Est-ce trop rapide?"                 │
+│   "La couleur n'est pas juste"         │
+│   "Qu'est-ce qui manque?"              │
+│                                         │
+│ 4️⃣ IDÉES REJETÉES                     │
+│   ❌ "Ajouter du brouillard" → Non     │
+│   ❌ "Faire plus loud" → Non           │
+│   ❌ "Changer de tonalité" → Non       │
+│                                         │
+│ 5️⃣ PERCÉE (Jour 4)                    │
+│   "Ah! C'est pas une vague ACTIVE.    │
+│    C'est une vague qui s'essouffle!"  │
+│                                         │
+│ 6️⃣ FORME FINALE                       │
+│   [Shows final conducteur]              │
+│                                         │
+│ 📊 TRANSFORMATIONS: 5 versions         │
+│                                         │
+└──────────────────────────────────
+</p>
+
+<div id="artistic_processes">
+  <% @artistic_processes.each do |artistic_process| %>
+    <%= render artistic_process %>
+    <p>
+      <%= link_to "Show this artistic process", artistic_process %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New artistic process", new_artistic_process_path %>

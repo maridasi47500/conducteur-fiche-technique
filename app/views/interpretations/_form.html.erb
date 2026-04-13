@@ -1,0 +1,42 @@
+<%= form_with(model: interpretation) do |form| %>
+  <% if interpretation.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(interpretation.errors.count, "error") %> prohibited this interpretation from being saved:</h2>
+
+      <ul>
+        <% interpretation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :conducteur_id, style: "display: block" %>
+    <%= form.number_field :conducteur_id %>
+  </div>
+
+  <div>
+    <%= form.label :machine_analysis, "what gemini said", style: "display: block" %>
+    <%= form.text_area :machine_analysis, placeholder: "la machine dit : Tempo 60-80 bpm, mouvement fluide" %>
+  </div>
+
+  <div>
+    <%= form.label :human_judgment, "why you think", style: "display: block" %>
+    <%= form.text_area :human_judgment, placeholder: "textarea: votre jugement authentique" %>
+  </div>
+
+  <div>
+    <%= form.label :the_gap, "why they differ", style: "display: block" %>
+    <%= form.text_area :the_gap, placeholder:"auto-generated comparison" %>
+  </div>
+
+  <div>
+    <%= form.label :artistic_truth, "the final word", style: "display: block" %>
+    <%= form.text_area :artistic_truth, placeholder: "your final interpretation" %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :artistic_limits
+  resources :artistic_processes
+  resources :interpretations
   resources :share_your_gaps
   resources :artistic_notes
   resources :directive_artistiques

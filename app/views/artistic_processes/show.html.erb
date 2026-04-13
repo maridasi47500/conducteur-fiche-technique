@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @artistic_process %>
+
+<div>
+  <%= link_to "Edit this artistic process", edit_artistic_process_path(@artistic_process) %> |
+  <%= link_to "Back to artistic processes", artistic_processes_path %>
+
+  <%= button_to "Destroy this artistic process", @artistic_process, method: :delete %>
+</div>

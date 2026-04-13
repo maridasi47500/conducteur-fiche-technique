@@ -1,0 +1,62 @@
+<%= form_with(model: artistic_process) do |form| %>
+  <% if artistic_process.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(artistic_process.errors.count, "error") %> prohibited this artistic_process from being saved:</h2>
+
+      <ul>
+        <% artistic_process.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :conducteur_id, style: "display: block" %>
+    <%= form.select :conducteur_id, Conducteur.all.collect{|f|[f.title, f.id]} %>
+  </div>
+
+  <div>
+    <%= form.label :initial_impulse, "what made you start", style: "display: block" %>
+    <%= form.text_area :initial_impulse %>
+  </div>
+
+  <div>
+    <%= form.label :first_attempt, "your first version", style: "display: block" %>
+    <%= form.text_area :first_attempt %>
+  </div>
+
+  <div>
+    <%= form.label :doubts_questions, "where you got confused", style: "display: block" %>
+    <%= form.text_area :doubts_questions %>
+  </div>
+
+  <div>
+    <%= form.label :rejected_ideas, "idée rejetée: ce que tu as essayé mais NON", style: "display: block" %>
+    <%= form.text_area :rejected_ideas %>
+  </div>
+
+  <div>
+    <%= form.label :breakthrough,"progrès : quand quelque chose a fonctionné", style: "display: block" %>
+    <%= form.text_area :breakthrough %>
+  </div>
+
+  <div>
+    <%= form.label :final_form,"le conducteur final", style: "display: block" %>
+    <%= form.text_area :final_form %>
+  </div>
+
+  <div>
+    <%= form.label :iteration_count, "combien de fois tu as modifié le conducteur", style: "display: block" %>
+    <%= form.number_field :iteration_count %>
+  </div>
+
+  <div>
+    <%= form.label :what_changed, "ce qui a changé : analyse des changements", style: "display: block" %>
+    <%= form.text_area :what_changed %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
