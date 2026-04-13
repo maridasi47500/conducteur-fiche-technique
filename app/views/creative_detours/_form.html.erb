@@ -1,0 +1,52 @@
+<%= form_with(model: creative_detour) do |form| %>
+  <% if creative_detour.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(creative_detour.errors.count, "error") %> prohibited this creative_detour from being saved:</h2>
+
+      <ul>
+        <% creative_detour.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :concept, style: "display: block" %>
+    <%= form.text_field :concept %>
+  </div>
+
+  <div>
+    <%= form.label :action, style: "display: block" %>
+    <%= form.text_field :action %>
+  </div>
+
+  <div>
+    <%= form.label :database_usage, style: "display: block" %>
+    <%= form.text_field :database_usage %>
+  </div>
+
+  <div>
+    <%= form.label :reaction, style: "display: block" %>
+    <%= form.text_field :reaction %>
+  </div>
+
+  <div>
+    <%= form.label :storage_impact, style: "display: block" %>
+    <%= form.text_field :storage_impact %>
+  </div>
+
+  <div>
+    <%= form.label :challenge, style: "display: block" %>
+    <%= form.text_field :challenge %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

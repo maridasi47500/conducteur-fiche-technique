@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_13_021328) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_13_030208) do
   create_table "ambiance_options", force: :cascade do |t|
     t.integer "style_id", null: false
     t.string "category"
@@ -94,6 +94,18 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_13_021328) do
     t.string "tempo_range"
     t.boolean "starred"
     t.string "notes"
+  end
+
+  create_table "creative_detours", force: :cascade do |t|
+    t.string "title"
+    t.text "concept"
+    t.text "action"
+    t.text "database_usage"
+    t.text "reaction"
+    t.text "storage_impact"
+    t.string "challenge"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "directive_artistiques", force: :cascade do |t|

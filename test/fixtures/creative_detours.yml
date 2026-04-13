@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  concept: MyString
+  action: MyString
+  database_usage: MyString
+  reaction: MyString
+  storage_impact: MyString
+  challenge: MyString
+
+two:
+  title: MyString
+  concept: MyString
+  action: MyString
+  database_usage: MyString
+  reaction: MyString
+  storage_impact: MyString
+  challenge: MyString

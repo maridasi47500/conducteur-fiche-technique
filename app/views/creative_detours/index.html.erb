@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Creative detours</h1>
+
+<div id="creative_detours">
+  <% @creative_detours.each do |creative_detour| %>
+    <%= render creative_detour %>
+    <p>
+      <%= link_to "Show this creative detour", creative_detour %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New creative detour", new_creative_detour_path %>

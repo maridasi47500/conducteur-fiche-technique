@@ -122,3 +122,41 @@ DirectiveArtistique.create!([
     default_notes_technicien: "Briser l'harmonie visuelle et sonore."
   }
 ])
+# db/seeds.rb
+
+CreativeDetour.destroy_all # On nettoie avant de générer
+
+detours = [
+  {
+    title: "La Loterie de l'Écart",
+    concept: "Improvisation basée sur une collision de données aléatoires.",
+    action: "Le musicien et le danseur ont 30 secondes pour improviser une scène.",
+    database_usage: "Tirage aléatoire entre ShowTheme (Silence), EmotionalMarker (Colère) et Materiel (Vidéoprojecteur).",
+    reaction: "L'artiste doit incarner une émotion humaine là où l'IA ne verrait qu'une liste de mots.",
+    storage_impact: "On enregistre le ressenti de l'artiste dans la colonne 'the_gap'.",
+    challenge: "Peut-on créer de l'unité avec du chaos informatique ?"
+  },
+  {
+    title: "Le Miroir de l'IA",
+    concept: "Confrontation directe entre la performance et sa réduction mathématique.",
+    action: "Un chanteur interprète une mélodie complexe pendant qu'une analyse froide défile derrière lui.",
+    database_usage: "Remplissage en direct de 'machine_analysis' avec des données brutes (fréquences, décibels).",
+    reaction: "Le chanteur change son interprétation pour rendre l'analyse de l'IA obsolète ou absurde.",
+    storage_impact: "Capture du moment où l'humain 'brise' la logique de calcul.",
+    challenge: "L'émotion est-elle quantifiable ?"
+  },
+  {
+    title: "Le Conducteur Fantôme",
+    concept: "Utiliser les échecs passés pour diriger le présent.",
+    action: "Jouer une scène actuelle en suivant scrupuleusement les ordres d'un projet archivé et raté.",
+    database_usage: "Récupération de 'rejected_ideas' et 'notes_technicien' depuis la table ArtisticProcess.",
+    reaction: "L'artiste répare l'idée du passé grâce à sa maturité artistique actuelle.",
+    storage_impact: "Mise à jour du statut du projet vers 'Transcendé'.",
+    challenge: "La base de données peut-elle avoir une mémoire émotionnelle ?"
+  }
+]
+
+detours.each do |detour_data|
+  CreativeDetour.create!(detour_data)
+  puts "Détour créé : #{detour_data[:title]}"
+end

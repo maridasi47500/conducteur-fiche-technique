@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p> <%= render @creative_detour %>
+<h2>gpt/gemini prompt à essayer pour ce détour creatif:</h2>
+<p>
+<%=@creative_detour.generate_ai_prompt%>
+</p>
+
+<div>
+  <%= link_to "Edit this creative detour", edit_creative_detour_path(@creative_detour) %> |
+  <%= link_to "Back to creative detours", creative_detours_path %>
+
+  <%= button_to "Destroy this creative detour", @creative_detour, method: :delete %>
+</div>
