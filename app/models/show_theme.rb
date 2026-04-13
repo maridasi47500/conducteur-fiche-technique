@@ -1,0 +1,2 @@
+class ShowTheme < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class ThemeSuggestion < ApplicationRecord
+end

@@ -1,0 +1,67 @@
+<p style="color: green"><%= notice %></p>
+<hr> <strong>&#128161; CATALOGUE DE DES NOUVEAUX THEME QUE JE PEUX AJOUTER </strong>
+cliquer sur un lien pour ajouter un nouveau thème dans cette catégorie
+<hr>
+
+<div class="category-grid">
+  <% [
+       ["&#128295;", "Paradoxes Algorithmiques"],
+       ["&#127775;", "Éclats de Conscience"],
+       ["&#127963;", "Archéologie du Futur"],
+       ["&#128065;", "Frontières du Sensible"],
+       ["&#9994;",   "Résistance Poétique"],
+       ["&#128101;", "Identités Multiples"],
+       ["&#9878;",   "Éthique & Algorithme"],
+       ["&#128307;", "Invisibles & Silences"],
+       ["&#128214;", "Mythologies de l'IA"],
+       ["&#129486;", "Corps Connectés"]
+     ].each do |icon, category| %>
+    
+    <p>
+      <%= link_to "#{icon} #{category}".html_safe, new_theme_suggestion_path(category: category) %>
+    </p>
+    
+  <% end %>
+</div>
+<hr>
+<strong>&#127917; THÉMATIQUES CLASSIQUES</strong>
+<hr>
+
+<div class="category-grid">
+  <% [
+       ["&#128214;", "Narratif & Conte"],
+       ["&#127783;", "Atmosphères Naturelles"],
+       ["&#128107;", "Relations Humaines"],
+       ["&#128131;", "États de Corps"],
+       ["&#127907;", "Espaces Urbains"],
+       ["&#128674;", "Voyage & Exil"],
+       ["&#128230;", "Objets & Matières"],
+       ["&#128161;", "Lumières & Ombres"],
+       ["&#9203;",   "Rythmes de Vie"],
+       ["&#128512;", "Émotions de Base"]
+     ].each do |icon, category| %>
+    
+    <p>
+      <%= link_to "#{icon} #{category}".html_safe, new_theme_suggestion_path(category: category) %>
+    </p>
+    
+  <% end %>
+</div>
+
+<hr>
+
+<hr>
+
+<h1>Theme suggestions</h1>
+
+<div id="theme_suggestions">
+  <% @theme_suggestions.each do |theme_suggestion| %>
+    <%= render theme_suggestion %>
+    <p>
+      <%= link_to "Show this theme suggestion", theme_suggestion %>
+    </p>
+  <% end %>
+</div>
+
+
+<%= link_to "New theme suggestion", new_theme_suggestion_path %>

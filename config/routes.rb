@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :theme_suggestions
+  resources :show_themes
   resources :artistic_limits
   resources :artistic_processes
   resources :interpretations

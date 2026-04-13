@@ -1,0 +1,32 @@
+<%= form_with(model: theme_suggestion) do |form| %>
+  <% if theme_suggestion.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(theme_suggestion.errors.count, "error") %> prohibited this theme_suggestion from being saved:</h2>
+
+      <ul>
+        <% theme_suggestion.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.text_field :category, value: params[:category] %>
+  </div>
+
+  <div>
+    <%= form.label :title, "Le titre inspirant", style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description, "le texte qui aide à comprendre de quoi on parle vraiment", style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

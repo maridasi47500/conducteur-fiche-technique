@@ -1,0 +1,42 @@
+<%= form_with(model: show_theme) do |form| %>
+  <% if show_theme.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(show_theme.errors.count, "error") %> prohibited this show_theme from being saved:</h2>
+
+      <ul>
+        <% show_theme.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :projet_artistique_id, style: "display: block" %>
+    <%= form.select :projet_artistique_id, ProjetArtistique.all.collect{|g|[g.title, g.id]} %>
+  </div>
+
+  <div>
+    <%= form.label :title, "Le nom du thème (ex: L'Absence)", style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :philosophical_inquiry, "L'enquête : qu'est-ce qu'on cherche ?", style: "display: block" %>
+    <%= form.text_area :philosophical_inquiry %>
+  </div>
+
+  <div>
+    <%= form.label :emotional_frequency, "La \"vibration\" humaine recherchée", style: "display: block" %>
+    <%= form.text_field :emotional_frequency %>
+  </div>
+
+  <div>
+    <%= form.label :ai_blind_spot, "pourquoi l'IA ne peut pas comprendre ce thème ?", style: "display: block" %>
+    <%= form.text_field :ai_blind_spot %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

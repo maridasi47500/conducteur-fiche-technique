@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_12_235031) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_13_021328) do
   create_table "ambiance_options", force: :cascade do |t|
     t.integer "style_id", null: false
     t.string "category"
@@ -226,6 +226,16 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_12_235031) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "show_themes", force: :cascade do |t|
+    t.integer "projet_artistique_id"
+    t.string "title"
+    t.string "philosophical_inquiry"
+    t.string "emotional_frequency"
+    t.string "ai_blind_spot"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stage_themes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -234,6 +244,14 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_12_235031) do
 
   create_table "styles", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "theme_suggestions", force: :cascade do |t|
+    t.string "category"
+    t.string "title"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

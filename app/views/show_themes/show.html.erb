@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @show_theme %>
+
+<div>
+  <%= link_to "Edit this show theme", edit_show_theme_path(@show_theme) %> |
+  <%= link_to "Back to show themes", show_themes_path %>
+
+  <%= button_to "Destroy this show theme", @show_theme, method: :delete %>
+</div>

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  projet_artistique_id: 1
+  title: MyString
+  philosophical_inquiry: MyString
+  emotional_frequency: MyString
+  ai_blind_spot: MyString
+
+two:
+  projet_artistique_id: 1
+  title: MyString
+  philosophical_inquiry: MyString
+  emotional_frequency: MyString
+  ai_blind_spot: MyString
