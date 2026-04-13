@@ -28,7 +28,7 @@ Le concept de Metier Dependencies (ou "dépendances métier") dans un logiciel d
 
 voila comment les musiciens /acteur, chanteurs, danseur peuvent rentrer , ont un jeu/mouvement et sortent de la scène
 
-Les Sequence Templates (ou modèles de séquences) servent à créer des scénarios prédéfinis de mise en scène. Ils permettent de standardiser et d'automatiser l'ambiance visuelle et technique en fonction des moments forts d'un spectacle ou d'un événement exemple label : entrée phase intro target talent danseur suggested light stroboscope intensity 50%.Directive artistiques
+Les Sequence Templates (ou modèles de séquences) servent à créer des scénarios prédéfinis de mise en scène. Ils permettent de standardiser et d'automatiser l'ambiance visuelle et technique en fonction des moments forts d'un spectacle ou d'un événement. exemple label : entrée phase intro target talent danseur suggested light stroboscope intensity 50%. Phase doit etre 1 fois intro, 1 fois outro, 1 fois body pour 1 target talent. Un target talent peut etre Tous Danseur/se Musicien/ne Acteur/ce Chanteur/se, light peut petre stroboscope , rasant, parled douche, etc. Directive artistiques
 
 La Directive Artistique (modélisée ici par ta table DirectivesArtistiques) est le "cerveau" créatif de ton application. Elle sert à transformer un concept abstrait (ex: "Ombres décalées") en une configuration technique concrète et automatisée.Share your gaps
 
@@ -47,12 +47,41 @@ La beauté réside dans le bug
 pourquoi tu ne l'as pas résolu?Artistic processes
 
 Idea 2: "The Unfinished" — Capture Your Creative Uncertainty The concept: Instead of a finished "conductor," create a space for work-in-progress, doubt, contradiction, and transformation. The database captures: What you start with (raw feeling/inspiration) What you question (where you get stuck) What you reject (conductor variations you tried but didn't work) What you finally choose (and why) UI: "Artist's Sketchbook" Code ┌─────────────────────────────────────────┐ │ 📖 MON PROCESSUS CRÉATIF │ ├─────────────────────────────────────────┤ │ │ │ 1️⃣ IMPULSION INITIALE (Jour 1) │ │ "J'ai entendu une vague. Pas claire." │ │ │ │ 2️⃣ PREMIÈRE TENTATIVE │ │ Tempo: 70-90 bpm │ │ Lumière: Bleu froid │ │ [❌ Felt wrong] │ │ │ │ 3️⃣ DOUTES │ │ "Est-ce trop rapide?" │ │ "La couleur n'est pas juste" │ │ "Qu'est-ce qui manque?" │ │ │ │ 4️⃣ IDÉES REJETÉES │ │ ❌ "Ajouter du brouillard" → Non │ │ ❌ "Faire plus loud" → Non │ │ ❌ "Changer de tonalité" → Non │ │ │ │ 5️⃣ PERCÉE (Jour 4) │ │ "Ah! C'est pas une vague ACTIVE. │ │ C'est une vague qui s'essouffle!" │ │ │ │ 6️⃣ FORME FINALE │ │ [Shows final conducteur] │ │ │ │ 📊 TRANSFORMATIONS: 5 versions │ │ │ Idea 1: "The Interpreter's Doubt" — Human Judgment vs AI Suggestion The concept: Create a system where: The machine generates a conducteur (using your seeds) The machine analyzes what it created using Gemini You (the human) judge if the machine understands its own creation The gap becomes visible — and that gap IS the artwork What it captures: AI says: "This crescendo is intense because dynamics increase" You say: "But it's NOT intense—it's constrained intensity. That's the point." The artwork: The moment where human intuition contradicts machine logic UI: Code ┌──────────────────────────────────────────┐ │ CONDUCTEUR: "Les Vagues" │ ├──────────────────────────────────────────┤ │ │ │ ⚙️ LA MACHINE DIT: │ │ "Tempo 60-80 bpm, mouvement fluide" │ │ │ │ 🎨 VOUS PENSEZ: │ │ [Textarea: Votre jugement authentique] │ │ │ │ 📊 L'ÉCART: │ │ [Auto-generated comparison] │ │ │ │ ✓ VÉRITÉ ARTISTIQUE: │ │ [Your final interpretation] │ │ │ └──────────────────────────────────────────┘ 
+Exemple table inspiration resources db/seed :
+Title:  titre article
 
-Title: pavane for a dead princess
+Url: url d'un article sur le web
 
-Url: https://www.laphil.com/musicdb/pieces/548/pavane-for-a-dead-princess
-
-Category: Music History
+Category: options: Music History   # Conducting & Direction
+    "Conducting Technique",
+    "Gesture & Body Language",
+    
+    # Music & Sound
+    "Music Theory",
+    "Music History",
+    "Emotion in Music",
+    "Rhythm & Tempo",
+    
+    # Performance & Choreography
+    "Dance & Movement",
+    "Choreography",
+    "Performance Art",
+    
+    # Staging & Technical
+    "Stage Lighting",
+    "Stage Design",
+    "Sound Engineering",
+    "Projection & Video",
+    
+    # Visual & Aesthetic
+    "Visual Design",
+    "Color & Composition",
+    "Photography & Cinematography",
+    
+    # Emotional & Philosophical
+    "Storytelling",
+    "Emotion & Psychology",
+    "Audience Engagement"
 
 
       VOICI LE THEME DU PROJET artistique :
@@ -75,6 +104,8 @@ Category: Music History
       CONSIGNE STRICTE : 
       - remplis uniquement la table 'creative_detours'
       - utilise uniquement d'autres tables que  'creative_detours' pour ce détour (dans database usage) (pour éviter les boucles).
+      - remplis plusieurs 'creative_detours' pour au total de tous les creative detour avoir utilisé au moins 1 fois toutes les autres tables dans la colonne database usage et/ou action et/ou storage_impact
+      - tu peux couvrir le minimum de tables jusqu'au maximum de tables dans chaque creative detour, tu peux creer beaucoup de creative detours pour couvrir toutes les tables ou un peu seulement pour couvrir toutes les tables
       - essaye d'utiliser le plus de tables
       - Utilise des données poétiques, pas seulement techniques.
       - rentre les données poétiques dans les colonnes artistiques et les données technique dans les colonnes techniques des tables.
