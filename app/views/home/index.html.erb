@@ -1,0 +1,127 @@
+<h1>Bienvenue dans l’univers artistique & technique</h1>
+
+<p>Cette page présente un aperçu de toutes les tables pour comprendre la structure du projet.</p>
+
+
+
+<!-- etc. pour toutes les tables -->
+
+
+
+
+<%= render partial: "preview", locals: { title: "🎼 conducteurs", desc: "Le conducteur artistique global d’un spectacle.", items: @conducteurs } %>
+<%= render partial: "preview", locals: { title: "🎬 conducteurlines", desc: "Chaque ligne du conducteur : actions, lumières, son, intentions.", items: @conducteurlines } %>
+
+<%= render partial: "preview", locals: { title: "🧠 artistic_notes", desc: "Notes artistiques générales.", items: @artistic_notes } %>
+
+<%= render partial: "preview", locals: { title: "🔍 artistic_processes", desc: "Le processus créatif : impulsion → essais → doutes → percées.", items: @artistic_processes } %>
+<%= render partial: "preview", locals: { title: "🚫 artistic_limits", desc: "Ce que l’artiste veut éviter, ses contradictions, ses limites.", items: @artistic_limits } %>
+
+<%= render partial: "preview", locals: { 
+  title: "💓 emotional_markers", 
+  desc: "Les marqueurs émotionnels utilisés dans les scènes.", 
+  items: @emotional_markers 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🎭 stage_themes", 
+  desc: "Les grands thèmes scéniques.", 
+  items: @stage_themes 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🎛️ directive_artistiques", 
+  desc: "Les réglages artistiques par thème (lumière, son, durée…).", 
+  items: @directive_artistiques 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🎚️ ambiance_options", 
+  desc: "Options d’ambiance selon un style.", 
+  items: @ambiance_options 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🧰 materiels", 
+  desc: "Le matériel scénique (avec zone, puissance, quantité max…).", 
+  items: @materiels 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🔌 metier_dependencies", 
+  desc: "Dépendances entre matériels (ex : un projecteur → un pied).", 
+  items: @metier_dependencies 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "📦 materiel_necessaires", 
+  desc: "Matériel nécessaire pour une fiche technique.", 
+  items: @materiel_necessaires 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🗺️ plan_de_scene_dessins", 
+  desc: "Coordonnées et placement du matériel sur scène.", 
+  items: @plan_de_scene_dessins 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "📄 fiche_techniques", 
+  desc: "Fiches techniques des événements.", 
+  items: @fiche_techniques 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🎨 projet_artistiques", 
+  desc: "Projets artistiques liés à un conducteur + fiche technique.", 
+  items: @projet_artistiques 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🔁 sequence_templates", 
+  desc: "Templates de séquences (phase, lumière, intensité…).", 
+  items: @sequence_templates 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "💡 inspiration_resources", 
+  desc: "Ressources d’inspiration (liens, catégories).", 
+  items: @inspiration_resources 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🌀 creative_detours", 
+  desc: "Détours créatifs : idées, réactions, impact.", 
+  items: @creative_detours 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🧩 interpretations", 
+  desc: "Comparaison analyse machine / jugement humain.", 
+  items: @interpretations 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🧠 share_your_gaps", 
+  desc: "Les écarts perçus entre intention et résultat.", 
+  items: @share_your_gaps 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🌱 theme_suggestions", 
+  desc: "Suggestions de thèmes.", 
+  items: @theme_suggestions 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🗺️ zones", 
+  desc: "Zones de la scène (y_min, y_max).", 
+  items: @zones 
+} %>
+
+<%= render partial: "preview", locals: { 
+  title: "🎭 show_themes", 
+  desc: "Thèmes philosophiques et émotionnels d’un spectacle.", 
+  items: @show_themes 
+} %>
+

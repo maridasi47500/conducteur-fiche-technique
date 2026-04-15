@@ -1,0 +1,14 @@
+<!-- app/views/home/_preview.html.erb -->
+<section class="table-preview">
+  <h2><%= title %></h2>
+  <p><%= desc %></p>
+
+  <ul>
+    <% items.each do |item| %>
+      <li><%= display_name(item) %></li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Voir tout", url_for(controller: title.parameterize.pluralize, action: :index) %>
+</section>
+

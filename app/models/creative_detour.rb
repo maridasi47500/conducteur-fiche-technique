@@ -101,12 +101,19 @@ Category: options: Music History   # Conducting & Direction
       9. dans le commentaire du db/seed laisse moi savoir quel detour artistique tu prends en fonction de la table que tu commences par remplir ou tu commences par piocher, quel est le but du detour artistique
       10. dans le commentaire du db/seed laisse moi savoir par quel table tu ne commences pas et par quelle table tu commences, comment s'appelle ce détour, pourquoi et quel est le but du détour
 
-      CONSIGNE STRICTE : 
-      - remplis uniquement la table 'creative_detours'
-      - utilise uniquement d'autres tables que  'creative_detours' pour ce détour (dans database usage) (pour éviter les boucles).
+      POSSIBILITE 1:
       - remplis plusieurs 'creative_detours' pour au total de tous les creative detour avoir utilisé au moins 1 fois toutes les autres tables dans la colonne database usage et/ou action et/ou storage_impact
       - tu peux couvrir le minimum de tables jusqu'au maximum de tables dans chaque creative detour, tu peux creer beaucoup de creative detours pour couvrir toutes les tables ou un peu seulement pour couvrir toutes les tables
       - essaye d'utiliser le plus de tables
+      POSSIBILITE 2:
+      - remplis plusieurs 'creative_detours' pour au total de tous les creative detour avoir utilisé au moins 1 fois toutes les autres tables dans la colonne database usage et/ou action et/ou storage_impact
+      - tu peux couvrir le maximum de tables dans chaque creative detour, tu peux creer beaucoup de creative detours pour couvrir toutes les tables et utilser 1 ou plusieurs toutes les autres tables
+      - utilise toutes les tables
+      - créer plusieurs creative detours sans commencer aucune fois par la meme table
+      CONSIGNE STRICTE : 
+      - remplis uniquement la table 'creative_detours'
+      - utilise uniquement d'autres tables que  'creative_detours' pour ce détour (dans database usage) (pour éviter les boucles).
+      - regarde POSSIBILITE 1 et POSSIBILITE 2 et choisis au hasard entre les 2 possibilités pour faire ce quelle a dit
       - Utilise des données poétiques, pas seulement techniques.
       - rentre les données poétiques dans les colonnes artistiques et les données technique dans les colonnes techniques des tables.
       - laisse vide ou ne laisse pas vide les colonnes artistiques et laisse moi savoir si je dois les remplir quand l'IA les laisse vides

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
   resources :creative_detours
   resources :theme_suggestions
   resources :show_themes
@@ -59,5 +60,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "conducteurs#index"
+  root "home#index"
 end
