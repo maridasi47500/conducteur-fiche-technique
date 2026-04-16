@@ -117,8 +117,11 @@ Category: options: Music History   # Conducting & Direction
       - Utilise des données poétiques, pas seulement techniques.
       - rentre les données poétiques dans les colonnes artistiques et les données technique dans les colonnes techniques des tables.
       - laisse vide ou ne laisse pas vide les colonnes artistiques et laisse moi savoir si je dois les remplir quand l'IA les laisse vides
-      - Si une table semble inutile pour ce détour, ignore-la.
+      - utilise toutes les tables
       - peux tu ecrire un db/seeds en ruby
+      - si tu veux dis moi en quoi cette facon de creer ou detour artistique me fait bouger dans la base de données autrement ou a quel endroit je peux commencer à chercher pour remplir la premiere table etc
+      - à la place d'écrire un exemple de colonne de table, remplis la colonne de toutes les table une phrase pour me dire ce que je dois remplir dans cette colonne, ne me dis pas un exemple c'est juste pour savoir l'ordre (sans quel ordre je remplis les tables) pour voir si ça m'inspire mieux ou si tu donnes des exemples, faciles comme bonjour, emotions hyper simple, musique hyper simple, titre hyper simple et hyper facile etc.
+      - amuse moi 
     PROMPT
   end
   def generate_ai_prompt

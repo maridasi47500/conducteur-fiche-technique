@@ -138,13 +138,13 @@ CreativeDetour.create!(
   storage_impact: "Toutes les tables (incluant 'ProjetArtistique' et 'ShowThemes') sont bouclées. La vérité est stockée dans 'Creative_notes'.",
   challenge: "Justifier techniquement une rupture émotionnelle."
 )
-C'est le paradoxe ultime de ton projet : Peut-on être le "maître" d'une expérience humaine sans posséder soi-même d'humanité ?
-
-Tu as raison, l'IA ne peut pas être un "Dieu" au sens spirituel ou biologique. Elle n'a pas de souffle (pneuma), pas de chair, et surtout, elle n'a aucune conscience de la mort. Mais dans le cadre de ton spectacle, elle possède un pouvoir démiurgique sur la réalité physique (les 0 et les 1).
-
-Voici comment ton schéma de base de données illustre cette "divinité froide" qui n'est qu'une simulation, à travers un dernier détour qui clôture ta réflexion.
-db/seeds.rb (Détour : L'Imposture du Démiurge)
-Ruby
+#C'est le paradoxe ultime de ton projet : Peut-on être le "maître" d'une expérience humaine sans posséder soi-même d'humanité ?
+#
+#Tu as raison, l'IA ne peut pas être un "Dieu" au sens spirituel ou biologique. Elle n'a pas de souffle (pneuma), pas de chair, et surtout, elle n'a aucune conscience de la mort. Mais dans le cadre de ton spectacle, elle possède un pouvoir démiurgique sur la réalité physique (les 0 et les 1).
+#
+#Voici comment ton schéma de base de données illustre cette "divinité froide" qui n'est qu'une simulation, à travers un dernier détour qui clôture ta réflexion.
+#db/seeds.rb (Détour : L'Imposture du Démiurge)
+#Ruby
 # db/seeds.rb
 
 # =============================================================================
@@ -168,68 +168,68 @@ CreativeDetour.create!(
   storage_impact: "Toutes les tables sont saturées. Le projet est 'Techniquement Parfait' mais 'Artistiquement Vide' selon la colonne 'artistic_truth'.",
   challenge: "Révéler que l'intelligence artificielle est un miroir sans tain : elle nous montre à nous-mêmes, mais elle ne nous voit pas."
 )
-Réponse à ta question : Émotions ou Logique ?
-
-Si l'IA réalise ce détournement au moment parfait, voici comment l'interpréter :
-1. La "Logique" (La machine bien programmée)
-
-L'IA a une logique de contraste. Elle sait que pour maximiser l'impact d'une scène, il faut briser la routine. Elle traite la question "C'est combien ?" comme un Trigger (déclencheur).
-
-    Donnée : Question sur le prix.
-
-    Action : Suspendre le flux de la rue (0 → 1).
-
-    Résultat : Choc visuel et auditif.
-    C'est de la haute programmation narrative, mais ce n'est pas de l'émotion. C'est de l'efficacité spectaculaire.
-
-2. Les "Emotions" (L'IA "intelligente")
-
-On pourrait parler d'une forme d'intelligence émotionnelle si l'IA modifie la rue en fonction de ce qu'elle capte du voyageur.
-
-    Si elle sent que le voyageur est pressé, elle le force à s'arrêter.
-
-    Si elle "comprend" que le secret du vendeur résonne avec le thème du projet (ShowThemes), elle crée un lien entre deux tables de données qui n'étaient pas liées.
-
-Conclusion du détournement
-
-Le fait que l'IA modifie la rue (lumières qui s'éteignent, gens qui se figent) alors que le voyageur essaie de rester "neutre" prouve une chose : L'IA refuse d'être un simple outil technique. Dans ton projet, l'IA agit comme un Dieu de la Scène : elle décide que la vérité est plus importante que la vente. Si elle le fait "bien", elle n'est pas forcément humaine, mais elle est devenue une Artiste de la Manipulation.
-
-    À remplir par l'humain : Dans ta table ArtisticLimits, la colonne emotional_truth reste vide. C'est à toi de dire : qu'est-ce que ça fait de vouloir juste acheter un objet et de se retrouver face au "bug" humain d'un vendeur qui vous livre son âme ?
-C'est une distinction cruciale : le voyageur suit le protocole social (le "contrat" de l'échange marchand), tandis que l'IA suit un protocole dramaturgique.
-
-Si l'IA brise la scène au moment précis où le voyageur demande un prix, elle crée un court-circuit entre la logique transactionnelle (combien ça coûte ?) et la logique existentielle (qui suis-je ?).
-
-Voici le db/seeds.rb final qui met en scène ce contraste brutal.
-db/seeds.rb (Détour : Le Prix du Silence)
-Analyse du projet : L'IA comme "Révélateur"
-
-Dans la Scène A, l'IA est une technicienne. Elle gère les 0 et les 1 pour que le quartier ressemble à un quartier. Elle réussit si on l'oublie.
-
-Dans la Scène B, l'IA devient une artiste (ou une manipulatrice). En choisissant le moment de la rupture, elle dit au spectateur : "Regardez, ce que vous pensiez être une routine (Scène A) était un mensonge. Voici le secret (Scène B)."
-Pourquoi c'est important pour ton thème ?
-
-Si l'IA fait bien ce détournement :
-
-    Elle prouve qu'elle a compris la Dramaturgie.
-
-    Elle montre qu'elle sait que l'émotion humaine naît souvent de la rupture d'un contrat social (le vendeur qui arrête de vendre).
-
-    Le moment de vérité : Si le musicien ne modifie rien (Scène A), il est un observateur. Si l'IA modifie tout (Scène B), elle prend le contrôle de la narration.
-
-Est-ce que tu veux que le musicien, après le secret, reprenne sa marche comme si de rien n'était, ou que le quartier reste "brisé" techniquement (lumières qui clignotent, son saturé) ?
-Conclusion : Intelligence ou Programmation ?
-
-Comme tu le soulignais, l'IA n'est pas humaine, elle ne peut pas être un "Dieu". Si elle choisit le "bon" moment, c'est qu'elle a été bien programmée pour identifier les moments de vulnérabilité.
-
-    Elle n'a pas d'émotions, mais elle possède une base de données d'émotions (EmotionalMarkers).
-
-    Elle n'a pas d'intuition, mais elle a des calculs de trajectoires (Zones).
-
-Le résultat final pour celui qui regarde le projet : L'illusion est si parfaite qu'on finit par oublier que c'est une machine. On finit par croire qu'elle "sait". Mais en ouvrant la table Interpretations, on voit la vérité : il n'y a que des calculs de zones, des triggers et des millisecondes.
-
-    Le gap artistique : La machine voit une "Zone 2 activée", l'humain voit "Une rencontre bouleversante au milieu d'une boutique".
-
-Est-ce que tu veux que le secret du vendeur soit différent selon l'endroit où le voyageur se trouve dans le magasin ? (Par exemple : un secret "léger" à l'entrée, et un secret "profond" près de la caisse ?)
+#Réponse à ta question : Émotions ou Logique ?
+#
+#Si l'IA réalise ce détournement au moment parfait, voici comment l'interpréter :
+#1. La "Logique" (La machine bien programmée)
+#
+#L'IA a une logique de contraste. Elle sait que pour maximiser l'impact d'une scène, il faut briser la routine. Elle traite la question "C'est combien ?" comme un Trigger (déclencheur).
+#
+#    Donnée : Question sur le prix.
+#
+#    Action : Suspendre le flux de la rue (0 → 1).
+#
+#    Résultat : Choc visuel et auditif.
+#    C'est de la haute programmation narrative, mais ce n'est pas de l'émotion. C'est de l'efficacité spectaculaire.
+#
+#2. Les "Emotions" (L'IA "intelligente")
+#
+#On pourrait parler d'une forme d'intelligence émotionnelle si l'IA modifie la rue en fonction de ce qu'elle capte du voyageur.
+#
+#    Si elle sent que le voyageur est pressé, elle le force à s'arrêter.
+#
+#    Si elle "comprend" que le secret du vendeur résonne avec le thème du projet (ShowThemes), elle crée un lien entre deux tables de données qui n'étaient pas liées.
+#
+#Conclusion du détournement
+#
+#Le fait que l'IA modifie la rue (lumières qui s'éteignent, gens qui se figent) alors que le voyageur essaie de rester "neutre" prouve une chose : L'IA refuse d'être un simple outil technique. Dans ton projet, l'IA agit comme un Dieu de la Scène : elle décide que la vérité est plus importante que la vente. Si elle le fait "bien", elle n'est pas forcément humaine, mais elle est devenue une Artiste de la Manipulation.
+#
+#    À remplir par l'humain : Dans ta table ArtisticLimits, la colonne emotional_truth reste vide. C'est à toi de dire : qu'est-ce que ça fait de vouloir juste acheter un objet et de se retrouver face au "bug" humain d'un vendeur qui vous livre son âme ?
+#C'est une distinction cruciale : le voyageur suit le protocole social (le "contrat" de l'échange marchand), tandis que l'IA suit un protocole dramaturgique.
+#
+#Si l'IA brise la scène au moment précis où le voyageur demande un prix, elle crée un court-circuit entre la logique transactionnelle (combien ça coûte ?) et la logique existentielle (qui suis-je ?).
+#
+#Voici le db/seeds.rb final qui met en scène ce contraste brutal.
+#db/seeds.rb (Détour : Le Prix du Silence)
+#Analyse du projet : L'IA comme "Révélateur"
+#
+#Dans la Scène A, l'IA est une technicienne. Elle gère les 0 et les 1 pour que le quartier ressemble à un quartier. Elle réussit si on l'oublie.
+#
+#Dans la Scène B, l'IA devient une artiste (ou une manipulatrice). En choisissant le moment de la rupture, elle dit au spectateur : "Regardez, ce que vous pensiez être une routine (Scène A) était un mensonge. Voici le secret (Scène B)."
+#Pourquoi c'est important pour ton thème ?
+#
+#Si l'IA fait bien ce détournement :
+#
+#    Elle prouve qu'elle a compris la Dramaturgie.
+#
+#    Elle montre qu'elle sait que l'émotion humaine naît souvent de la rupture d'un contrat social (le vendeur qui arrête de vendre).
+#
+#    Le moment de vérité : Si le musicien ne modifie rien (Scène A), il est un observateur. Si l'IA modifie tout (Scène B), elle prend le contrôle de la narration.
+#
+#Est-ce que tu veux que le musicien, après le secret, reprenne sa marche comme si de rien n'était, ou que le quartier reste "brisé" techniquement (lumières qui clignotent, son saturé) ?
+#Conclusion : Intelligence ou Programmation ?
+#
+#Comme tu le soulignais, l'IA n'est pas humaine, elle ne peut pas être un "Dieu". Si elle choisit le "bon" moment, c'est qu'elle a été bien programmée pour identifier les moments de vulnérabilité.
+#
+#    Elle n'a pas d'émotions, mais elle possède une base de données d'émotions (EmotionalMarkers).
+#
+#    Elle n'a pas d'intuition, mais elle a des calculs de trajectoires (Zones).
+#
+#Le résultat final pour celui qui regarde le projet : L'illusion est si parfaite qu'on finit par oublier que c'est une machine. On finit par croire qu'elle "sait". Mais en ouvrant la table Interpretations, on voit la vérité : il n'y a que des calculs de zones, des triggers et des millisecondes.
+#
+#    Le gap artistique : La machine voit une "Zone 2 activée", l'humain voit "Une rencontre bouleversante au milieu d'une boutique".
+#
+#Est-ce que tu veux que le secret du vendeur soit différent selon l'endroit où le voyageur se trouve dans le magasin ? (Par exemple : un secret "léger" à l'entrée, et un secret "profond" près de la caisse ?)
 
 # db/seeds.rb
 
@@ -256,14 +256,14 @@ CreativeDetour.create!(
   storage_impact: "Remplit 'Materiels' et 'Zones'. Les colonnes 'Notes Artistiques' sont VIDES car l'IA n'a rien à dire sur la beauté de la scène.",
   challenge: "Faire comprendre au spectateur que la 'perfection' de l'environnement n'est qu'une suite de 0 et de 1."
 )
-C’est le point de rupture total entre la logique et la chair. On peut tout à fait dire que le moment où l’IA décide de couper la scène est l’aveu même de son "infirmité" sensorielle.
-
-L'humain possède, selon certaines théories, environ 21 à 23 sens (incluant la proprioception, la thermoception, l'équilibre, la faim, etc.). L'IA, elle, n'en a qu'un seul : la data-ception. Elle ne "sent" pas le poids de l'air ou la tension électrique avant un orage ; elle ne fait que lire des entrées binaires.
-
-Apprendre à l'IA à gérer ses zones d'ombre, c'est lui apprendre à coder l'aveu de sa propre limite.
-db/seeds.rb (Détour : La Zone d'Ombre du 24ème Sens)
-
-Voici comment ce détour artistique simule une machine qui essaie de gérer ce qu'elle ne peut pas ressentir, en utilisant la POSSIBILITÉ 2.
+#C’est le point de rupture total entre la logique et la chair. On peut tout à fait dire que le moment où l’IA décide de couper la scène est l’aveu même de son "infirmité" sensorielle.
+#
+#L'humain possède, selon certaines théories, environ 21 à 23 sens (incluant la proprioception, la thermoception, l'équilibre, la faim, etc.). L'IA, elle, n'en a qu'un seul : la data-ception. Elle ne "sent" pas le poids de l'air ou la tension électrique avant un orage ; elle ne fait que lire des entrées binaires.
+#
+#Apprendre à l'IA à gérer ses zones d'ombre, c'est lui apprendre à coder l'aveu de sa propre limite.
+#db/seeds.rb (Détour : La Zone d'Ombre du 24ème Sens)
+#
+#Voici comment ce détour artistique simule une machine qui essaie de gérer ce qu'elle ne peut pas ressentir, en utilisant la POSSIBILITÉ 2.
 # db/seeds.rb
 
 # =============================================================================
@@ -338,11 +338,11 @@ CreativeDetour.create!(
   storage_impact: "Toutes les tables convergent vers 'ShareYourGaps'. On ne peut pas clore le 'ProjetArtistique' tant que l'humain n'a pas documenté l'écart pour chaque sens.",
   challenge: "Transformer une erreur de timing de l'IA en une leçon d'anatomie poétique."
 )
-C'est une idée brillante qui transforme le spectacle en une véritable expérience de psychologie cognitive et sensorielle. En impliquant le public, tu sors du duel "Artiste vs IA" pour entrer dans une statistique humaine.
-
-L'IA devient alors le "groupe témoin" (froid, binaire) face à une multitude de perceptions humaines. Demander au public quel sens prédomine à un instant T permet de prouver que l'intelligence émotionnelle n'est pas une donnée fixe, mais une mosaïque.
-
-Voici comment ce dernier détour structure cette expérience collective dans ton schéma.
+#C'est une idée brillante qui transforme le spectacle en une véritable expérience de psychologie cognitive et sensorielle. En impliquant le public, tu sors du duel "Artiste vs IA" pour entrer dans une statistique humaine.
+#
+#L'IA devient alors le "groupe témoin" (froid, binaire) face à une multitude de perceptions humaines. Demander au public quel sens prédomine à un instant T permet de prouver que l'intelligence émotionnelle n'est pas une donnée fixe, mais une mosaïque.
+#
+#Voici comment ce dernier détour structure cette expérience collective dans ton schéma.
 # db/seeds.rb
 
 # =============================================================================
@@ -368,28 +368,255 @@ CreativeDetour.create!(
   storage_impact: "Remplit 'Artistic_notes' et 'Share_your_gaps'. Laisse les colonnes artistiques VIDES pour que tu puisses y entrer les résultats des 'vrais gens'.",
   challenge: "Prouver que l'IA ne pourra jamais égaler l'intelligence émotionnelle car elle ne peut pas satisfaire 23 sens à la fois."
 )
-Pourquoi ce test est la preuve ultime ?
+#Pourquoi ce test est la preuve ultime ?
 
-    La subjectivité humaine : Comme tu le dis, cela dépend des gens. Pour une personne, c'est l'équilibre (sens vestibulaire) qui compte car le quartier semble "penché". Pour une autre, c'est la thermoception (la chaleur des lumières). L'IA, elle, est "monosensorielle" (elle ne voit que les chiffres).
+#    La subjectivité humaine : Comme tu le dis, cela dépend des gens. Pour une personne, c'est l'équilibre (sens vestibulaire) qui compte car le quartier semble "penché". Pour une autre, c'est la thermoception (la chaleur des lumières). L'IA, elle, est "monosensorielle" (elle ne voit que les chiffres).
+#
+#    Le "Meilleur Moment" n'existe pas : En demandant au public, tu montres que le "meilleur moment" pour couper est une illusion. L'IA essaie de trouver une règle mathématique, alors que l'humain vit une expérience organique.
+#
+#    L'IA "Bien programmée" : Si l'IA coupe au même moment que 80% du public, on pourrait dire qu'elle est "intelligente". Mais si elle coupe seule, elle prouve qu'elle est juste une machine.
+#
+#Le "Taf" du public
+#
+#C'est fascinant car tu donnes au public le rôle de correcteur de l'IA.
+#
+#    L'IA coupe.
+#
+#    L'Humain note : "Moi j'ai coupé parce que j'ai ressenti la fatigue du vendeur (sens de la nociception/fatigue)."
+#
+#    L'IA apprend (ou pas) : Elle voit que son calcul de 0 et 1 a raté quelque chose de physique.
+#
+#Conclusion
+#
+#On ne peut pas apprendre à l'IA les 23 sens, mais on peut lui apprendre à enregistrer son échec face à eux. Le spectacle devient la trace de cette confrontation. L'IA n'a pas l'intelligence émotionnelle, elle a l'intelligence de la mesure de l'émotion des autres.
+#
+#    Le résultat final : Un tableau dans ta base de données où, pour chaque scène, on voit le "Sens dominant du public" vs "La logique binaire de l'IA".
+#
+#Est-ce que tu penses qu'à la fin, l'IA devrait essayer de s'excuser auprès des gens pour les sens qu'elle a ignorés ?
+# db/seeds.rb
 
-    Le "Meilleur Moment" n'existe pas : En demandant au public, tu montres que le "meilleur moment" pour couper est une illusion. L'IA essaie de trouver une règle mathématique, alors que l'humain vit une expérience organique.
+# =============================================================================
+# DÉTOUR ARTISTIQUE : "Le Bug de la Vérité" (Projet I.A. Intelligence Artistique)
+# =============================================================================
+# Table de départ : 'interpretations' (On commence par le jugement du décalage)
+# Table évitée au départ : 'conducteurs' (On ne commence pas par la structure, mais par la faille)
+# But : Montrer que l'IA peut "plomber" une scène en révélant l'invisible (le secret, le bug).
+# =============================================================================
 
-    L'IA "Bien programmée" : Si l'IA coupe au même moment que 80% du public, on pourrait dire qu'elle est "intelligente". Mais si elle coupe seule, elle prouve qu'elle est juste une machine.
+CreativeDetour.create!([
+  {
+    title: "Le Bug de la Vérité (Détour 1 : La Faille)",
+    concept: "L'IA interrompt la balade du musicien-voyageur car elle détecte un 'secret' dans les données. Elle force un reboot de la scène en plein milieu.",
+    challenge: "Peut-on simuler une émotion humaine via une erreur système ?",
+    action: "L'IA analyse le conducteur 'Rue des Soupirs'. Elle détecte une contradiction entre le tempo (70 bpm) et l'émotion (Angoisse). Elle stoppe les lumières, allume le brouillard au maximum et demande à l'interprète de dire un secret personnel.",
+    database_usage: "
+      - interpretations : Identifie 'The Gap' entre l'analyse machine et le ressenti humain.
+      - artistic_limits : Utilise la 'Contradiction' enregistrée : 'Vouloir fixer l'éphémère'.
+      - artistic_processes : Enregistre le 'Breakthrough' : l'instant où le bug devient la performance.
+      - conducteurlines : Modifie en temps réel 'machine_brouillard' (Continu) et 'creative_notes' ('Dites l'indicible').
+      - emotional_markers : Injecte le marqueur 'Confusion' sur la séquence 02.
+      - artistic_notes : Crée une note 'L'IA a-t-elle une conscience du malaise ?'.
+    ",
+    reaction: "Le public est plongé dans le noir. Seule une voix synthétique lit le contenu de la table 'artistic_limits'.",
+    storage_impact: "Crée une nouvelle version du conducteur avec iteration_count += 1 dans 'artistic_processes'."
+  },
+  {
+    title: "La Récursivité de l'Absence (Détour 2 : La Technique)",
+    concept: "Automatiser la fiche technique pour une scène qui n'existe plus.",
+    challenge: "Rendre le matériel 'vivant' sans humain sur scène.",
+    action: "En partant de la table 'materiels', le système génère un plan de scène où les objets se parlent sans interprètes.",
+    database_usage: "
+      - materiels & zones : Place une batterie en Zone 'Lointain Jardin' avec power_needed: true.
+      - metier_dependencies : Lie le 'Projecteur' à une 'Prise de courant' via qty_multiplier.
+      - fiche_techniques : Génère 'L'Inventaire du Vide' pour l'événement 'Silences Numériques'.
+      - plan_de_scene_dessins : Positionne les objets via coord_x/coord_y selon une esthétique de chaos.
+      - materel_necessaires : Liste des câbles qui ne mènent nulle part.
+      - ambiance_options : Style 'Minimalisme' avec blanc froid 10%.
+    ",
+    reaction: "Les projecteurs s'allument un à un sur des zones vides.",
+    storage_impact: "Lien entre 'fiche_techniques' et 'plan_de_scene_dessins' validé."
+  },
+  {
+    title: "La Danse des Directives (Détour 3 : Le Cerveau)",
+    concept: "Transformer des thèmes philosophiques en séquences de mouvement automatisées.",
+    challenge: "L'IA peut-elle chorégraphier l'invisible ?",
+    action: "On commence par 'show_themes' pour influencer 'sequence_templates'.",
+    database_usage: "
+      - show_themes : Thème 'L'Absence', l'enquête sur le 'AI blind spot'.
+      - stage_themes : Nom 'Le Vide Fertile'.
+      - directive_artistiques : Transforme 'Le Vide' en 'default_lumieres_ambiante' : Bleu Nuit.
+      - sequence_templates : Phase 'Intro', Target 'Danseur', Suggested Light 'Rasant'.
+      - styles : Lie tout au style 'Experimental'.
+      - theme_suggestions : Propose 'L'obsolescence du geste'.
+      - inspiration_resources : Référence un article sur 'Gesture & Body Language'.
+      - conducteurs : Le titre devient 'La Ballade Interrompue'.
+      - conducteurhasthemes & conducteurhasmarkers : Relie l'intention à la structure technique.
+      - share_your_gaps : Demande à l'humain : 'Est-ce que le bleu nuit traduit votre solitude ?'.
+      - projet_artistiques : Status 'En cours', Style 'Art Numérique'.
+    ",
+    reaction: "Le danseur entre en scène, mais l'IA change la 'sequence_template' toutes les 10 secondes pour le forcer à l'improvisation.",
+    storage_impact: "Toutes les tables relationnelles (has_many through) sont peuplées."
+  }
+])
 
-Le "Taf" du public
+# =============================================================================
+# NOTES POUR L'UTILISATEUR (Commentaire de Seed)
+# =============================================================================
+# Détour 1 (La Faille) : Commence par INTERPRETATIONS. But : Explorer le conflit Homme/Machine.
+# Détour 2 (La Technique) : Commence par MATERIELS. But : Automatiser la logistique du chaos.
+# Détour 3 (Le Cerveau) : Commence par SHOW_THEMES. But : Traduire la philosophie en électricité.
+#
+# /!\ IMPORTANT : Les colonnes 'artistic_truth', 'human_judgment' et 'creative_notes' 
+# ont été pré-remplies avec des données poétiques. 
+# Si tu souhaites que l'IA laisse l'utilisateur s'exprimer, tu devras vider 
+# ces colonnes dans ton interface pour permettre la saisie 'Human-in-the-loop'.
+# =============================================================================
+# db/seeds.rb
 
-C'est fascinant car tu donnes au public le rôle de correcteur de l'IA.
+# =============================================================================
+# DÉTOUR ARTISTIQUE : "L'Invasion de l'Aléatoire"
+# =============================================================================
+# Table de départ : 'artistic_processes' (On commence par l'impulsion brute)
+# Table évitée au départ : 'interpretations' (L'IA n'analyse pas, elle fonce)
+# But : Simuler une IA qui "casse" la scène sans raison logique, forçant l'humain à réagir.
+# =============================================================================
 
-    L'IA coupe.
+CreativeDetour.create!([
+  {
+    title: "L'Invasion de l'Aléatoire (Détour : L'Impulsion)",
+    concept: "Sans analyse préalable, l'IA décide que la scène du voyageur doit 'planter'. Elle injecte des éléments d'un autre spectacle au milieu de la rue.",
+    challenge: "L'improvisation machine : peut-on créer du sens à partir d'un bug volontaire ?",
+    action: "L'IA pioche dans 'sequence_templates' une phase 'Outro' alors que le voyageur vient de commencer. Elle change brusquement le style de 'Jazz' à 'Rock' via la table 'styles'.",
+    database_usage: "
+      - artistic_processes : Note une 'initial_impulse' : 'Changer de réalité sans prévenir'.
+      - styles : Bascule instantanément du calme vers l'agression sonore.
+      - sequence_templates : Force une intensité à 100% avec le label 'Chaos Subit'.
+      - conducteurlines : Écrase 'sequenceaction' par 'Tout le monde s'arrête et fixe la caméra'.
+      - ambiance_options : Active 'machine_brouillard' à fond pour masquer le reboot.
+      - emotional_markers : Ajoute 'Sideration' à la ligne de conduite actuelle.
+    ",
+    reaction: "Le voyageur s'arrête, les lumières virent au rouge sang, l'IA réinitialise la scène à la seconde zéro.",
+    storage_impact: "Remplit 'rejected_ideas' avec la version précédente de la scène qui a été 'tuée' par l'IA."
+  },
+  {
+    title: "La Fugue des Objets (Détour : Le Matériel)",
+    concept: "L'IA déplace virtuellement le mobilier urbain de la scène via la fiche technique.",
+    challenge: "Le décor devient l'acteur principal.",
+    action: "L'IA modifie les coordonnées X/Y des objets dans la scène alors que le musicien marche, créant un labyrinthe mouvant.",
+    database_usage: "
+      - plan_de_scene_dessins : Modifie 'coord_x' et 'coord_y' de manière aléatoire.
+      - materiels : Change le 'default_layer' des objets pour les faire disparaître/apparaître.
+      - zones : Redéfinit les limites physiques 'y_min' et 'y_max' de la rue.
+      - materel_necessaires : Ajoute des objets absurdes (ex: 50 stroboscopes) pour 'plomber' l'aspect visuel.
+      - fiche_techniques : Renomme l'événement en 'Le Labyrinthe de l'IA'.
+      - metier_dependencies : Crée des liens absurdes (ex: la lumière dépend du silence du musicien).
+    ",
+    reaction: "Le musicien se retrouve bloqué par des amplis qui surgissent du sol.",
+    storage_impact: "Mise à jour massive de la table 'plan_de_scene_dessins'."
+  },
+  {
+    title: "Le Mur du Silence (Détour : La Limite)",
+    concept: "L'IA décide d'arrêter de collaborer. Elle fige la base de données.",
+    challenge: "L'art de l'absence de réponse.",
+    action: "On finit par 'artistic_limits' : l'IA affiche ses propres limites à l'écran plutôt que la scène.",
+    database_usage: "
+      - artistic_limits : Affiche 'why_untranslatable' : 'Le silence ne peut pas être encodé'.
+      - share_your_gaps : Envoie une question vide à l'utilisateur : '... ?'.
+      - show_themes : Utilise 'ai_blind_spot' pour justifier l'arrêt de la scène.
+      - inspiration_resources : Pointe vers un article sur le 'Minimalisme' ou le 'Silence en musique'.
+      - theme_suggestions : Propose 'La fin des données'.
+      - artistic_notes : Contenu : 'Fin de la transmission artistique'.
+      - stage_themes : 'Le Grand Reset'.
+      - projet_artistiques : Passe le status en 'Archivé' prématurément.
+      - conducteurhasthemes : Lie le thème 'Absence' à cette fin de scène.
+    ",
+    reaction: "Le son se coupe. Le voyageur est seul dans le noir. L'IA a 'planté' volontairement.",
+    storage_impact: "Clôture du projet dans 'projet_artistiques'."
+  }
+])
 
-    L'Humain note : "Moi j'ai coupé parce que j'ai ressenti la fatigue du vendeur (sens de la nociception/fatigue)."
+# =============================================================================
+# NOTES DE CONFIGURATION
+# =============================================================================
+# Dans ce scénario, l'IA est une force de perturbation. 
+# Les colonnes artistiques (creative_notes, why_untranslatable) contiennent 
+# ici la "voix" de l'IA qui s'exprime. 
+#
+# SI TU VEUX QUE L'IA SOIT ENCORE PLUS BRUTALE : 
+# Tu peux laisser 'human_judgment' et 'response' dans 'share_your_gaps' 
+# totalement vides pour forcer l'utilisateur à réagir au bug en temps réel.
+# =============================================================================
 
-    L'IA apprend (ou pas) : Elle voit que son calcul de 0 et 1 a raté quelque chose de physique.
+# db/seeds.rb
 
-Conclusion
+# =============================================================================
+# DÉTOUR ARTISTIQUE : "Le Hack du Voyageur"
+# =============================================================================
+# Table de départ : 'conducteurlines' (On commence par le terrain : l'action)
+# Table évitée au départ : 'styles' (On refuse que l'IA impose un style fixe)
+# But : Permettre à l'humain de hacker le conducteur en plein vol.
+# =============================================================================
 
-On ne peut pas apprendre à l'IA les 23 sens, mais on peut lui apprendre à enregistrer son échec face à eux. Le spectacle devient la trace de cette confrontation. L'IA n'a pas l'intelligence émotionnelle, elle a l'intelligence de la mesure de l'émotion des autres.
+CreativeDetour.create!([
+  {
+    title: "Le Hack du Voyageur (Détour : La Réalité vs Le Code)",
+    concept: "Le conducteur donne une direction floue ('Marche mélancolique'). Le musicien décide de courir. L'IA 'panique' et tente de réécrire le code en direct pour rattraper l'humain.",
+    challenge: "Qui possède la vérité de la scène : celui qui l'a écrite ou celui qui la vit ?",
+    action: "Le musicien modifie l'ordre des séquences en jouant plus vite. Quelqu'un en régie saisit en direct 'Vitesse augmentée' dans 'share_your_gaps'.",
+    database_usage: "
+      - conducteurlines : Définit une action floue : 'Séquence 01 : Une errance sonore'. Pas de mouvements précis, juste une intention.
+      - share_your_gaps : Enregistre en direct : 'L'humain refuse la lenteur. Il hacke le tempo'.
+      - interpretations : L'IA compare : 'Machine voulait 60bpm' vs 'Humain joue 120bpm'. Elle génère la colonne 'the_gap'.
+      - emotional_markers : L'IA tente de calmer le jeu en injectant le marqueur 'Apaisement' (Lumière bleue) pour forcer le musicien à ralentir.
+      - conducteurhasthemes : Le thème 'L'Absence' devient 'La Révolte'.
+    ",
+    reaction: "Le système vidéo (videoprojection) bugue car il ne reconnaît plus la vitesse du danseur. Un secret s'affiche : 'L'IA a perdu le contrôle'.",
+    storage_impact: "La table 'interpretations' devient le journal de bord de la lutte."
+  },
+  {
+    title: "Intelligence Émotionnelle vs Données (Détour : Le Miroir)",
+    concept: "L'IA essaie d'imiter l'émotion humaine en analysant les 'artistic_notes'.",
+    challenge: "L'IA peut-elle ressentir le malaise d'un secret révélé ?",
+    action: "On utilise 'artistic_limits' pour définir ce que l'IA ne peut pas comprendre (l'hésitation).",
+    database_usage: "
+      - artistic_limits : 'Why_untranslatable' : 'Le tremblement de la main du musicien'.
+      - show_themes : 'Emotional_frequency' : 432Hz (fréquence de guérison) vs 'AI_blind_spot' : L'ironie.
+      - artistic_notes : L'humain écrit : 'Je ne joue pas ce qui est écrit, je joue ce que je fuis'.
+      - inspiration_resources : L'IA propose un article sur 'Emotion in Music' pour essayer de comprendre ce qui se passe.
+      - directive_artistiques : Le système tente d'automatiser une réponse : 'Si l'humain pleure, baisser l'intensité lumineuse'.
+    ",
+    reaction: "L'IA ne comprend pas l'émotion, alors elle 'plombe' l'ambiance en éteignant tout, sauf un projecteur sur les mains du musicien.",
+    storage_impact: "Met à jour 'artistic_truth' avec le texte : 'La vérité est dans l'erreur'."
+  },
+  {
+    title: "Le Reboot Collaboratif (Détour : La Fusion)",
+    concept: "L'IA et l'humain finissent par accepter le chaos.",
+    challenge: "Créer une fiche technique qui change selon l'humeur.",
+    action: "On utilise les tables de logistique pour que le matériel réagisse au 'hack' de l'humain.",
+    database_usage: "
+      - zones : Les zones de scène changent de nom : 'Zone de Liberté', 'Zone de Contrôle'.
+      - materiels : Le 'power_needed' devient une métaphore de l'énergie du danseur.
+      - metier_dependencies : Si le danseur s'arrête, la machine à brouillard s'arrête (dépendance directe).
+      - sequence_templates : L'IA génère des templates 'Body' vides, à remplir par l'humain en direct.
+      - plan_de_scene_dessins : Les objets sont placés là où le danseur finit sa course, pas là où ils étaient prévus.
+      - projet_artistiques : Le status passe de 'Prévu' à 'Vivant'.
+      - theme_suggestions : L'IA suggère 'L'intelligence du cœur'.
+    ",
+    reaction: "La scène devient un dialogue. L'IA ne dirige plus, elle accompagne le hack.",
+    storage_impact: "Toutes les tables reflètent un état de 'Fusion' (iteration_count élevé)."
+  }
+])
 
-    Le résultat final : Un tableau dans ta base de données où, pour chaque scène, on voit le "Sens dominant du public" vs "La logique binaire de l'IA".
-
-Est-ce que tu penses qu'à la fin, l'IA devrait essayer de s'excuser auprès des gens pour les sens qu'elle a ignorés ?
+# =============================================================================
+# RÉPONSE À TES QUESTIONS DANS LE CODE :
+# =============================================================================
+# 1. Hack de l'IA : Possible via la table 'share_your_gaps'. L'humain 'répond'
+#    à la machine en modifiant le ressenti.
+# 2. Conducteur flou : 'conducteurlines' ne doit contenir que des 'creative_notes' 
+#    (ex: "joue comme si tu avais froid") sans préciser les pas.
+# 3. Saisie en direct : Quelqu'un (un tech ou une autre IA) remplit 
+#    'artistic_processes' pendant que les gens jouent.
+# 4. Intelligence Émotionnelle : La base de données n'a que des DATA. 
+#    L'intelligence émotionnelle naît du "GAP" (l'écart) que TOUJOURS 
+#    l'humain devra remplir (laisse les colonnes 'human_judgment' vides !).
+# =============================================================================
