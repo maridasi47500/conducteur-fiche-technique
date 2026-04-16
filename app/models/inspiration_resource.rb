@@ -12,18 +12,15 @@ class InspirationResource < ApplicationRecord
     "Music History",
     "Emotion in Music",
     "Rhythm & Tempo",
-    
     # Performance & Choreography
     "Dance & Movement",
     "Choreography",
     "Performance Art",
-    
     # Staging & Technical
     "Stage Lighting",
     "Stage Design",
     "Sound Engineering",
     "Projection & Video",
-    
     # Visual & Aesthetic
     "Visual Design",
     "Color & Composition",
