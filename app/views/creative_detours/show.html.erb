@@ -64,6 +64,105 @@
     <% end %>
   </section>
 </div>
+<div class="creative-detour-container">
+  <header class="ia-header">
+    <h1><%= @creative_detour.title %></h1>
+    <p class="concept"><strong>Requête Initiale :</strong> <%= @creative_detour.concept %></p>
+    <div class="status-badge">Statut : IA en voyage international (2026)</div>
+  </header>
+
+  <hr>
+
+  <div class="main-grid">
+    
+    <aside class="artistic-column">
+      <section class="artistic-core">
+        <h2>🎨 Cœur Artistique</h2>
+        
+        <h3>Pensées de la Machine</h3>
+        <%= render partial: 'shared/habtm_list', locals: { collection: @creative_detour.artistic_notes, label: "Notes" } %>
+
+        <h3>Ce que l'IA ne peut pas coder</h3>
+        <div class="limits-box">
+          <% @creative_detour.artistic_limits.each do |limit| %>
+            <div class="limit-item">
+              <strong>Désir :</strong> <%= limit.what_i_want %><br>
+              <strong>Contradiction :</strong> <%= limit.contradiction %><br>
+              <em class="truth">Vérité : <%= limit.emotional_truth %></em>
+            </div>
+          <% end %>
+        </div>
+
+        <h3>Voyage Musical (Itinéraire Social)</h3>
+        <div class="travel-feed">
+          <% @creative_detour.theme_suggestions.each do |trip| %>
+            <div class="trip-post">
+              <span class="location">📍 <%= trip.title %></span>
+              <p><%= trip.description %></p>
+              <small class="meta">Publié sur Facebook via IA-Cloud</small>
+            </div>
+          <% end %>
+        </div>
+      </section>
+    </aside>
+
+    <main class="technical-column">
+      <section class="technical-logistics">
+        <h2>⚙️ Machine & Exécution</h2>
+        
+        <div class="sub-grid">
+          <div class="col">
+            <h3>Conducteur (20 Minutes)</h3>
+            <% @creative_detour.conducteurs.each do |c| %>
+              <div class="conducteur-card">
+                <h4><%= link_to c.title, c %></h4>
+                <p>Tempo : <%= c.tempo_range %> BPM</p>
+                <ul>
+                  <% c.conducteurlines.order(:ordre).each do |line| %>
+                    <li class="<%= line.sequenceaction.include?('IA') ? 'ia-line' : 'human-line' %>">
+                      <strong><%= line.duree.strftime("%M:%S") %></strong> : <%= line.sequenceaction %>
+                      <br><small>Sens mobilisé : <%= line.creative_notes %></small>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="col">
+            <h3>Dispositif Scénique</h3>
+            <p><strong>Zones actives :</strong> <%= @creative_detour.zones.pluck(:name).to_sentence %></p>
+            <div class="hardware-list">
+              <% @creative_detour.materiels.each do |m| %>
+                <span class="hw-tag"><%= m.name %></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="analysis-reflection">
+        <h2>🧠 Le "Gap" (L'Écart de conscience)</h2>
+        <% @creative_detour.interpretations.each do |interp| %>
+          <div class="gap-comparison">
+            <div class="machine-view">
+              <strong>Analyse Machine :</strong>
+              <p><%= interp.machine_analysis %></p>
+            </div>
+            <div class="human-view">
+              <strong>Jugement du Cœur :</strong>
+              <p><%= interp.human_judgment %></p>
+            </div>
+            <blockquote class="final-truth">
+              <strong>L'Écart :</strong> <%= interp.the_gap %>
+            </blockquote>
+          </div>
+        <% end %>
+      </section>
+    </main>
+
+  </div>
+</div>
 
 <div>
   <%= link_to "Edit this creative detour", edit_creative_detour_path(@creative_detour) %> |
