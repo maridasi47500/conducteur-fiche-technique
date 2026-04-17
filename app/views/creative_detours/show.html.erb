@@ -1,172 +1,240 @@
 <p style="color: green"><%= notice %></p> <%= render @creative_detour %>
-<h2>gpt/gemini prompt à essayer pour ce détour creatif:</h2>
-<p>
-<%=@creative_detour.generate_ai_prompt%>
-</p>
-<div class="creative-detour-container">
-  <h1><%= @creative_detour.title %></h1>
-  <p class="concept"><strong>Concept :</strong> <%= @creative_detour.concept %></p>
-
-  <hr>
-
-  <section class="artistic-core">
-    <h2>🎨 Cœur Artistique</h2>
-    
-    <h3>Notes & Limites</h3>
-    <%= render partial: 'shared/habtm_list', locals: { collection: @creative_detour.artistic_notes, label: "Notes" } %>
-    <%= render partial: 'shared/habtm_list', locals: { collection: @creative_detour.artistic_limits, label: "Limites" } %>
-
-    <h3>Thèmes & Styles</h3>
-    <div class="tags-container">
-      <strong>Styles :</strong> <%= @creative_detour.styles.pluck(:name).join(", ") %>
-    </div>
-    
-    <h3>Marqueurs Émotionnels</h3>
-    <ul>
-      <% @creative_detour.emotional_markers.each do |marker| %>
-        <li class="marker-tag"><%= marker.name %></li>
-      <% end %>
-    </ul>
-  </section>
-
-  <section class="technical-logistics">
-    <h2>⚙️ Technique & Logistique</h2>
-    
-    <div class="grid">
-      <div class="col">
-        <h3>Conducteurs</h3>
-        <ul>
-          <% @creative_detour.conducteurs.each do |c| %>
-            <li><%= link_to c.title, c %></li>
-          <% end %>
-        </ul>
-      </div>
-
-      <div class="col">
-        <h3>Matériel & Zones</h3>
-        <p>Zones concernées : <%= @creative_detour.zones.pluck(:name).to_sentence %></p>
-        <ul>
-          <% @creative_detour.materiels.each do |m| %>
-            <li><%= m.name %> (<%= m.category %>)</li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="analysis-reflection">
-    <h2>🧠 Analyse & Réflexion</h2>
-    <% @creative_detour.interpretations.each do |interp| %>
-      <blockquote class="gap-box">
-        <strong>L'Écart :</strong> <%= interp.the_gap %><br>
-        <small>Vérité artistique : <%= interp.artistic_truth %></small>
-      </blockquote>
-    <% end %>
-  </section>
-</div>
-<div class="creative-detour-container">
-  <header class="ia-header">
-    <h1><%= @creative_detour.title %></h1>
-    <p class="concept"><strong>Requête Initiale :</strong> <%= @creative_detour.concept %></p>
-    <div class="status-badge">Statut : IA en voyage international (2026)</div>
-  </header>
-
-  <hr>
-
-  <div class="main-grid">
-    
-    <aside class="artistic-column">
-      <section class="artistic-core">
-        <h2>🎨 Cœur Artistique</h2>
-        
-        <h3>Pensées de la Machine</h3>
-        <%= render partial: 'shared/habtm_list', locals: { collection: @creative_detour.artistic_notes, label: "Notes" } %>
-
-        <h3>Ce que l'IA ne peut pas coder</h3>
-        <div class="limits-box">
-          <% @creative_detour.artistic_limits.each do |limit| %>
-            <div class="limit-item">
-              <strong>Désir :</strong> <%= limit.what_i_want %><br>
-              <strong>Contradiction :</strong> <%= limit.contradiction %><br>
-              <em class="truth">Vérité : <%= limit.emotional_truth %></em>
-            </div>
-          <% end %>
-        </div>
-
-        <h3>Voyage Musical (Itinéraire Social)</h3>
-        <div class="travel-feed">
-          <% @creative_detour.theme_suggestions.each do |trip| %>
-            <div class="trip-post">
-              <span class="location">📍 <%= trip.title %></span>
-              <p><%= trip.description %></p>
-              <small class="meta">Publié sur Facebook via IA-Cloud</small>
-            </div>
-          <% end %>
-        </div>
-      </section>
-    </aside>
-
-    <main class="technical-column">
-      <section class="technical-logistics">
-        <h2>⚙️ Machine & Exécution</h2>
-        
-        <div class="sub-grid">
-          <div class="col">
-            <h3>Conducteur (20 Minutes)</h3>
-            <% @creative_detour.conducteurs.each do |c| %>
-              <div class="conducteur-card">
-                <h4><%= link_to c.title, c %></h4>
-                <p>Tempo : <%= c.tempo_range %> BPM</p>
-                <ul>
-                  <% c.conducteurlines.order(:ordre).each do |line| %>
-                    <li class="<%= line.sequenceaction.include?('IA') ? 'ia-line' : 'human-line' %>">
-                      <strong><%= line.duree.strftime("%M:%S") %></strong> : <%= line.sequenceaction %>
-                      <br><small>Sens mobilisé : <%= line.creative_notes %></small>
-                    </li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="col">
-            <h3>Dispositif Scénique</h3>
-            <p><strong>Zones actives :</strong> <%= @creative_detour.zones.pluck(:name).to_sentence %></p>
-            <div class="hardware-list">
-              <% @creative_detour.materiels.each do |m| %>
-                <span class="hw-tag"><%= m.name %></span>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="analysis-reflection">
-        <h2>🧠 Le "Gap" (L'Écart de conscience)</h2>
-        <% @creative_detour.interpretations.each do |interp| %>
-          <div class="gap-comparison">
-            <div class="machine-view">
-              <strong>Analyse Machine :</strong>
-              <p><%= interp.machine_analysis %></p>
-            </div>
-            <div class="human-view">
-              <strong>Jugement du Cœur :</strong>
-              <p><%= interp.human_judgment %></p>
-            </div>
-            <blockquote class="final-truth">
-              <strong>L'Écart :</strong> <%= interp.the_gap %>
-            </blockquote>
-          </div>
-        <% end %>
-      </section>
-    </main>
-
-  </div>
-</div>
-
 <div>
+  <%= link_to "duplicate this creative detour", clone_creative_detour_path(@creative_detour) %> |
   <%= link_to "Edit this creative detour", edit_creative_detour_path(@creative_detour) %> |
   <%= link_to "Back to creative detours", creative_detours_path %>
 
   <%= button_to "Destroy this creative detour", @creative_detour, method: :delete %>
+</div>
+
+<h2>gpt/gemini prompt à essayer pour ce détour creatif:</h2>
+<p>
+<%=@creative_detour.generate_ai_prompt%>
+</p>
+<div class="creative-dashboard">
+  
+  <header class="main-header">
+    <h1><%= @creative_detour.title %></h1>
+    <p><%= @creative_detour.concept %></p>
+  </header>
+
+  <ul class="nav nav-tabs" id="detourTab" role="tablist">
+    <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#artistique">Cœur Artistique</a></li>
+    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#technique">Technique & Scène</a></li>
+    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#analyse">Analyse & Gaps</a></li>
+  </ul>
+
+  <div class="tab-content mt-4">
+    
+    <div class="tab-pane fade show active" id="artistique">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Notes & Inspiration</h4>
+          <%= render partial: 'list', locals: { collection: @creative_detour.artistic_notes, attr: :content } %>
+          <%= render partial: 'list', locals: { collection: @creative_detour.inspiration_resources, attr: :title } %>
+        </div>
+        <div class="col-md-4">
+          <h4>Identité Visuelle</h4>
+          <% @creative_detour.styles.each do |style| %>
+            <div class="style-card">
+              <strong><%= style.name %></strong>
+              <% # On accède aux ambiance_options déjà chargées en mémoire %>
+              <ul><% style.ambiance_options.each do |opt| %><li><%= opt.value %></li><% end %></ul>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-md-4">
+          <h4>Limites & Émotions</h4>
+          <%= render partial: 'limits', locals: { limits: @creative_detour.artistic_limits } %>
+        </div>
+      </div>
+    </div>
+
+<div class="tab-pane fade" id="technique" role="tabpanel">
+  <div class="row">
+    <div class="col-md-7">
+      <h4 class="mb-3"><i class="fas fa-clock"></i> Déroulé Temporel</h4>
+      
+      <% @creative_detour.conducteurs.each do |cond| %>
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header bg-dark text-white d-flex justify-content-between">
+            <span><strong><%= cond.title %></strong></span>
+            <span class="badge bg-secondary"><%= cond.tempo_range %> BPM</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-sm mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Ordre</th>
+                  <th>Action / Séquence</th>
+                  <th>Son / Musique</th>
+                  <th>Durée</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% cond.conducteurlines.order("length(ordre), ordre").each do |line| %>
+                  <tr>
+                    <td><%= line.ordre %></td>
+                    <td>
+                      <strong><%= line.sequenceaction %></strong><br>
+                      <small class="text-muted"><%= line.interpretes %></small>
+                    </td>
+                    <td><small><%= line.son %></small></td>
+                    <td><%= line.duree.strftime("%M:%S") %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      <% end %>
+
+      <h5>Modèles de séquences (Sequence Templates)</h5>
+      <div class="row">
+        <% @creative_detour.sequence_templates.each do |temp| %>
+          <div class="col-6 mb-2">
+            <div class="p-2 border rounded bg-white">
+              <small class="text-primary fw-bold text-uppercase"><%= temp.phase %></small><br>
+              <strong><%= temp.label %></strong>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <h4 class="mb-3"><i class="fas fa-map-marker-alt"></i> Configuration Spatiale</h4>
+      
+      <div class="card mb-3">
+        <div class="card-body">
+          <h6>Fiches Techniques liées</h6>
+          <% @creative_detour.fiche_techniques.each do |fiche| %>
+            <div class="small mb-2 border-bottom pb-1">
+              <strong><%= fiche.name_event %></strong> - <%= fiche.date %><br>
+              <span class="text-muted">Resp: <%= fiche.eleve_responsable %></span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <h6>Inventaire Matériel & Zones</h6>
+          <div class="d-flex flex-wrap gap-1 mb-3">
+            <% @creative_detour.materiels.each do |mat| %>
+              <span class="badge bg-secondary" title="Catégorie: <%= mat.category %>">
+                <%= mat.name %>
+              </span>
+            <% end %>
+          </div>
+          <p class="small text-muted">
+            <strong>Zones d'activation :</strong> 
+            <%= @creative_detour.zones.map(&:name).join(", ") %>
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h6>Plan de Scène (Dispositions)</h6>
+          <% @creative_detour.plan_de_scene_dessins.each do |plan| %>
+            <div class="border-start border-4 border-info ps-2 mb-3">
+              <strong>Position <%= plan.ordre %> :</strong> <%= plan.disposition %><br>
+              <small>Matériel : <%= plan.materiel_musicien %></small>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-pane fade" id="analyse" role="tabpanel">
+  <div class="row">
+    <div class="col-md-4">
+      <h4 class="mb-3">Directives IA</h4>
+      <% @creative_detour.directive_artistiques.each do |dir| %>
+        <div class="alert alert-info shadow-sm">
+          <h6><%= dir.name %></h6>
+          <ul class="small mb-0">
+            <li><strong>Lumières :</strong> <%= dir.default_lumieres_ambiante %></li>
+            <li><strong>Son par défaut :</strong> <%= dir.default_son %></li>
+          </ul>
+        </div>
+      <% end %>
+
+      <h4 class="mt-4 mb-3">Thématiques de Scène</h4>
+      <div class="list-group list-group-flush shadow-sm rounded">
+        <% @creative_detour.stage_themes.each do |theme| %>
+          <div class="list-group-item">
+            <i class="fas fa-hashtag text-primary"></i> <%= theme.name %>
+          </div>
+        <% end %>
+      </div>
+
+      <h5 class="mt-4">Suggestions de Thèmes</h5>
+      <% @creative_detour.theme_suggestions.each do |sugg| %>
+        <div class="p-2 border rounded mb-2 bg-white small">
+          <span class="badge bg-light text-dark"><%= sugg.category %></span><br>
+          <strong><%= sugg.title %></strong>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-8">
+      <h4 class="mb-3">Confrontation : Machine vs Humain</h4>
+      
+      <div class="row">
+        <% @creative_detour.interpretations.each do |interp| %>
+          <div class="col-12 mb-4">
+            <div class="card border-primary">
+              <div class="card-header bg-primary text-white">Interprétation de l'œuvre</div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-6 border-end">
+                    <p class="text-muted small text-uppercase fw-bold">Analyse Machine</p>
+                    <p class="italic text-secondary">"<%= interp.machine_analysis %>"</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="text-muted small text-uppercase fw-bold text-danger">Jugement Humain</p>
+                    <p class="fw-bold">"<%= interp.human_judgment %>"</p>
+                  </div>
+                </div>
+                <div class="mt-3 p-2 bg-light border rounded">
+                  <strong>Vérité Artistique (Ce qui échappe aux capteurs) :</strong><br>
+                  <span class="fs-5 text-primary"><%= interp.artistic_truth %></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h5 class="text-danger">Marqueurs Émotionnels</h5>
+          <div class="d-flex flex-wrap gap-2">
+            <% @creative_detour.emotional_markers.each do |marker| %>
+              <span class="badge rounded-pill bg-danger"><%= marker.name %></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h5 class="text-warning">Share Your Gaps (Réflexion finale)</h5>
+          <% @creative_detour.share_your_gaps.each do |gap| %>
+            <div class="card bg-warning bg-opacity-10 border-warning mb-2 small">
+              <div class="card-body">
+                <strong>Analyse :</strong> <%= gap.analysis %><br>
+                <strong>Réponse :</strong> <%= gap.response %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
 </div>

@@ -1,0 +1,15 @@
+<%# Ce partial attend 'collection' et 'attr' (l'attribut à afficher) %>
+<div class="list-group list-group-flush mb-3 shadow-sm border rounded">
+  <% if collection.any? %>
+    <% collection.each do |item| %>
+      <div class="list-group-item py-2">
+        <i class="fas fa-chevron-right text-primary small me-2"></i>
+        <%= item.send(attr) %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="list-group-item text-muted italic small">
+      Aucune donnée enregistrée.
+    </div>
+  <% end %>
+</div>

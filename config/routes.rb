@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'home/index'
-  resources :creative_detours
+  resources :creative_detours do
+  member do
+  get 'clone'
+  end
+  end
   resources :theme_suggestions
   resources :show_themes
   resources :artistic_limits

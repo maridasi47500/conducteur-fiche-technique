@@ -1,0 +1,19 @@
+<div class="artistic-limits-container">
+  <% if limits.any? %>
+    <% limits.each do |limit| %>
+      <div class="card mb-3 border-warning shadow-sm">
+        <div class="card-header bg-warning bg-opacity-10 fw-bold">
+          <i class="fas fa-exclamation-triangle"></i> Limite détectée
+        </div>
+        <div class="card-body">
+          <p class="mb-1"><strong>Vœu artistique :</strong> <%= limit.what_i_want %></p>
+          <p class="mb-1 text-muted small italic"><strong>Pourquoi c'est intraduisible :</strong> <%= limit.why_untranslatable %></p>
+          <hr class="my-2">
+          <p class="mb-0 text-danger"><i class="fas fa-heart"></i> <strong>Vérité émotionnelle :</strong> <%= limit.emotional_truth %></p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="text-muted small">Aucune limite artistique répertoriée.</p>
+  <% end %>
+</div>

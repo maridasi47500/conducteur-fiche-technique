@@ -2,6 +2,26 @@ class CreativeDetour < ApplicationRecord
   # --- RELATIONS HABTM COMPLETES ---
 
   # Coeur Artistique
+  def clone_with_relations
+    clone = self.dup  # duplique les attributs sauf l’ID
+
+    clone.save!       # on sauvegarde AVANT d’ajouter les relations
+
+    # Dupliquer toutes les relations HABTM
+    self.class.reflect_on_all_associations(:has_and_belongs_to_many).each do |assoc|
+      clone.send(assoc.name) << self.send(assoc.name)
+    end
+
+    clone
+  end
+  def clone_without_relations
+    clone = self.dup  # duplique les attributs sauf l’ID
+
+    clone.save!       # on sauvegarde AVANT d’ajouter les relations
+
+
+    clone
+  end
   has_and_belongs_to_many :directive_artistiques
 
   has_and_belongs_to_many :artistic_notes
@@ -176,12 +196,14 @@ Category: options: Music History   # Conducting & Direction
 
       VOICI LE SCHEMA DE MA BASE DE DONNÉES :
       #{schema_content}
+      DATABASE USAGE :
+      "#{self.database_usage}".
 
       MISSION :
       1. Analyse le schéma ci-dessus.
       2. Choisis les tables les plus pertinentes (parmi conducteurlines, interpretations, artistic_limits, stage_themes, etc.) pour simuler l'action suivante : "#{self.action}".
       3. Génère un script Ruby 'seeds.rb' complet qui crée une performance cohérente.
-      4. Pour chaque enregistrement, utilise les colonnes appropriées du schéma pour documenter l'usage de la base : "#{self.database_usage}".
+      4. Pour chaque enregistrement, utilise les colonnes appropriées du schéma pour documenter l'usage de la base : regarde DATABASE USAGE pour savoir comment.
       5. Assure-toi que la "Reaction" attendue est palpable dans les données : "#{self.reaction}".
       23 SENS POUR LA SCENE:
         1. Conducting & Direction
@@ -269,8 +291,54 @@ Category: options: Music History   # Conducting & Direction
         # Analyse et Réflexion
         has_and_belongs_to_many :interpretations
         has_and_belongs_to_many :share_your_gaps
+      VOICI la Class artistic  limit:
+class ArtisticLimit < ApplicationRecord
+belongs_to :conducteur
+end
+      VOICI la Class artistic  process:
+class ArtisticProcess < ApplicationRecord
+belongs_to :conducteur
+end
+
       VOICI LE THEME DU PROJET artistique :
       Your initial question positions this as a critical artistic inquiry: "I.A. Intelligence Artistique — What could be hidden behind this theme? In the era of total digitalization, can we interrogate the place of the human facing the machine? To think, create meaning, make people feel, evoke emotions — what place is there for artistic intelligence?"
+
+
+      CODE RUBY POUR GENERER DES CONDUCTEURS AVEC LES SEQUENCE TEMPLATES ENREGISTRES:
+       mystyle=style=Style.find(params[:style_id])
+    fiche=FicheTechnique.create(name_event: "Projet "+mystyle.name, date: Date.today, eleve_responsable: "eleve "+mystyle.name, professeur_referent: "professeur "+mystyle.name, notes_complementaires: "yeah")
+    projet=ProjetArtistique.create(title: "Projet "+mystyle.name)
+    conducteur = Conducteur.create!(fiche_technique: fiche, title: "Conducteur "+projet.title)
+    projet.update(conducteur: conducteur)
+    params[:marker_ids].each do |metier| 
+      # 1. On pioche UNE intro au hasard parmi les intros possibles
+      intro = SequenceTemplate.where(style: style, phase: "intro",target_talent: metier).sample
+      
+      # 2. On pioche DEUX moments de "corps" (body) au hasard
+      milieux = SequenceTemplate.where(style: style, phase: "body",target_talent: metier).sample(2)
+      
+      # 3. On pioche UNE sortie
+      outro = SequenceTemplate.where(style: style, phase: "outro",target_talent: metier).sample
+
+      # 4. On assemble le tout dans un tableau ordonné
+      mon_scenario = [intro] + milieux + [outro]
+
+      # 5. On crée les lignes du conducteur dans l'ordre du tableau
+      next if mon_scenario.length == 0
+      mon_scenario.each_with_index do |temp, index|
+        next if temp.nil? # Sécurité si une phase est vide
+        
+        Conducteurline.create!(
+          conducteur: conducteur,
+          ordre: index + 1,
+          sequenceaction: temp.label,
+          interpretes: metier,
+          lumieres_ambiante: style.ambiance_options.where(category: "lumieres").sample&.value || "blanc",
+          machine_brouillard: style.ambiance_options.where(category: "machine_brouillard").sample&.value || "non",
+          duree: "00:02:00"
+        )
+      end
+    end
 
 
       CONSIGNE STRICTE : 
@@ -286,6 +354,12 @@ Category: options: Music History   # Conducting & Direction
 
       - regarde le début du Class CreativeDetour et ajouter des lignes de code pour ajouter chaque creation dans une table en lien avec ce creativeDetour (l'id de ce creative Detour est : #{self.id}) avec une relation Habtm à la fin du code (fais un truc comme creative_detour = CreativeDetour.find(#{self.id}) \ncreative_detour.interpretations << moninterpretation pour chaque table comme pour active record et ruby)
       - utiliser autant que possible de conducteurlines (le model s'appelle Conducteurline) jusqu'a atteindre la durée de 20 ("00:20:00")  minutes de conducteur
+      - regarde le code ruby pour generer les lignes de conducteurs avec les sequences templates enregistres
+      - si tu dois utiliser la table sequence templates ou si tu remplis la table sequence templates, ajoute des lignes au conducteur en utilisant le code ruby pour generer les lignes de conducteurs avec les sequences templates enregistres
+      - peux tu eviter l'erreur (irb):1:in `<main>': undefined method `name' for an instance of Hash (NoMethodError) 
+      - peux tu eviter l'erreur (irb):1:in `<main>': La validation a échoué : Conducteur doit exister (ActiveRecord::RecordInvalid)
+      - regarde la partie DATABASE USAGE et peux tu vraiment essayer d'arranger le contenu des colonnes/lignes enregistrées  comme dans DATABASE USAGE
+      - regarde la class Artisticprocess et artisticLimit
      
     
     PROMPT

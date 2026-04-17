@@ -1,7 +1,12 @@
 class CreativeDetoursController < ApplicationController
-  before_action :set_creative_detour, only: %i[ show edit update destroy ]
+  before_action :set_creative_detour, only: %i[ show edit update destroy clone ]
 
   # GET /creative_detours or /creative_detours.json
+  def clone
+    x=@creative_detour.clone_without_relations
+    redirect_to x
+
+  end
   def index
     @creative_detours = CreativeDetour.all
   end
