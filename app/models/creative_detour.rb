@@ -1,4 +1,44 @@
 class CreativeDetour < ApplicationRecord
+  # --- RELATIONS HABTM COMPLETES ---
+
+  # Coeur Artistique
+  has_and_belongs_to_many :directive_artistiques
+
+  has_and_belongs_to_many :artistic_notes
+  has_and_belongs_to_many :artistic_processes
+  has_and_belongs_to_many :artistic_limits
+  has_and_belongs_to_many :stage_themes
+  has_and_belongs_to_many :ambiance_options
+  has_and_belongs_to_many :styles
+  has_and_belongs_to_many :sequence_templates
+
+  has_and_belongs_to_many :inspiration_resources
+  has_and_belongs_to_many :emotional_markers
+  has_and_belongs_to_many :theme_suggestions
+  # Technique et Logistique
+  has_and_belongs_to_many :conducteurs
+  has_and_belongs_to_many :fiche_techniques
+  has_and_belongs_to_many :materiels
+  has_and_belongs_to_many :zones
+  has_and_belongs_to_many :plan_de_scene_dessins
+  # Analyse et Réflexion
+  has_and_belongs_to_many :interpretations
+  has_and_belongs_to_many :share_your_gaps
+  # --- Validations (Optionnel mais recommandé) ---
+  validates :title, presence: true
+  validates :concept, presence: true
+  def self.hellothere
+    schema_path = Rails.root.join('db', 'schema.rb')
+    schema_content = File.read(schema_path) if File.exist?(schema_path)
+    <<~PROMPT
+      serait il possible de creer les habtm rrelations dans le model des tables qu'on peut creer avec un creative detour (toutes sauf creative detour)
+      et les migrations  "rails g migration"
+
+      VOICI LE SCHEMA DE MA BASE DE DONNÉES :
+      #{schema_content}
+    PROMPT
+  end
+
   def self.generate_ai_prompt_detour
     # On récupère le contenu du schéma Rails
     schema_path = Rails.root.join('db', 'schema.rb')
@@ -112,16 +152,15 @@ Category: options: Music History   # Conducting & Direction
       - créer plusieurs creative detours sans commencer aucune fois par la meme table
       CONSIGNE STRICTE : 
       - remplis uniquement la table 'creative_detours'
-      - utilise uniquement d'autres tables que  'creative_detours' pour ce détour (dans database usage) (pour éviter les boucles).
+      - utilise toutes les tables sauf 'creative_detours' pour ce détour (dans database usage) (pour éviter les boucles).
       - regarde POSSIBILITE 1 et POSSIBILITE 2 et choisis au hasard entre les 2 possibilités pour faire ce quelle a dit
       - Utilise des données poétiques, pas seulement techniques.
       - rentre les données poétiques dans les colonnes artistiques et les données technique dans les colonnes techniques des tables.
       - laisse vide ou ne laisse pas vide les colonnes artistiques et laisse moi savoir si je dois les remplir quand l'IA les laisse vides
-      - utilise toutes les tables
+      - utilise toutes les autres tables que creative detour
       - peux tu ecrire un db/seeds en ruby
       - si tu veux dis moi en quoi cette facon de creer ou detour artistique me fait bouger dans la base de données autrement ou a quel endroit je peux commencer à chercher pour remplir la premiere table etc
       - à la place d'écrire un exemple de colonne de table, remplis la colonne de toutes les table une phrase pour me dire ce que je dois remplir dans cette colonne, ne me dis pas un exemple c'est juste pour savoir l'ordre (sans quel ordre je remplis les tables) pour voir si ça m'inspire mieux ou si tu donnes des exemples, faciles comme bonjour, emotions hyper simple, musique hyper simple, titre hyper simple et hyper facile etc.
-      - amuse moi 
     PROMPT
   end
   def generate_ai_prompt
@@ -198,13 +237,58 @@ Category: options: Music History   # Conducting & Direction
           Neuroception : Le sens (inconscient) de la sécurité ou du danger. C'est ce qui crée une atmosphère "tendue" ou "apaisante" dans le storytelling.
       
           Sens de l'agence (Agency) : Le sens d'être l'auteur de ses propres actions, crucial pour l'Audience Engagement et la présence scénique.
+      DEBUT DU Class Materiel:
+        class Materiel < ApplicationRecord
+          # Exemple de validations cohérentes avec votre schéma
+          validates :name, presence: true
+          validates :maximum, numericality: { only_integer: true, greater_than: 0 }
+
+      DEBUT DU Class AmbianceOption:
+        class AmbianceOption < ApplicationRecord
+          belongs_to :style
+          validates :category, inclusion: { in: %w(lumieres machine_brouillard musique) }
+
+      DEBUT DU Class CreativeDetour:
+        class CreativeDetour < ApplicationRecord
+        # --- RELATIONS HABTM COMPLETES ---
+      
+        # Coeur Artistique
+        has_and_belongs_to_many :artistic_notes
+        has_and_belongs_to_many :artistic_processes
+        has_and_belongs_to_many :artistic_limits
+        has_and_belongs_to_many :stage_themes
+        has_and_belongs_to_many :styles
+        has_and_belongs_to_many :inspiration_resources
+        has_and_belongs_to_many :emotional_markers
+        # Technique et Logistique
+        has_and_belongs_to_many :conducteurs
+        has_and_belongs_to_many :fiche_techniques 
+        has_and_belongs_to_many :materiels
+        has_and_belongs_to_many :zones
+        has_and_belongs_to_many :plan_de_scene_dessins
+        # Analyse et Réflexion
+        has_and_belongs_to_many :interpretations
+        has_and_belongs_to_many :share_your_gaps
+      VOICI LE THEME DU PROJET artistique :
+      Your initial question positions this as a critical artistic inquiry: "I.A. Intelligence Artistique — What could be hidden behind this theme? In the era of total digitalization, can we interrogate the place of the human facing the machine? To think, create meaning, make people feel, evoke emotions — what place is there for artistic intelligence?"
+
 
       CONSIGNE STRICTE : 
+      - regarde le début du Class Ambiance options
+      - regarde le début du Class Materiel
+      - regarde le theme du projet artistique et peux tu ecrire/modifier ce que tu crée dans les tables par rapport à ce thème
+      - remplis les tables en français French
       - Ne remplis PAS la table 'creative_detours' (pour éviter les boucles).
       - Utilise des données poétiques, pas seulement techniques.
-      - Si une table semble inutile pour ce détour, ignore-la.
+      - utilise toutes les table sauf la table creative_detours
+
       - regarde les 23 sens pour la scene, écris si tu penses qu'un des 23 sens est plus utilisé pour une ligne du conducteur ou si l'IA ne peut pas le dire et pourquoi
+
+      - regarde le début du Class CreativeDetour et ajouter des lignes de code pour ajouter chaque creation dans une table en lien avec ce creativeDetour (l'id de ce creative Detour est : #{self.id}) avec une relation Habtm à la fin du code (fais un truc comme creative_detour = CreativeDetour.find(#{self.id}) \ncreative_detour.interpretations << moninterpretation pour chaque table comme pour active record et ruby)
+      - utiliser autant que possible de conducteurlines (le model s'appelle Conducteurline) jusqu'a atteindre la durée de 20 ("00:20:00")  minutes de conducteur
+     
     
     PROMPT
   end
 end
+      #- Si une table semble inutile pour ce détour, ignore-la.

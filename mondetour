@@ -1,3 +1,7 @@
+serait il possible de creer les habtm rrelations dans le model des tables qu'on peut creer avec un creative detour (toutes sauf creative detour)
+et les migrations  "rails g migration"
+
+VOICI LE SCHEMA DE MA BASE DE DONNÉES :
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +14,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_17_031257) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_13_030208) do
   create_table "ambiance_options", force: :cascade do |t|
     t.integer "style_id", null: false
     t.string "category"
@@ -18,13 +22,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_17_031257) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["style_id"], name: "index_ambiance_options_on_style_id"
-  end
-
-  create_table "ambiance_options_creative_detours", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "ambiance_option_id", null: false
-    t.index ["ambiance_option_id", "creative_detour_id"], name: "idx_ambiance_detour"
-    t.index ["creative_detour_id", "ambiance_option_id"], name: "idx_detour_ambiance"
   end
 
   create_table "artistic_limits", force: :cascade do |t|
@@ -38,23 +35,11 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_17_031257) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "artistic_limits_creative_detours", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "artistic_limit_id", null: false
-    t.index ["creative_detour_id", "artistic_limit_id"], name: "idx_detour_artistic_limit"
-  end
-
   create_table "artistic_notes", force: :cascade do |t|
     t.string "title"
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "artistic_notes_creative_detours", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "artistic_note_id", null: false
-    t.index ["creative_detour_id", "artistic_note_id"], name: "idx_detour_note"
   end
 
   create_table "artistic_processes", force: :cascade do |t|
@@ -69,12 +54,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_17_031257) do
     t.string "what_changed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "artistic_processes_creative_detours", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "artistic_process_id", null: false
-    t.index ["creative_detour_id", "artistic_process_id"], name: "idx_detour_process"
   end
 
   create_table "conducteurhasmarkers", force: :cascade do |t|
@@ -121,12 +100,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_17_031257) do
     t.string "notes"
   end
 
-  create_table "conducteurs_creative_detours", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "conducteur_id", null: false
-    t.index ["creative_detour_id", "conducteur_id"], name: "idx_detour_conducteur"
-  end
-
   create_table "creative_detours", force: :cascade do |t|
     t.string "title"
     t.text "concept"
@@ -137,87 +110,6 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_17_031257) do
     t.string "challenge"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "creative_detours_directive_artistiques", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "directive_artistique_id", null: false
-    t.index ["creative_detour_id", "directive_artistique_id"], name: "idx_detour_directive"
-    t.index ["directive_artistique_id", "creative_detour_id"], name: "idx_directive_detour"
-  end
-
-  create_table "creative_detours_emotional_markers", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "emotional_marker_id", null: false
-    t.index ["creative_detour_id", "emotional_marker_id"], name: "idx_detour_marker"
-  end
-
-  create_table "creative_detours_fiche_techniques", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "fiche_technique_id", null: false
-    t.index ["creative_detour_id", "fiche_technique_id"], name: "idx_detour_fiche"
-  end
-
-  create_table "creative_detours_inspiration_resources", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "inspiration_resource_id", null: false
-    t.index ["creative_detour_id", "inspiration_resource_id"], name: "idx_detour_resource"
-  end
-
-  create_table "creative_detours_interpretations", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "interpretation_id", null: false
-    t.index ["creative_detour_id", "interpretation_id"], name: "idx_detour_interpretation"
-  end
-
-  create_table "creative_detours_materiels", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "materiel_id", null: false
-    t.index ["creative_detour_id", "materiel_id"], name: "idx_detour_materiel"
-  end
-
-  create_table "creative_detours_plan_de_scene_dessins", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "plan_de_scene_dessin_id", null: false
-    t.index ["creative_detour_id", "plan_de_scene_dessin_id"], name: "idx_detour_plan_de_scene_dessin"
-  end
-
-  create_table "creative_detours_sequence_templates", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "sequence_template_id", null: false
-    t.index ["creative_detour_id", "sequence_template_id"], name: "idx_detour_sequence_template"
-    t.index ["sequence_template_id", "creative_detour_id"], name: "idx_sequence_template_detour"
-  end
-
-  create_table "creative_detours_share_your_gaps", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "share_your_gap_id", null: false
-    t.index ["creative_detour_id", "share_your_gap_id"], name: "idx_detour_share_your_gap"
-  end
-
-  create_table "creative_detours_stage_themes", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "stage_theme_id", null: false
-    t.index ["creative_detour_id", "stage_theme_id"], name: "idx_detour_theme"
-  end
-
-  create_table "creative_detours_styles", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "style_id", null: false
-    t.index ["creative_detour_id", "style_id"], name: "idx_detour_style"
-  end
-
-  create_table "creative_detours_theme_suggestions", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "theme_suggestion_id", null: false
-    t.index ["creative_detour_id", "theme_suggestion_id"], name: "idx_detour_theme_suggestion"
-    t.index ["theme_suggestion_id", "creative_detour_id"], name: "idx_theme_suggestion_detour"
-  end
-
-  create_table "creative_detours_zones", id: false, force: :cascade do |t|
-    t.integer "creative_detour_id", null: false
-    t.integer "zone_id", null: false
-    t.index ["creative_detour_id", "zone_id"], name: "idx_detour_zone"
   end
 
   create_table "directive_artistiques", force: :cascade do |t|
@@ -393,3 +285,4 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_17_031257) do
   add_foreign_key "materiels", "zones"
   add_foreign_key "sequence_templates", "styles"
 end
+

@@ -1,4 +1,6 @@
 class Style < ApplicationRecord
+
+  has_and_belongs_to_many :creative_detours # Ajoute cette ligne
   has_many :ambiance_options, dependent: :destroy
   has_many :sequence_templates
   has_many :projet_artistiques, foreign_key: :style, primary_key: :name # Si tu relies par le nom

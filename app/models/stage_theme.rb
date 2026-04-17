@@ -1,4 +1,5 @@
 class StageTheme < ApplicationRecord
+
   has_many :directive_artistiques
 
   def self.to_artistic_hash

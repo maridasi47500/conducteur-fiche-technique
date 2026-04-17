@@ -1,0 +1,13 @@
+<% if collection.any? %>
+  <div class="relation-block">
+    <h4><%= label %></h4>
+    <ul>
+      <% collection.each do |item| %>
+        <li>
+          <%# Tente d'afficher :title, sinon :name, sinon l'objet lui-même %>
+          <%= item.try(:title) || item.try(:name) || item.inspect %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
