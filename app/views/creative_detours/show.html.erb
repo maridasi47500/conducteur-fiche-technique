@@ -68,6 +68,7 @@
                   <th>Ordre</th>
                   <th>Action / Séquence</th>
                   <th>Son / Musique</th>
+                  <th>videoprojecteur</th>
                   <th>Durée</th>
                 </tr>
               </thead>
@@ -78,6 +79,9 @@
                     <td>
                       <strong><%= line.sequenceaction %></strong><br>
                       <small class="text-muted"><%= line.interpretes %></small>
+                    </td>
+                    <td>
+                      <%= line.videoprojection %>
                     </td>
                     <td><small><%= line.son %></small></td>
                     <td><%= line.duree.strftime("%M:%S") %></td>
