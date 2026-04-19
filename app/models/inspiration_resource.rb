@@ -31,6 +31,8 @@ class InspirationResource < ApplicationRecord
     "Emotion & Psychology",
     "Audience Engagement"
   ]
+    validates :category, inclusion: { in: CATEGORIES }
+
   def listcategories
     CATEGORIES
   end
