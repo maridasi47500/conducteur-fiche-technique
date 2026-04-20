@@ -8,7 +8,7 @@ class CreativeDetoursController < ApplicationController
 
   end
   def index
-    @creative_detours = CreativeDetour.all
+    @creative_detours = CreativeDetour.all.order(:created_at => :desc).page params[:page]
   end
 
   # GET /creative_detours/1 or /creative_detours/1.json

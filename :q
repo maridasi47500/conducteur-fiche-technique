@@ -41,10 +41,10 @@ link
   <% end %>
 </table>
 <h2>prompt gemini ,gpt pour générer un détour artistique</h2>
-<textarea>
+<p>
 <%=CreativeDetour.generate_ai_prompt_detour%>
 
-</textarea>
+</p>
 <%= paginate @creative_detours %>
 
 <%= link_to "New creative detour", new_creative_detour_path %>
