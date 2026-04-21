@@ -1,0 +1,46 @@
+<%= form_with(model: machine_log) do |f| %>
+  <% if machine_log.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(machine_log.errors.count, "error") %> prohibited this machine_log from being saved:</h2>
+
+      <ul>
+        <% machine_log.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="field">
+    <%= f.label :module, "Composant du Processeur" %>
+    <%= f.select :module, ['DYNAMIC', 'HARMONY', 'SYSTEM', 'GEO', 'ASTRONOMY'], prompt: "Choisir un module" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :level, "Niveau d'Alerte Log" %>
+    <%= f.select :level, ['INFO', 'WARN', 'ERROR', 'FATAL'] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :raw_data, "Donnée Brute (Calcul)" %>
+    <%= f.text_field :raw_data, placeholder: "ex: Gain < 5dB ou Coord: 48.8566, 2.3522" %>
+  </div>
+
+  <hr>
+
+  <div class="field">
+    <%= f.label :fb_translation, "🤖 Mur Facebook (Le Processeur)" %>
+    <%= f.text_area :fb_translation, placeholder: "[LOG] Phrase froide et technique ici..." %>
+  </div>
+
+  <div class="field">
+    <%= f.label :human_perspective, "🎻 Perspective Humaine (L'Artiste)" %>
+    <%= f.text_area :human_perspective, placeholder: "Ce que le musicien ressent réellement..." %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Injecter dans la base de données" %>
+  </div>
+
+<% end %>

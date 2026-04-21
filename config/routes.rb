@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :machine_logs
+  get 'theme/projet_artistique'
   get 'home/index'
   resources :creative_detours do
   member do

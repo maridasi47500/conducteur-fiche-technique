@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @machine_log %>
+
+<div>
+  <%= link_to "Edit this machine log", edit_machine_log_path(@machine_log) %> |
+  <%= link_to "Back to machine logs", machine_logs_path %>
+
+  <%= button_to "Destroy this machine log", @machine_log, method: :delete %>
+</div>

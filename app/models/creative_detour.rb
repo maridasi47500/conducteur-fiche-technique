@@ -723,11 +723,13 @@ class ConducteursController < ApplicationController
 
 
       CONSIGNE STRICTE : 
+      - regarde le theme du projet artistique et base tout ce que tu peux ecrire/modifier/ ce que tu crée dans les tables par rapport à ce thème
+      - essaie de repondre à ce theme dans toutes les tables
       - ne NETTOIE PAS la base de données : seulement create dans activerecord, seulement l'operation CREATE de activerecord 
       - regarde le début du Class Ambiance options
       - regarde le début du Class Materiel
-      - regarde la class Artisticprocess, inspiration ressources, plan_de_scene_dessin et artisticLimit pour eviter des erreurs
-      - regarde le theme du projet artistique et peux tu ecrire/modifier ce que tu crée dans les tables par rapport à ce thème
+      - regarde la class Artisticprocess, inspiration ressources, plan_de_scene_dessin et artisticLimit pour eviter des erreurs ou l'IA a oublié d'inclure conducteur ou conducteur_id pour créer l'enregistrement dans la table
+
       - remplis les tables en français French
       - Ne remplis PAS la table 'creative_detours' (pour éviter les boucles).
       - Utilise des données poétiques, pas seulement techniques.

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  level: MyString
+  module: MyString
+  raw_data: MyString
+  fb_translation: MyString
+  human_perspective: MyString
+
+two:
+  level: MyString
+  module: MyString
+  raw_data: MyString
+  fb_translation: MyString
+  human_perspective: MyString

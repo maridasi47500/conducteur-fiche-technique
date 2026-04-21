@@ -1,0 +1,2 @@
+class MachineLog < ApplicationRecord
+end

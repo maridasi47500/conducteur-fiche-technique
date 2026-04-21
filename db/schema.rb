@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_17_031257) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_21_032901) do
   create_table "ambiance_options", force: :cascade do |t|
     t.integer "style_id", null: false
     t.string "category"
@@ -266,6 +266,16 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_17_031257) do
     t.string "human_judgment"
     t.string "the_gap"
     t.string "artistic_truth"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "machine_logs", force: :cascade do |t|
+    t.string "level"
+    t.string "module"
+    t.string "raw_data"
+    t.string "fb_translation"
+    t.string "human_perspective"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
