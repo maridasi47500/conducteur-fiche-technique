@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_21_032901) do
+ActiveRecord::Schema[7.1].define(version: 2026_04_23_024151) do
   create_table "ambiance_options", force: :cascade do |t|
     t.integer "style_id", null: false
     t.string "category"
@@ -108,6 +108,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_21_032901) do
     t.string "notes_artistique"
     t.string "creative_notes"
     t.integer "emotional_marker_id"
+    t.string "etat"
   end
 
   create_table "conducteurs", force: :cascade do |t|

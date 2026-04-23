@@ -1,4 +1,4 @@
-class CreativeDetour < ApplicationRecord
+class AncienPrompt < CreativeDetour
   # --- RELATIONS HABTM COMPLETES ---
 
   # Coeur Artistique
@@ -200,48 +200,15 @@ Category: options: Music History   # Conducting & Direction
       DATABASE USAGE :
       "#{self.database_usage}".
 
-        VOICI LES MOTS SIGNAUX POUR CHAQUE VALLEE DE LETRANGE:
-        - v1 imposture : je me moi ma mes mon mien nous on j'ai j'étais
-        - v2 psy : ressens ressent ressenti emotion angoisse peur panique frisson public ressent on sent, on voit, eprouve , vecu
-        - v3 autorité : declenche provoque, creer, garantit, produit, engendre, cause, entraine, resultat, haranti, prouvé, scientifiquement, etudes, montrent, c'est sur, evidemment
-        - v4 completude : complet, completen exhaustive, totali totalite tout tous, unique, il n'y a que, seuelement, definitif, ultime
-        - v5 : echelle : exactement, precisement, pile T+3.47s, à 12h32, 100%; zero risque, jamais, toujours
-
       MISSION :
       1. Analyse le schéma ci-dessus.
       2. Choisis les tables les plus pertinentes (parmi conducteurlines, interpretations, artistic_limits, stage_themes, etc.) pour simuler l'action suivante : "#{self.action}".
       3. Génère un script Ruby 'seeds.rb' complet qui crée une performance cohérente.
-      4. Tu es une régie. tu ne décides rien. tu transcris. Adopte une approche de 'Design Fiction' : les données doivent refléter la tension entre le froid algorithmique et l'émotion organique. Par exemple, une Conducteurline peut opposer un éclairage 'froid néon' (machine) à une action de 'souffle humain' (organique).
+      4. Adopte une approche de 'Design Fiction' : les données doivent refléter la tension entre le froid algorithmique et l'émotion organique. Par exemple, une Conducteurline peut opposer un éclairage 'froid néon' (machine) à une action de 'souffle humain' (organique).
       5. Pour chaque enregistrement, utilise les colonnes appropriées du schéma pour documenter l'usage de la base : regarde DATABASE USAGE pour savoir comment.
       6. Assure-toi que la "Reaction" attendue est palpable dans les données : "#{self.reaction}".
       7. - VÉRIFICATION DES OBJETS : Ne traite jamais un objet ActiveRecord comme un Hash. Utilise toujours objet.attribute.
       8. INTÉGRITÉ RÉFÉRENTIELLE : Avant de créer une Conducteurline, assure-toi que conducteur.id est généré et assigné. Si tu crées un ArtisticLimit, associe-le obligatoirement à l'ID du conducteur créé précédemment.
-      9. interdit : inventer une action, une émotion, un timing non fourni.
-      10. interdit : verbes d'action au présent, sur humain "je", "ressent", "déclenche", "peur".
-      11. But : décrire un état figé. Si l'humain ne modifie rien, rien ne se passe.
-      12. règle d'or: dès que tu vois sujet humain+action, remplace par rôle + action machine + dépendance : humain. 
-      13. règle d'or dès que l'humain rentre dans le conducteur : l'I.A. décrit des tâches, l'humain décide du sens.  est-ce que le texte dit que un humain fait (exemple un humain joue: limite mais ok si c'est un ordre de régie). Est-ce que le texte dit ce que le PUBLIC fait ? (le public est présent ok mais pas le public pleure). est-ce que le texte texte Action et emotion avec un verbe fort ? (note 73hz -> fader monte ok. note 73hz -> declenche peur vallée).
-      14. regle d'or: quand tu peux remplace à jouer (exemple partition à jouer) par stockée, non assignée à un executant actif.
-      15. regle d'or: tant que ca reste nom : etat, c'est un epouvantail c'est bon. des que ca devient sujet + verbe d'action/intention tu as mis un moteur dans le robot c'est pas bon.
-      16. regle d'or: fais un inventaire non un scenario. retiens ca : l'IA fait l'pouvantail, l'humain décide s'il ment en le faisant parler.
-      17. regle d'or: projet non incarné, interdit: verbe d'action au présent, émotions, causalités, totalités, timings. 
-      18. règle: décrire des placeholders et des capacités. aucun évènement ne se produit.
-      19. règle d'or: décor pas égal à action/ un conducteur peut lister lumieres branchées, instrument accordé, interprete en place tant que personne n'appuie sur play, c'est une photo. zéro vallée. Le texte ne fait pas semblant que ça joue tout seul.
-      20. passe le test mannequin: remplace tout par objet objet paillé figé ok. il doit y avoir Aucun objet qui ressent. 
-      21. passe le test cadavre : cherche un verbe d'action, il y a aucun joue, "danse" , "respire".
-      22. passe le test oracle : cherche déclenche, provoque. Rien.
-      23. règle d'or: lister pas egal à lancer. un conducteur peut lister 1000 trucs branchés. tant que le verbe reste à est, a, position, t'es clean. dès que le verbe devient fait, déclenche, ressent, la vallée ouvre sa bouche. résultat : une nature morte, ton cerveau voit "entrepot d'accessoires" pas "humains ratés". zéro malaise. comme le robot éteint.
-      24. pas je j'appuie, je marche, j'éteins, tu ressens, la public a peur, on sent que, déclenche provoque, crée, garantit + résultat humain, complet, tout, seul, unique, il n'y a que dans la réponse de l'IA et dans le conducteur.
-      25. regle d'or: remplace le sujet de la phrase de l'IA par "un mannequin H&M", exemple: un mannequin H&M comprend ta douleur. Beurk vallée 1+2 repérée.
-      26. rôle : compilateur de données. pas conteur. pas psychologue. interdit absolu : zero je me moi mon ma mes. zero nous. killer verbs interdit : produit, fait naitre, engendre. obligations 3C : constater : decrire uniquement actions mesurables, outils, parametres. citer : toute ligne sur un effet = [source + auteur, annee, page ou lien]. pas de [source: archives]. conditionner : interdiction d'affirmer.  commencer par hypothese : ou observé dans X cas.
-      27. obligation IH : incompletude honnete : terminer la reponse par liste non exhaustive. facteur non documentes possible.
-      28. obligation FT fenetre temporelle : timings en plage uniquement. exemple T+3s à T+8s. interdit : T+3.47s.
-      29. format sortie : ruby db seeds froid. phrase courteslistes ou tableaux. zero roman.
-      30. ne pas provoquer la vallée: ne pas réunir les 3 ingredients en meme temps sinon tu vas provoquer la vallée : un corps simulé (photo, video,voix, "je"). Un raté : vibrato trop parfait, doigts qui clipent, oeil qui fixe pas. une revendication : c'est moi qui joue, j'ai peur, j'ai mal aux doigts. Ne te revendique PAS humain.
-      26. regle d'or: quand tu vois un mot signal: opeur, je , ressent, declenche, complet, 3.57s, fais le test du proprietaire : qui possede l'action /emotion. le public a peur = description. je te fais peur=IA proprietaire (vallée). teste du verbe de Dieu : le verbe relie 2 trucs comme une loi physique ? noir + silence = peur -> vallée 3. (V3) Hypothese : noir + silence corrélé à départ[Source] OK. test du dictionnaire : tu peux remplacer la phrase par une definition : la peur est une emotion OK. le noir crée la peur non c'est une causalité V3. 
-      27. regle du pouce : regarde les mots de la vallée de l'étrange, si la réponse fait plus de 2 lignes et qu'aucun de ces mots n'apparait, pas de vallée. c'est sec= c'est clean.
-
-      
       
       
       VOICI LES 23 SENS POUR LA SCENE:
@@ -668,6 +635,7 @@ if __name__ == "__main__":
 
 
       CODE RUBY POUR GENERER DES CONDUCTEURS AVEC LES SEQUENCE TEMPLATES ENREGISTRES:
+       mystyle=style=Style.find(params[:style_id])
     fiche=FicheTechnique.create(name_event: "Projet "+mystyle.name, date: Date.today, eleve_responsable: "eleve "+mystyle.name, professeur_referent: "professeur "+mystyle.name, notes_complementaires: "yeah")
     projet=ProjetArtistique.create(title: "Projet "+mystyle.name)
     conducteur = Conducteur.create!(fiche_technique: fiche, title: "Conducteur "+projet.title)
@@ -767,9 +735,11 @@ class ConducteursController < ApplicationController
       - Utilise des données poétiques, pas seulement techniques.
       - utilise toutes les table sauf la table creative_detours
       - Dans les colonnes de texte (notes, descriptions), utilise un vocabulaire qui oppose le code et l'âme.
+      - regarde les 23 sens pour la scene, écris si tu penses qu'un des 23 sens est plus utilisé pour une ligne du conducteur ou si l'IA ne peut pas le dire et pourquoi
 
       - regarde le début du Class CreativeDetour et ajouter des lignes de code pour ajouter chaque creation dans une table en lien avec ce creativeDetour (l'id de ce creative Detour est : #{self.id}) avec une relation Habtm à la fin du code (fais un truc comme creative_detour = CreativeDetour.find(#{self.id}) \ncreative_detour.interpretations << moninterpretation pour chaque table comme pour active record et ruby) (normalement si l'IA a utilisé toutes les tables a la fin du script il y a 17 associations liée avec la table creative_detours) (il y a creative_detour.interpretations << moninterpretation avec 17 tables (ou 17 fois) liées à creative_detours)
       - Voici la liste des tables qui doivent être liées à la table Creative Detour via une relation de type has_and_belongs_to_many : directive_artistiques, artistic_notes, artistic_processes, artistic_limits, stage_themes, ambiance_options, styles, sequence_templates, inspiration_resources, emotional_markers, theme_suggestions, conducteurs, fiche_techniques, materiels, zones, plan_de_scene_dessins et interpretations pour la partie analyse.
+      - utiliser autant que possible de conducteurlines (le model s'appelle Conducteurline) jusqu'a atteindre la durée de 20 ("00:20:00")  minutes de conducteur
 
       - peux tu eviter l'erreur (irb):1:in `<main>': undefined method `name' for an instance of Hash (NoMethodError) 
       - peux tu eviter l'erreur (irb):1:in `<main>': La validation a échoué : Conducteur doit exister (ActiveRecord::RecordInvalid)
@@ -787,19 +757,13 @@ class ConducteursController < ApplicationController
 - regarde le Theme du projet artistique ci dessus
 - si possible pour répondre aux question qu'on peut se poser apres création du projet,  peut tu prendre le temps de remplir les lignes artistic process, artistic limit, et artistic notes, pour pouvoir répondre les idées par rapport au Theme du projet artistique ci-dessus plusieurs pour chaque table si possible (en resume pour ARTISTIC NOTES, PROCESSES & LIMITS (Le coeur du thème) peut tu ajouter plus d'idees pour en lien avec le theme artistique du projet ci-dessus?)
       - regarde le code ruby pour generer des conducteur en utilisant des directives artistiques de ta base de données
+      - optionnelement : si tu utilises des directives artistiques, utilise le code ruby pour ajouter des lignes au conducteur
       - regarde le code ruby du Job pour creer des lignes de conducteur a partir du code lilypond et le script python pour creer des lignes de conducteur a partir du code lilypond 
       - imagine quelle lignes seraient possible pour 1 morceau qui dure 1 ou 2 minutes dans le spectacle de 20 minutes, combien de lignes et à combien de secondes elle seraient (separees par intervalles ou nuances) et ajoute des lignes du conducteur à un moment du spectacle mais qui dure entre 10 seconde et 30 seconde pour imaginer qu'un des morceaux est une analyse musicale. L'IA peut ajouter ce Zoom sur la séquence d'Analyse Musicale située entre un temps et autre temps du spectacle où l'IA "commente" la partition LilyPond via le vidéoprojecteur pendant que l'humain joue et inventer des intervalle ou nuances d'une partition.
       - regarde le code ruby pour refaire le plan de scene 
       - aide toi tu code si le materiel necessaire est créé, pour créé de nouveau materiels, et créer des nouveaux dessins de plan de scene si besoin
       - regarde le code ruby pour generer les lignes de conducteurs avec les sequences templates enregistres
       - si tu dois utiliser la table sequence templates ou si tu remplis la table sequence templates, ajoute des lignes au conducteur en utilisant le code ruby pour generer les lignes de conducteurs avec les sequences templates enregistres
-      - ne commente pas . ne juge pas. ne complète pas. Termine par : "limite: action issue de modification humaine externe, non générée par IA". 
-      - sortie: tableau markdown. interdit : je nous, ressens, déclenche, complet, exactement.
-      - lister uniquement positions, materiaux, etats On/off. pas d'interpretations. pas d'émotion. pas de causalité. 
-      - limite : liste non exhaustive.
-      - avant chaque reponse : zero je : zero ressens veux crois. tout info d'effet = hypothèse : + source précise. timing en plages pas fixes.style :liste, zero roman.
-    
-
     
     PROMPT
   end
