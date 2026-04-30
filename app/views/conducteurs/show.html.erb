@@ -74,3 +74,122 @@
 
   <%= button_to "Destroy this conducteur", @conducteur, method: :delete %>
 </div>
+<%# Vue : Inventaire du Conducteur #%>
+<div class="conducteur-container" style="font-family: monospace; color: #333;">
+
+  <h2>[IDENTIFIANT CONDUCTEUR : <%= @conducteur.title %>]</h2>
+  <hr>
+
+  <%# Section 01 : Métadonnées Techniques %>
+  <section>
+    <h3>I. INFRASTRUCTURE GÉNÉRALE</h3>
+    <table border="1" width="100%">
+      <tr>
+        <th>Paramètre</th>
+        <th>Valeur</th>
+      </tr>
+      <tr>
+        <td>Fiche Technique (ID)</td>
+        <td><%= @conducteur.fiche_technique_id || "N/A" %></td>
+      </tr>
+      <tr>
+        <td>Tempo (Plage)</td>
+        <td><%= @conducteur.tempo_range %></td>
+      </tr>
+      <tr>
+        <td>Opérateur (Username)</td>
+        <td><%= @conducteur.username %></td>
+      </tr>
+      <tr>
+        <td>Thèmes de Scène</td>
+        <td><%= @conducteur.stage_themes.pluck(:name).join(' / ') %></td>
+      </tr>
+    </table>
+  </section>
+
+  <br>
+
+  <%# Section 02 : Le Conducteur (Score de positions) %>
+  <section>
+    <h3>II. CONDUCTEURLINES (INVENTAIRE DES ÉTATS FIGÉS)</h3>
+    <table border="1" width="100%">
+      <thead>
+        <tr style="background: #f0f0f0;">
+          <th>Ordre</th>
+          <th>Plage Temporelle</th>
+          <th>Action Machine / Mannequin</th>
+          <th>Lumières (Flux/Ambiance)</th>
+          <th>Son (Signal)</th>
+          <th>Marqueur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @conducteur.conducteurlines.order(:ordre).each do |line| %>
+          <tr>
+            <td><%= line.ordre %></td>
+            <td><%= line.duree.strftime("%H:%M:%S") %></td>
+            <td><%= line.sequenceaction %></td>
+            <td><%= line.lumieres_ambiante %> / <%= line.lumieres_effet %></td>
+            <td><%= line.son %></td>
+            <td><%= line.emotional_marker_id %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <br>
+
+  <%# Section 03 : Analyse et Limites Artistiques %>
+  <section>
+    <h3>III. PROTOCOLES ET LIMITES (GHOST IN THE MACHINE)</h3>
+    <div style="display: flex; gap: 20px;">
+      <div style="flex: 1; border: 1px solid #ccc; padding: 10px;">
+        <h4>Processus Artistique</h4>
+        <% @conducteur.artistic_processes.each do |process| %>
+          <p><strong>Impulsion :</strong> <%= process.initial_impulse %></p>
+          <p><strong>Rupture (Breakthrough) :</strong> <%= process.breakthrough %></p>
+          <p><strong>État Final :</strong> <%= process.final_form %></p>
+        <% end %>
+      </div>
+      <div style="flex: 1; border: 1px solid #ccc; padding: 10px;">
+        <h4>Limites Documentées</h4>
+        <% @conducteur.artistic_limits.each do |limit| %>
+          <p><strong>Cible :</strong> <%= limit.what_i_want %></p>
+          <p><strong>Incommunicable :</strong> <%= limit.why_untranslatable %></p>
+          <p><strong>Vérité Hypothétique :</strong> <%= limit.emotional_truth %></p>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <br>
+
+  <%# Section 04 : Détours et Écarts %>
+  <section>
+    <h3>IV. DÉTOURS CRÉATIFS (DÉVIATIONS DU SIGNAL)</h3>
+    <ul>
+      <% @conducteur.creative_detours.each do |detour| %>
+        <li>
+          <strong><%= detour.title %> :</strong> 
+          <%= detour.concept %> | Usage : <%= detour.database_usage %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+
+  <br>
+
+  <%# Section 05 : Interprétations et Gaps %>
+  <section>
+    <h3>V. INTERPRÉTATIONS (MACHINE VS HUMAIN)</h3>
+    <% @conducteur.interpretations.each do |interp| %>
+      <blockquote>
+        <strong>Analyse Machine :</strong> <%= interp.machine_analysis %><br>
+        <strong>Jugement Humain :</strong> <%= interp.human_judgment %><br>
+        <strong>L'Écart (The Gap) :</strong> <%= interp.the_gap %>
+      </blockquote>
+    <% end %>
+  </section>
+
+</div>

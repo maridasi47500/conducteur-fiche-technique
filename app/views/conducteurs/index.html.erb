@@ -21,6 +21,10 @@
 <%= paginate @conducteurs %>
 
 <%= link_to "New conducteur", new_conducteur_path %>
+<h2>generer un conducteur avec le prompt I.A.:</h2>
+<textarea>
+<%=Conducteur.generate_ai_prompt%>
+</textarea>
 <p>
 3. Résumé visuel de la chaîne de production
 
