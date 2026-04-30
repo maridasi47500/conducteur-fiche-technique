@@ -80,5 +80,4 @@ Linguagem de Programação
 O sistema resultante do conjunto de algoritmos aqui apresentados foi desenvolvido utilizando-
 se o paradigma de orientação a objetos, visando obter uma maior abstração em relação à
 implementação dos elementos da notação musical, os quais são representados por simples
-objetos manipuláveis.:q
-
+objetos manipuláveis.
