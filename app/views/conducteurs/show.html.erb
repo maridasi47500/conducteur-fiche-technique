@@ -127,7 +127,7 @@
         <% @conducteur.conducteurlines.order(:ordre).each do |line| %>
           <tr>
             <td><%= line.ordre %></td>
-            <td><%= line.duree.strftime("%H:%M:%S") %></td>
+            <td><%= line.duree.strftime("%H:%M:%S") rescue "00:05" %></td>
             <td><%= line.sequenceaction %></td>
             <td><%= line.lumieres_ambiante %> / <%= line.lumieres_effet %></td>
             <td><%= line.son %></td>

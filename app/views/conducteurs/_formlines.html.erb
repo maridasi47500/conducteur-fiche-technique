@@ -14,7 +14,7 @@
 <%mycounter = 0%>
 <%=form.fields_for :conducteurlines, conducteur.conducteurlines.order(:ordre) do |f|%>
 <%mycounter += 1%>
-<div class="item" data-index="<%=f.object.ordre.to_i > 0 ? f.object.ordre : mycounter%>">
+<div class="item" data-index="<%=(f.object.ordre.to_i > 0 ? f.object.ordre : mycounter) rescue mycounter%>">
  <td>
     <%= mycounter %>
 < ! -- déplacer ici pour changer l'ordre -->
@@ -22,7 +22,7 @@
   </td>
  <td>
     <%= f.label :duree, style: "display: block" %>
-    <%= f.time_field :duree, value: f.object.maduree, step: 2 %>
+    <%= f.time_field :duree, value: (f.object.maduree rescue "00:00:00"), step: 2 %>
   </td>
 
   <td>
