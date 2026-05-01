@@ -222,5 +222,6 @@ fr:
       default: "%d %B %Y %Hh %Mmin %Ss"
       long: "%A %d %B %Y %Hh%M"
       short: "%d %b %Hh%M"
+      tresshort: "%d %b à %Hh%M"
       veryshort: "fait le %d %b à %Hh%M"
     pm: pm

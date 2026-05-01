@@ -517,3 +517,4 @@ Voulez-vous que je vous aide à :
 - faire sqlite3 storage/development.sqlite3 .dump > export_complet.sql
 
 - essayer la derniere fugue : python3 lib/assets/fugue_aleatoire.py
+-essayer la derniere histoire : rails c puis require "./lib/assets/generateur_partition_conducteur.rb"

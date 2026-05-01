@@ -1,6 +1,7 @@
 class Conducteurline < ApplicationRecord
 
 
+belongs_to :emotional_marker, optional: true
 belongs_to :conducteur
   # Génère une requête de recherche propre
   def search_query
@@ -13,9 +14,9 @@ belongs_to :conducteur
   end
 def maduree
 x=read_attribute(:duree)
-("%02d" % x.hour+":"+ "%02d" % x.min)
+("%02d" % x.hour+":"+ "%02d" % x.min+":"+ "%02d" % x.sec)
 rescue
-"00:00"
+"00:00:00"
 end
 def videoprojection=(uploaded_io)
 p "hello"

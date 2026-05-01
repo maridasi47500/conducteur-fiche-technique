@@ -20,7 +20,7 @@
 
   <td>
     <%= form.label :duree, style: "display: block" %>
-    <%= form.time_field :duree %>
+    <%= form.time_field :duree, step: 2 %>
   </td>
 
   <td>
@@ -41,7 +41,6 @@
   </td>
   <td>
     <%= form.label :lumieres_ambiante, "lumiere ambiante (noir total, rouge, violet, jaune, mi-scene eclairee couleur, blanc doux, blanc chaud, toutes couleurs, salle rallumée)", style: "display: block" %>
-    <%= form.select :lumieres_ambiante, ["", "noir total", "rouge", "violet", "jaune", "mi-scene eclairee couleur", "blanc doux", "blanc chaud", "toutes les couleurs", "salle rallumée"] %>
 <%= form.select :lumieres_ambiante, [
   ['Classiques', ["blanc chaud", "blanc doux", "salle rallumée", "plein feu"]],
   ['Couleurs', ["rouge", "violet", "jaune", "ambre", "bleu nuit", "magenta", "lavande", "toutes les couleurs"]],
