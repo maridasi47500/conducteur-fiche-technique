@@ -1,5 +1,5 @@
 class ConducteursController < ApplicationController
-  before_action :set_conducteur, only: %i[ show edit update destroy editformlines star ingredients mixer_ingredients advanced_generator generate_advanced_conductor]
+  before_action :set_conducteur, only: %i[ show edit update destroy editformlines star ingredients mixer_ingredients advanced_generator generate_advanced_conductor getexcelsheet]
   # Ce dictionnaire fait le pont entre le "Truc" coché et les colonnes SQL
   ARTISTIC_CONFIGS=StageTheme.to_artistic_hash
   #ARTISTIC_CONFIGS = {
@@ -24,6 +24,18 @@ class ConducteursController < ApplicationController
   #}.freeze
 
   # GET /conducteurs or /conducteurs.json
+  def getexcelsheet
+    csv=""
+    csv+=["duree", "sequence / action", "interpretes", "son","lumieres ambiantes", "lumieres effet", "machine brouillard", "videoprojection", "notes technicien"].map{|g|g.gsub(",","")}.join(",")+"\n"
+
+    @conducteur.conducteurlines.each do |x|
+      csv+=""+[x.maduree.to_s, x.sequenceaction, x.interpretes, x.son,x.lumieres_ambiante, x.lumieres_effet, x.machine_brouillard, x.videoprojection, x.notes_technicien].map{|g|g.to_s.gsub(",","")}.join(",")+"\n"
+    end
+    hello="./public/uploads/conducteur#{@conducteur.id}.csv"
+    File.write(hello, csv)
+    x=`libreoffice "#{hello}"`
+    
+  end
   def index
     @conducteurs = Conducteur.all.order(:created_at => :desc).page params[:page]
   end

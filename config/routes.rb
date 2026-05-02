@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :conducteur_line_positions
   resources :machine_logs
   get 'theme/projet_artistique'
   get 'home/index'
@@ -51,6 +52,7 @@ Rails.application.routes.draw do
 
     member do
       post "generate_advanced_conductor"
+      get "getexcelsheet"
       get "advanced_generator"
       patch "mixer_ingredients"
       get "ingredients"

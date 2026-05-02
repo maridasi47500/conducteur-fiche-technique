@@ -12,7 +12,8 @@
 
 <div class="grid">
 <%mycounter = 0%>
-<%=form.fields_for :conducteurlines, conducteur.conducteurlines.order(:ordre) do |f|%>
+<%#=form.fields_for :conducteurlines, conducteur.conducteurlines.order(:ordre) do |f|%>
+<%=form.fields_for :conducteurlines do |f|%>
 <%mycounter += 1%>
 <div class="item" data-index="<%=(f.object.ordre.to_i > 0 ? f.object.ordre : mycounter) rescue mycounter%>">
  <td>
@@ -37,7 +38,7 @@
 
   <td>
     <%= f.label :son, style: "display: block" %>
-<%if f.object.son.to_s.length > 0 and File.exists?("./public/uploads/"+f.object.son)%>
+<%if (f.object and f.object.son.to_s.length > 0 and File.exist?("./public/uploads/"+f.object.son) rescue false)%>
     <%= f.file_field :son %>
 <%else%>
     <%= f.text_area :son %>
@@ -60,7 +61,7 @@
 
   <td>
     <%= f.label :videoprojection, style: "display: block" %>
-<%if f.object.videoprojection.to_s.length > 0 and File.exists?("./public/uploads/"+f.object.videoprojection)%>
+<%if f.object and f.object.videoprojection.to_s.length > 0 and File.exist?("./public/uploads/"+f.object.videoprojection)%>
     <%= f.file_field :videoprojection %>
 <%else%>
     <%= f.text_area :videoprojection %>
@@ -83,6 +84,27 @@
     <%= f.label :creative_notes, style: "display: block" %>
     <%= f.text_area :creative_notes %>
   </td>
+  <td>
+    <%= f.fields_for :conducteur_line_positions do |ff|%>
+<div class="field">
+    <%= ff.label :materiel_id, style: "display: block" %>
+    <%= ff.collection_select :materiel_id, Materiel.all, :id, :name %>
+</div>
+<div class="field">
+    <%= ff.label :coord_x, style: "display: block" %>
+    <%= ff.number_field :coord_x %>
+</div>
+<div class="field">
+    <%= ff.label :coord_y, style: "display: block" %>
+    <%= ff.number_field :coord_y %>
+</div>
+<div class="field">
+    <%= ff.label :transition_type, style: "display: block" %>
+    <%= ff.text_field :transition_type %>
+</div>
+    <% end %>
+  </td>
+
   <td>
 
 <%= f.check_box :_destroy %>

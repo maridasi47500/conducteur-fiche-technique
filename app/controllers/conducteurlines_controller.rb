@@ -65,6 +65,6 @@ class ConducteurlinesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def conducteurline_params
-      params.require(:conducteurline).permit(:conducteur_id, :duree, :sequenceaction, :interpretes, :lumieres_ambiante, :lumieres_effet, :machine_brouillard, :videoprojection, :notes_technicien, :son, :notes_artistique, :creative_notes, :emotional_marker_id)
+      params.require(:conducteurline).permit(:conducteur_id, :duree, :sequenceaction, :interpretes, :lumieres_ambiante, :lumieres_effet, :machine_brouillard, :videoprojection, :notes_technicien, :son, :notes_artistique, :creative_notes, :emotional_marker_id, :conducteur_line_positions_attributes=>{})
     end
 end

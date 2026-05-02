@@ -6,6 +6,7 @@ class Conducteur < ApplicationRecord
 
   # --- Liaisons de Contenu (Lignes et État) ---
   has_many :conducteurlines, dependent: :destroy
+  accepts_nested_attributes_for :conducteurlines, allow_destroy: true
   has_many :projet_artistiques
   
   # --- Liaisons de Processus et Limites ---

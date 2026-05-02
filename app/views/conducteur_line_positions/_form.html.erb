@@ -1,0 +1,42 @@
+<%= form_with(model: conducteur_line_position) do |form| %>
+  <% if conducteur_line_position.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(conducteur_line_position.errors.count, "error") %> prohibited this conducteur_line_position from being saved:</h2>
+
+      <ul>
+        <% conducteur_line_position.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :conducteurline_id_id, style: "display: block" %>
+    <%= form.text_field :conducteurline_id_id %>
+  </div>
+
+  <div>
+    <%= form.label :materiel_id, style: "display: block" %>
+    <%= form.text_field :materiel_id %>
+  </div>
+
+  <div>
+    <%= form.label :coord_x, style: "display: block" %>
+    <%= form.text_field :coord_x %>
+  </div>
+
+  <div>
+    <%= form.label :coord_y, style: "display: block" %>
+    <%= form.text_field :coord_y %>
+  </div>
+
+  <div>
+    <%= form.label :transition_type, style: "display: block" %>
+    <%= form.text_field :transition_type %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

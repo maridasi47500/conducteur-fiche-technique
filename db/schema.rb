@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_04_23_024151) do
+ActiveRecord::Schema[7.1].define(version: 2026_05_02_024816) do
   create_table "ambiance_options", force: :cascade do |t|
     t.integer "style_id", null: false
     t.string "category"
@@ -75,6 +75,18 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_23_024151) do
     t.integer "creative_detour_id", null: false
     t.integer "artistic_process_id", null: false
     t.index ["creative_detour_id", "artistic_process_id"], name: "idx_detour_process"
+  end
+
+  create_table "conducteur_line_positions", force: :cascade do |t|
+    t.integer "conducteurline_id_id", null: false
+    t.integer "materiel_id", null: false
+    t.string "coord_x"
+    t.string "coord_y"
+    t.string "transition_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conducteurline_id_id"], name: "index_conducteur_line_positions_on_conducteurline_id_id"
+    t.index ["materiel_id"], name: "index_conducteur_line_positions_on_materiel_id"
   end
 
   create_table "conducteurhasmarkers", force: :cascade do |t|
@@ -400,6 +412,8 @@ ActiveRecord::Schema[7.1].define(version: 2026_04_23_024151) do
   end
 
   add_foreign_key "ambiance_options", "styles"
+  add_foreign_key "conducteur_line_positions", "conducteurline_ids"
+  add_foreign_key "conducteur_line_positions", "materiels"
   add_foreign_key "directive_artistiques", "stage_themes"
   add_foreign_key "materiels", "zones"
   add_foreign_key "sequence_templates", "styles"

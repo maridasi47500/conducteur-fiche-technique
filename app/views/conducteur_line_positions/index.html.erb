@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Conducteur line positions</h1>
+
+<div id="conducteur_line_positions">
+  <% @conducteur_line_positions.each do |conducteur_line_position| %>
+    <%= render conducteur_line_position %>
+    <p>
+      <%= link_to "Show this conducteur line position", conducteur_line_position %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New conducteur line position", new_conducteur_line_position_path %>

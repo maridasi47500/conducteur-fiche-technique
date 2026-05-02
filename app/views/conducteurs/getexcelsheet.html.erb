@@ -1,81 +1,5 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @conducteur %>
-<!-- app/views/conducteurs/show.html.erb -->
-
-<div style="display: flex; gap: 20px;">
-  <!-- Main conductor table -->
-  <div style="flex: 1;">
-
-<table>
-<tr class="conducteurlineheader" >
-
-  <td>
-    <strong>numero:</strong>
-  </td>
-  <td>
-    <strong>Duree:</strong>
-  </td>
-
-  <td>
-    <strong>Sequenceaction:</strong>
-  </td>
-
-  <td>
-    <strong>Interpretes:</strong>
-  </td>
-
-  <td>
-    <strong>son Fichier / Source</strong>
-
-  </td>
-  <td>
-    <strong>Lumieres ambiante:</strong>
-  </td>
-
-  <td>
-    <strong>Lumieres effet:</strong>
-  </td>
-
-  <td>
-    <strong>Machine brouillard:</strong>
-  </td>
-
-  <td>
-    <strong>Videoprojection:</strong>
-  </td>
-
-  <td>
-    <strong>Notes technicien:</strong>
-  </td>
-
-</tr>
-<%= render @conducteur.conducteurlines.order(:ordre) %>
-</table>
-      <!-- Your existing table -->
-    </table>
-  </div>
-  
-  <!-- INSPIRATION SIDEBAR (always visible while editing) -->
-  <div style="width: 300px; position: sticky; top: 20px; background: #f5f5f5; padding: 15px; border: 1px solid #ddd;">
-    <h3>🎨 Inspiration Now</h3>
-    <%= render 'my_inspiration_sidebar', conducteur: @conducteur %>
-  </div>
-</div>
-<%= render "conducteurlines/form", conducteurline: @conducteurline %>
-
-
-<div>
-  <%= link_to "générer des lignes du conducteur dans une feuille excel &#10024;".html_safe, getexcelsheet_conducteur_path(@conducteur) %> |
-  <%= link_to "générer des lignes du conducteur avec des scenes artistiques &#10024;".html_safe, advanced_generator_conducteur_path(@conducteur) %> |
-  <%= link_to "générer des lignes du conducteur avec une Intelligence Artistique&#10024;".html_safe, ingredients_conducteur_path(@conducteur) %> |
-  <%= link_to "Editer toutes les lignes du conducteur", editformlines_conducteur_path(@conducteur) %> |
-  <%= link_to "Edit this conducteur", edit_conducteur_path(@conducteur) %> |
-  <%= link_to "Back to conducteurs", conducteurs_path %>
-
-  <%= button_to "Destroy this conducteur", @conducteur, method: :delete %>
-</div>
 <%# Vue : Inventaire du Conducteur #%>
+<p>votre feuille excel est prête</p>
 <div class="conducteur-container" style="font-family: monospace; color: #333;">
 
   <h2>[IDENTIFIANT CONDUCTEUR : <%= @conducteur.title %>]</h2>
@@ -194,3 +118,4 @@
   </section>
 
 </div>
+

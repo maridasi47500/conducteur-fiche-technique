@@ -69,6 +69,26 @@
     <%= form.label :notes_technicien, "notes pour le technicien", style: "display: block" %>
     <%= form.text_area :notes_technicien %>
   </td>
+  <td>
+    <%= form.fields_for :conducteur_line_positions do |f|%>
+<div class="field">
+    <%= f.label :materiel_id, style: "display: block" %>
+    <%= f.collection_select :materiel_id, Materiel.all, :id, :name %>
+</div>
+<div class="field">
+    <%= f.label :coord_x, style: "display: block" %>
+    <%= f.number_field :coord_x %>
+</div>
+<div class="field">
+    <%= f.label :coord_y, style: "display: block" %>
+    <%= f.number_field :coord_y %>
+</div>
+<div class="field">
+    <%= f.label :transition_type, style: "display: block" %>
+    <%= f.text_field :transition_type %>
+</div>
+    <% end %>
+  </td>
 
   <td>
     <%= form.submit %>

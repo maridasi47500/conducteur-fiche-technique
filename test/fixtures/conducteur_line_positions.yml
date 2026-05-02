@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  conducteurline_id: one
+  materiel: one
+  coord_x: MyString
+  coord_y: MyString
+  transition_type: MyString
+
+two:
+  conducteurline_id: two
+  materiel: two
+  coord_x: MyString
+  coord_y: MyString
+  transition_type: MyString

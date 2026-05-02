@@ -1,0 +1,1 @@
+json.partial! "conducteur_line_positions/conducteur_line_position", conducteur_line_position: @conducteur_line_position

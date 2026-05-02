@@ -1,5 +1,7 @@
 class Conducteurline < ApplicationRecord
 
+has_one :conducteur_line_position
+accepts_nested_attributes_for :conducteur_line_position, allow_destroy: true
 
 belongs_to :emotional_marker, optional: true
 belongs_to :conducteur
