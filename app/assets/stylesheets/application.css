@@ -62,3 +62,21 @@ position:absolute;
 textarea {
 width:100%;
 }
+@keyframes slidein {
+  0% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+
+  100% {
+    transform: rotate(-2deg);
+  }
+}
+.animated {
+animation-name: slidein;
+animation-duration: 1.5s;
+animation-iteration-count: infinite;
+
+}
