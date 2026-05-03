@@ -1,4 +1,4 @@
 class ConducteurLinePosition < ApplicationRecord
-  belongs_to :conducteurline_id
+  belongs_to :conducteurline
   belongs_to :materiel
 end

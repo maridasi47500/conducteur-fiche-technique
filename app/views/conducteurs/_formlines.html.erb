@@ -85,7 +85,7 @@
     <%= f.text_area :creative_notes %>
   </td>
   <td>
-    <%= f.fields_for :conducteur_line_positions do |ff|%>
+    <%= f.fields_for :conducteur_line_position do |ff|%>
 <div class="field">
     <%= ff.label :materiel_id, style: "display: block" %>
     <%= ff.collection_select :materiel_id, Materiel.all, :id, :name %>

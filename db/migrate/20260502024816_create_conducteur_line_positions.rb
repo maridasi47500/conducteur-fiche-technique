@@ -1,7 +1,7 @@
 class CreateConducteurLinePositions < ActiveRecord::Migration[7.1]
   def change
     create_table :conducteur_line_positions do |t|
-      t.references :conducteurline_id, null: false, foreign_key: true
+      t.references :conducteurline, null: false, foreign_key: true
       t.references :materiel, null: false, foreign_key: true
       t.string :coord_x
       t.string :coord_y

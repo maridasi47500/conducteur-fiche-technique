@@ -76,6 +76,7 @@ class MaterielsController < ApplicationController
         :requires_power, 
         :is_bundle, 
         :spread, 
+ :pic,
         :x_pref
       )
     end

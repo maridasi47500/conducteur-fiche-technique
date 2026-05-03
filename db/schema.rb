@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_05_02_024816) do
+ActiveRecord::Schema[7.1].define(version: 2026_05_03_020044) do
   create_table "ambiance_options", force: :cascade do |t|
     t.integer "style_id", null: false
     t.string "category"
@@ -78,14 +78,14 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_02_024816) do
   end
 
   create_table "conducteur_line_positions", force: :cascade do |t|
-    t.integer "conducteurline_id_id", null: false
+    t.integer "conducteurline_id", null: false
     t.integer "materiel_id", null: false
     t.string "coord_x"
     t.string "coord_y"
     t.string "transition_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["conducteurline_id_id"], name: "index_conducteur_line_positions_on_conducteurline_id_id"
+    t.index ["conducteurline_id"], name: "index_conducteur_line_positions_on_conducteurline_id"
     t.index ["materiel_id"], name: "index_conducteur_line_positions_on_materiel_id"
   end
 
@@ -317,6 +317,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_02_024816) do
     t.integer "spread"
     t.integer "x_pref"
     t.integer "zone_id"
+    t.string "pic"
     t.index ["zone_id"], name: "index_materiels_on_zone_id"
   end
 
@@ -412,7 +413,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_05_02_024816) do
   end
 
   add_foreign_key "ambiance_options", "styles"
-  add_foreign_key "conducteur_line_positions", "conducteurline_ids"
+  add_foreign_key "conducteur_line_positions", "conducteurlines"
   add_foreign_key "conducteur_line_positions", "materiels"
   add_foreign_key "directive_artistiques", "stage_themes"
   add_foreign_key "materiels", "zones"

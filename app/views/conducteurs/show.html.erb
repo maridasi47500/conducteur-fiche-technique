@@ -50,7 +50,7 @@
   </td>
 
 </tr>
-<%= render @conducteur.conducteurlines.order(:ordre) %>
+<%= render @conducteur.conducteurlines.order("length(ordre),ordre") %>
 </table>
       <!-- Your existing table -->
     </table>
@@ -125,7 +125,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @conducteur.conducteurlines.order(:ordre).each do |line| %>
+        <% @conducteur.conducteurlines.order("length(ordre), ordre").each do |line| %>
           <tr>
             <td><%= line.ordre %></td>
             <td><%= line.duree.strftime("%H:%M:%S") rescue "00:05" %></td>

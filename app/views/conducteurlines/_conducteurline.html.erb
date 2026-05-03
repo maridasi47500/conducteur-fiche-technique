@@ -61,5 +61,14 @@
     <strong>Notes technicien:</strong>
     <%= conducteurline.notes_technicien %>
   </td>
+<%x=conducteurline.conducteur_line_position%>
+<%if x%>
+  <td style="position:relative;min-width:300px;min-height:300px;">
+<div style="border:1px solid black;position:absolute;width:100%;top:0;left:0;height:100%;">
+<span style="top: 0;left:0;position:absolute;width:10px;height:10px; "><%=conducteurline_counter+1%></span>
+<span class="animated" style="top: calc(<%=x.coord_y%>% - 50px);left:calc(<%=x.coord_x%>% - 50px);position:absolute;background-image:url('/uploads/<%=x.materiel.pic%>');width:100px;height:100px; background-size: 100% 100%;"></span>
+</div>
+  </td>
+<%end%>
 
 </tr>
